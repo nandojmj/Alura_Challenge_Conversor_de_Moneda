@@ -51,8 +51,7 @@ String url_str = "https://v6.exchangerate-api.com/v6/YOUR-API-KEY/latest/USD";
 
 ```
 
-
-### 3. Importando la biblioteca Gson en Intellij IntelliJ IDEA  
+### 3. Importando la biblioteca Gson en IntelliJ IDEA  
 ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/intellij.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/json.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/configentorno.svg) 
 
 Para importar la biblioteca Gson en IntelliJ, sigue estos pasos:
@@ -158,8 +157,8 @@ En esta parte se solicito el uso de la interfaz HttpResponse para gestionar las 
 
 &nbsp;
 
-### 7. 7)	Analizando la respuesta en formato JSON
-![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/consumoapi.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/json.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/java.svg) 
+### 7.	Analizando la respuesta en formato JSON
+![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/consumoapi.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/json.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/java.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/postman.svg) 
 
 En esta parte de  nuestro Challenge se nos solicito el análisis de la respuesta JSON utilizando la biblioteca Gson en Java. La manipulación de datos JSON es esencial, ya que la mayoría de las respuestas de las API se presentan en este formato.
 Se nos recomendo el uso de herramientas como Postman, para facilitar el análisis de los datos que se obtendrán de la API. Con la biblioteca Gson, puedes realizar el mapeo eficiente de los datos JSON a objetos Java, facilitando así la extracción y manipulación de la información necesaria.
