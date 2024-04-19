@@ -1,0 +1,129 @@
+[
+  {
+    "conversion": {
+      "monto": 676.0,
+      "Resultado_Conversion": 2638443.8184
+    },
+    "timestamp": "2024-04-18 19:57:41"
+  },
+  {
+    "conversion": {
+      "monto": 666.0,
+      "Resultado_Conversion": 2599413.5844
+    },
+    "timestamp": "2024-04-18 19:57:52"
+  },
+  {
+    "conversion": {
+      "Moneda_Origen": "USD",
+      "monto": 123124.0,
+      "Resultado_Conversion": 4.805558531016E8
+    },
+    "timestamp": "2024-04-18 20:00:14"
+  },
+  {
+    "conversion": {
+      "Moneda_Origen": "COP",
+      "monto": 122323.0,
+      "Resultado_Conversion": 31.34159906
+    },
+    "timestamp": "2024-04-18 20:00:20"
+  },
+  {
+    "conversion": {
+      "Moneda_Origen": "USD",
+      "monto": 1.23213214E8,
+      "Resultado_Conversion": 4.8090405743121E11
+    },
+    "timestamp": "2024-04-18 20:04:08"
+  },
+  {
+    "conversion": {
+      "Moneda_Origen": "BOB",
+      "monto": 232.0,
+      "Resultado_Conversion": 33.4776
+    },
+    "timestamp": "2024-04-18 20:04:12"
+  },
+  {
+    "conversion": {
+      "Moneda_Origen": "USD",
+      "Moneda_Destino": "COP",
+      "monto": 997.0,
+      "Resultado_Conversion": 3891314.3298
+    },
+    "timestamp": "2024-04-18 20:05:20"
+  },
+  {
+    "conversion": {
+      "Moneda_Origen": "BOB",
+      "Moneda_Destino": "USD",
+      "monto": 32.0,
+      "Resultado_Conversion": 4.6176
+    },
+    "timestamp": "2024-04-18 20:05:26"
+  },
+  {
+    "conversion": {
+      "Moneda_Origen": "BOB",
+      "Moneda_Destino": "USD",
+      "monto": 7.6544334E7,
+      "Resultado_Conversion": 0.0
+    },
+    "timestamp": "2024-04-18 20:31:29"
+  },
+  {
+    "conversion": {
+      "Moneda_Origen": "USD",
+      "Moneda_Destino": "COP",
+      "monto": 12000.0,
+      "Resultado_Conversion": 0.0
+    },
+    "timestamp": "2024-04-18 20:33:16"
+  },
+  {
+    "conversion": {
+      "Moneda_Origen": "USD",
+      "Moneda_Destino": "COP",
+      "monto": 45677.0,
+      "Resultado_Conversion": 1.782783998418E8
+    },
+    "timestamp": "2024-04-18 20:34:30"
+  },
+  {
+    "conversion": {
+      "Moneda_Origen": "USD",
+      "Moneda_Destino": "COP",
+      "monto": 8798786.0,
+      "Resultado_Conversion": 3.4341867649592E10
+    },
+    "timestamp": "2024-04-18 21:18:19"
+  },
+  {
+    "conversion": {
+      "Moneda_Origen": "BOB",
+      "Moneda_Destino": "USD",
+      "monto": 876543.0,
+      "Resultado_Conversion": 126485.1549
+    },
+    "timestamp": "2024-04-18 21:18:29"
+  },
+  {
+    "conversion": {
+      "Moneda_Origen": "USD",
+      "Moneda_Destino": "COP",
+      "monto": 1.0E7,
+      "Resultado_Conversion": 3.9030234E10
+    },
+    "timestamp": "2024-04-18 21:40:38"
+  },
+  {
+    "conversion": {
+      "Moneda_Origen": "COP",
+      "Moneda_Destino": "USD",
+      "monto": 2.0E8,
+      "Resultado_Conversion": 51244.0
+    },
+    "timestamp": "2024-04-18 21:41:02"
+  }
+]
