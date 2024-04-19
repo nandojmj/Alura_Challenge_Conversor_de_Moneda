@@ -1,25 +1,27 @@
-# Open Challenge Backend ONE - Conversor de monedas
-ONE | Fase 3 - Especialización Back-End  G6 Alura - Oracle Next Education
+# Open Challenge Backend ONE - Conversor de Monedas
+ ***ONE | Fase 3 - Especialización Back-End  G6 Alura - Oracle Next Education***
 
 ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/java.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/intellij.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/git.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/apiexchange.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/json.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/postman.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/trello.svg) 
 
 En este Challenge Conversor de Monedas de la Especialización Back-End  G6 Alura - Oracle Next Education. Se realizaran solicitudes a una API de tasas de cambio, manipular datos JSON y, finalmente, a filtrar y mostrar las monedas de interés para realizar la conversion. 
 Los pasos solicitados para completar este desafío:
+
 1.	Configuración del Ambiente Java;
 2.	Creación del Proyecto;
 3.	Consumo de la API;
 4.	Análisis de la Respuesta JSON;
 5.	Filtro de Monedas;
 6.	Exhibición de Resultados a los usuarios;
-
-
-en MCT (Open Mission Control Technologies) is a next-generation mission control framework for visualization of data on desktop and mobile devices. It is developed at NASA's Ames Research Center, and is being used by NASA for data analysis of spacecraft missions, as well as planning and operation of experimental rover systems. As a generalizable and open source framework, Open MCT could be used as the basis for building applications for planning, operation, and analysis of any systems producing telemetry data.
+   
+&nbsp;
 
 > [!NOTE]
 > En este Challenge solicitan primero crear el repositorio del proyecto en GitHub.  
-> El siguiente material te ayudará con esta actividad: [Git - Configurando Git por primera vez](https://git-scm.com/book/es/v2/Inicio---Sobre-el-Control-de-Versiones-Configurando-Git-por-primera-vez) y [Como subir mi proyecto en GitHub](https://www.youtube.com/watch?v=bhKkeOMysuw)
+> El siguiente material te ayudará con esta actividad: [Git - Configurando Git por primera vez](https://git-scm.com/book/es/v2/Inicio---Sobre-el-Control-de-Versiones-Configurando-Git-por-primera-vez) y [Como subir mi proyecto en GitHub](https://www.youtube.com/watch?v=bhKkeOMysuw)  
 
-## 1.Configurando el entorno Java
+&nbsp;
+
+### 1. Configurando el entorno Java  
 ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/java.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/intellij.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/git.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/json.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/postman.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/trello.svg) 
 
 En esta primera fase, nos piden que se lleve acabo la instalación y configuración del entorno de desarrollo Java para nuestro desafío de construcción del Conversor de Monedas. Asegúrate de contar con los siguientes programas, archivos y versiones:
@@ -30,19 +32,16 @@ En esta primera fase, nos piden que se lleve acabo la instalación y configuraci
 - Postman
 - Trello
 
-## 1.Configurando el entorno Java
-![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/java.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/intellij.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/git.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/json.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/postman.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/trello.svg) 
+&nbsp;
 
+## 2.Conociendo la API para traer datos
+![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/apiexchange.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/configentorno.svg)
 
-En esta primera fase, nos sumergiremos en la configuración del entorno de desarrollo Java para nuestro desafío de construcción del Conversor de Monedas. Asegúrate de contar con los siguientes programas, archivos y versiones:
+En este paso crucial, es fundamental comprender mejor la API de tasas de cambio a utilizar, revisar su documentación y aprender cómo obtener la clave de API. Esta clave es esencial para realizar solicitudes y obtener datos actualizados. Asegúrate de seguir cuidadosamente las instrucciones proporcionadas por la API Exchange Rate API.
 
--IntelliJ IDEA Community Edition
-
--JSON en Java y la librería Gson
-
--Git y GitHub
--Postman
--Trello
+> [!NOTE]
+> Para este challenge se utilizo la siguiente API: 
+> [Exchange Rate API](https://www.exchangerate-api.com/)
 
 1. Clone the source code:
 
@@ -72,6 +71,25 @@ npm start
 > Open MCT is now running, and can be accessed by pointing a web browser at [http://localhost:8080/](http://localhost:8080/)
 
 Open MCT is built using [`npm`](http://npmjs.com/) and [`webpack`](https://webpack.js.org/).
+
+
+### 3. Importando la biblioteca Gson en Intellij IntelliJ IDEA  
+![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/intellij.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/json.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/configentorno.svg) 
+
+Para importar la biblioteca Gson en IntelliJ, sigue estos pasos:
+1.	Abre tu proyecto en IntelliJ.
+2.	Haz clic derecho sobre la carpeta del proyecto en el panel izquierdo.
+3.	Selecciona "Open Module Settings" en el menú contextual.
+4.	En la ventana que se abre, ve a la pestaña "Dependencies".
+5.	Haz clic en el signo "+" en la esquina inferior izquierda y elige "Library".
+6.	Busca "gson" en el cuadro de búsqueda.
+7.	Selecciona la versión de Gson que desees utilizar.
+8.	Haz clic en "OK" para cerrar la ventana.
+
+> [!IMPORTANT]
+> Para descargar la biblioteca Gson, debemos ir a Maven Repository. Buscamos Gson y seleccionamos la primera opción, que es de Google. La version descargada para este challenge es la 2.10.1.  [MVN Repository Gson](https://mvnrepository.com/artifact/com.google.code.gson/gson)
+
+&nbsp;
 
 ## Documentation
 
