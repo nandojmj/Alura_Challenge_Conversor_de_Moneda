@@ -37,40 +37,19 @@ En esta primera fase, nos piden que se lleve acabo la instalación y configuraci
 ### 2.Conociendo la API para traer datos
 ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/apiexchange.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/configentorno.svg)
 
-En este paso crucial, es fundamental comprender mejor la API de tasas de cambio a utilizar, revisar su documentación y aprender cómo obtener la clave de API. Esta clave es esencial para realizar solicitudes y obtener datos actualizados. Asegúrate de seguir cuidadosamente las instrucciones proporcionadas por la API Exchange Rate API.
+En este paso crucial, es fundamental comprender mejor la API de tasas de cambio a utilizar, revisar su documentación y aprender cómo obtener la clave de API. Esta clave es esencial para realizar solicitudes y obtener datos actualizados. Asegúrate de seguir cuidadosamente las instrucciones proporcionadas por la API Exchange Rate-API.
 
 > [!NOTE]
 > Para este challenge se utilizo la siguiente API: 
-> [Exchange Rate API](https://www.exchangerate-api.com/)
+> [Exchange Rate-API](https://www.exchangerate-api.com/), debe registrase para obtener su clave API.
 
-1. Clone the source code:
-
-```
-git clone https://github.com/nasa/openmct.git
-```
-
-2. (Optional) Install the correct node version using [nvm](https://github.com/nvm-sh/nvm):
+Ejemplo:
 
 ```
-nvm install
-```
-
-3. Install development dependencies (Note: Check the `package.json` engine for our tested and supported node versions): 
+// Setting URL
+String url_str = "https://v6.exchangerate-api.com/v6/YOUR-API-KEY/latest/USD";
 
 ```
-npm install
-```
-
-4. Run a local development server:
-
-```
-npm start
-```
-
-> [!IMPORTANT]
-> Open MCT is now running, and can be accessed by pointing a web browser at [http://localhost:8080/](http://localhost:8080/)
-
-Open MCT is built using [`npm`](http://npmjs.com/) and [`webpack`](https://webpack.js.org/).
 
 
 ### 3. Importando la biblioteca Gson en Intellij IntelliJ IDEA  
@@ -96,26 +75,122 @@ Para importar la biblioteca Gson en IntelliJ, sigue estos pasos:
 
 Se utilizo la clase HttpClient para realizar solicitudes a la API de tasas de cambio y obtener datos esenciales. El uso de HttpClient en Java facilita la conexión y la obtención de respuestas de manera eficiente.
 
-1. Clone the source code:
+> [!NOTE]
+>  Es necesario obtener su clave API para agregarla al codigo:  
+> [Exchange Rate API](https://www.exchangerate-api.com/)
+> [Documentacion Exchange Rate API Java ](https://www.exchangerate-api.com/docs/java-currency-api)
 
-```
-git clone https://github.com/nasa/openmct.git
-```
+***Fragmento de codigo ejemplo utilizado en la Class ""Conversion.java", en YOUR-API-KEY se utiliza la llave solicitada:***
+```java
+// Método para realizar la conversión
+    public RegistroConversion convertir(String codMonOrigen, String codMonDestino, int monto) {
+        // Realizar la conversión
+        URI direccion = URI.create("https://v6.exchangerate-api.com/v6/d50362c2646d99e082d99a42/pair/"
+                + codMonOrigen + "/" + codMonDestino + "/" + monto);
+        // Crear un cliente HTTP
+        HttpClient client = HttpClient.newHttpClient();
 
-2. (Optional) Install the correct node version using [nvm](https://github.com/nvm-sh/nvm):
-
+         // Resto del código omitido...
 ```
-nvm install
-```
-
 
 &nbsp;
+
+### 5. Construyendo la Solicitud (HttpRequest)
+![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/consumoapi.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/java.svg) 
+
+Uso de la clase HttpRequest para configurar y personalizar nuestras solicitudes a la API de tasas de cambio. La clase HttpRequest en Java nos brinda un control detallado sobre los parámetros de nuestras solicitudes.
+
+> [!NOTE]
+>  Es necesario obtener su clave API para agragarla al codigo: 
+> [Exchange Rate API](https://www.exchangerate-api.com/)
+> [Documentacion Exchange Rate API Java ](https://www.exchangerate-api.com/docs/java-currency-api)
+
+***Fragmento de codigo utilizado en la Class Conversion.java:***
+```java
+ public RegistroConversion convertir(String codMonOrigen, String codMonDestino, int monto) {
+       // Resto del código omitido...
+
+        // Crear un cliente HTTP
+        HttpClient client = HttpClient.newHttpClient();
+
+        // Construir la solicitud HTTP
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(direccion)
+                .build();
+
+        // Resto del código omitido...
+```
+
+&nbsp;
+
+### 6. Construyendo la la Respuesta (HttpResponse)
+![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/consumoapi.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/java.svg) 
+
+En esta parte se solicito el uso de la interfaz HttpResponse para gestionar las respuestas recibidas de la API. La interfaz HttpResponse en Java ofrece una estructura que permite acceder y analizar los diferentes elementos de una respuesta HTTP. Al entender cómo trabajar con esta interfaz, podrás extraer información significativa de las respuestas, como códigos de estado, encabezados y el cuerpo de la respuesta, que normalmente se presenta en formato JSON.
+
+> [!NOTE]
+>  Es necesario obtener su clave API para agragarla al codigo: 
+> [Exchange Rate API](https://www.exchangerate-api.com/)
+> [Documentacion Exchange Rate API Java ](https://www.exchangerate-api.com/docs/java-currency-api)
+
+***Fragmento de codigo utilizado en la Class Conversion.java, se  crea la variable para almacenar la respuesta de la solicitud. Enviar la solicitud HTTP y recibir la respuesta:***
+```java
+ public RegistroConversion convertir(String codMonOrigen, String codMonDestino, int monto) {
+       // Resto del código omitido...
+
+         // Variable para almacenar la respuesta de la solicitud
+        HttpResponse<String> response = null;
+        try {
+            // Enviar la solicitud HTTP y recibir la respuesta
+            response = client
+                    .send(request, HttpResponse.BodyHandlers.ofString());
+        } catch (IOException | InterruptedException e) {
+            // Capturar excepciones de E/S o interrupciones y lanzar una RuntimeException
+            throw new RuntimeException(e);
+        }
+
+        // Crear un JsonReader y configurarlo para aceptar JSON malformado
+        JsonReader reader = new JsonReader(new StringReader(response.body()));
+        reader.setLenient(true);
+
+        // Resto del código omitido...
+```
+
+&nbsp;
+
+### 7. 7)	Analizando la respuesta en formato JSON
+![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/consumoapi.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/json.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/java.svg) 
+
+En esta parte de  nuestro Challenge se nos solicito el análisis de la respuesta JSON utilizando la biblioteca Gson en Java. La manipulación de datos JSON es esencial, ya que la mayoría de las respuestas de las API se presentan en este formato.
+Se nos recomendo el uso de herramientas como Postman, para facilitar el análisis de los datos que se obtendrán de la API. Con la biblioteca Gson, puedes realizar el mapeo eficiente de los datos JSON a objetos Java, facilitando así la extracción y manipulación de la información necesaria.
+
 > [!IMPORTANT]
-> Para descargar la biblioteca Gson, debemos ir a Maven Repository en Google. Buscamos Gson y seleccionamos la primera opción. La version descargada para este challenge es la 2.10.1.  [MVN Repository Gson](https://mvnrepository.com/artifact/com.google.code.gson/gson)
+> Recordar utilizar la biblioteca Gson. Para descargar la biblioteca Gson, debemos ir a Maven Repository en Google. Buscamos Gson y seleccionamos la primera opción. La version descargada para este challenge es la 2.10.1.  [MVN Repository Gson](https://mvnrepository.com/artifact/com.google.code.gson/gson)
+
+***Fragmento de codigo utilizado en la Class Conversion.java, se  crea la variable para almacenar la respuesta de la solicitud. Enviar la solicitud HTTP y recibir la respuesta:***
+```java
+ public RegistroConversion convertir(String codMonOrigen, String codMonDestino, int monto) {
+       // Resto del código omitido...
+
+         // Variable para almacenar la respuesta de la solicitud
+        HttpResponse<String> response = null;
+        try {
+            // Enviar la solicitud HTTP y recibir la respuesta
+            response = client
+                    .send(request, HttpResponse.BodyHandlers.ofString());
+        } catch (IOException | InterruptedException e) {
+            // Capturar excepciones de E/S o interrupciones y lanzar una RuntimeException
+            throw new RuntimeException(e);
+        }
+
+        // Crear un JsonReader y configurarlo para aceptar JSON malformado
+        JsonReader reader = new JsonReader(new StringReader(response.body()));
+        reader.setLenient(true);
+
+        // Resto del código omitido...
+```
 
 &nbsp;
-
-
 ## Documentation
 
 Documentation is available on the [Open MCT website](https://nasa.github.io/openmct/documentation/).
