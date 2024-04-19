@@ -127,10 +127,7 @@ Uso de la clase HttpRequest para configurar y personalizar nuestras solicitudes 
 
 En esta parte se solicito el uso de la interfaz HttpResponse para gestionar las respuestas recibidas de la API. La interfaz HttpResponse en Java ofrece una estructura que permite acceder y analizar los diferentes elementos de una respuesta HTTP. Al entender cómo trabajar con esta interfaz, podrás extraer información significativa de las respuestas, como códigos de estado, encabezados y el cuerpo de la respuesta, que normalmente se presenta en formato JSON.
 
-> [!NOTE]
->  Es necesario obtener su clave API para agragarla al codigo: 
-> [Exchange Rate API](https://www.exchangerate-api.com/)
-> [Documentacion Exchange Rate API Java ](https://www.exchangerate-api.com/docs/java-currency-api)
+&nbsp;
 
 ***Fragmento de codigo utilizado en la Class Conversion.java, se  crea la variable para almacenar la respuesta de la solicitud. Enviar la solicitud HTTP y recibir la respuesta:***
 ```java
@@ -148,7 +145,7 @@ En esta parte se solicito el uso de la interfaz HttpResponse para gestionar las 
             throw new RuntimeException(e);
         }
 
-        // Crear un JsonReader y configurarlo para aceptar JSON malformado
+       // Crear un JsonReader y configurarlo para aceptar JSON no válido
         JsonReader reader = new JsonReader(new StringReader(response.body()));
         reader.setLenient(true);
 
@@ -160,36 +157,207 @@ En esta parte se solicito el uso de la interfaz HttpResponse para gestionar las 
 ### 7.	Analizando la respuesta en formato JSON
 ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/intellij.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/consumoapi.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/json.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/java.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/postman.svg) 
 
-En esta parte de  nuestro Challenge se nos solicito el análisis de la respuesta JSON utilizando la biblioteca Gson en Java. La manipulación de datos JSON es esencial, ya que la mayoría de las respuestas de las API se presentan en este formato.
-Se nos recomendo el uso de herramientas como Postman, para facilitar el análisis de los datos que se obtendrán de la API. Con la biblioteca Gson, puedes realizar el mapeo eficiente de los datos JSON a objetos Java, facilitando así la extracción y manipulación de la información necesaria.
+En esta parte de  nuestro Challenge se nos solicito el análisis de la respuesta JSON utilizando la biblioteca Gson en Java. La manipulación de datos JSON es esencial, ya que la mayoría de las respuestas de las API se presentan en este formato.  Se nos recomendo el uso de herramientas como Postman, para facilitar el análisis de los datos que se obtendrán de la API. Con la biblioteca Gson, puedes realizar el mapeo eficiente de los datos JSON a objetos Java, facilitando así la extracción y manipulación de la información necesaria.
 
 > [!IMPORTANT]
 > Recordar utilizar la biblioteca Gson. Para descargar la biblioteca Gson, debemos ir a Maven Repository en Google. Buscamos Gson y seleccionamos la primera opción. La version descargada para este challenge es la 2.10.1.  [MVN Repository Gson](https://mvnrepository.com/artifact/com.google.code.gson/gson)
 
-***Fragmento de codigo utilizado en la Class Conversion.java, se  crea la variable para almacenar la respuesta de la solicitud. Enviar la solicitud HTTP y recibir la respuesta:***
+***Fragmento de codigo utilizado en la Class Conversion.java, se  crea un JsonReader y se configura para aceptar JSON no valido:***
 ```java
  public RegistroConversion convertir(String codMonOrigen, String codMonDestino, int monto) {
        // Resto del código omitido...
 
-         // Variable para almacenar la respuesta de la solicitud
-        HttpResponse<String> response = null;
-        try {
-            // Enviar la solicitud HTTP y recibir la respuesta
-            response = client
-                    .send(request, HttpResponse.BodyHandlers.ofString());
-        } catch (IOException | InterruptedException e) {
-            // Capturar excepciones de E/S o interrupciones y lanzar una RuntimeException
-            throw new RuntimeException(e);
-        }
-
-        // Crear un JsonReader y configurarlo para aceptar JSON malformado
+            // Crear un JsonReader y configurarlo para aceptar JSON no válido 
         JsonReader reader = new JsonReader(new StringReader(response.body()));
         reader.setLenient(true);
+
+        try {
+            // Analizar la respuesta JSON
+            Gson gson = new GsonBuilder()
+                    .registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter())
+                    .create();
+
+            ConversionResponse conversionResponse = gson.fromJson(reader, ConversionResponse.class);
 
         // Resto del código omitido...
 ```
 
 &nbsp;
+
+### 8. Filtrando las monedas
+![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/intellij.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/consumoapi.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/json.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/java.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/postman.svg) 
+
+En la octava fase de nuestro Challenge, nos pidieron el proceso de filtrar las monedas utilizando la biblioteca Gson en Java.
+Para acceder a datos específicos, como los valores de las diferentes monedas, es esencial comprender cómo navegar por la estructura JSON de la respuesta de la API. En el desafio se nos solicito utilizar estos codigos de monedas  a convertir:
+
+1.	ARS - Peso argentino
+2.	BOB - Boliviano boliviano
+3.	BRL - Real brasileño
+4.	CLP - Peso chileno
+5.	COP - Peso colombiano
+6.	USD - Dólar estadounidense
+
+Para esto se creo una Class clase MenuHandler.java por los siguientes motivos: 
+1. Separación de responsabilidades: La clase MenuHandler se encarga específicamente de manejar la interacción con el usuario a través del menú y ejecutar las opciones seleccionadas. Esto mantiene la clase principal más enfocada en la lógica principal del programa.
+2. Facilita la reutilización y mantenimiento del código: Al separar la lógica del menú en una clase separada, se hace más fácil reutilizarla en otros contextos o modificarla sin afectar la lógica principal del programa.
+3. Mejora la legibilidad y organización del código: Dividir el código en clases más pequeñas y específicas ayuda a que sea más fácil de entender y mantener. Cada clase tiene una responsabilidad clara y se puede entender por sí sola sin necesidad de revisar todo el código.
+En resumen, separar la lógica del menú en la clase MenuHandler ayuda a mantener el código más organizado, modular y fácil de mantener, además de mejorar la legibilidad y la reutilización del código.
+
+
+
+> [!IMPORTANT]
+> Recordar utilizar la biblioteca Gson. Para descargar la biblioteca Gson, debemos ir a Maven Repository en Google. Buscamos Gson y seleccionamos la primera opción. La version descargada para este challenge es la 2.10.1.  [MVN Repository Gson](https://mvnrepository.com/artifact/com.google.code.gson/gson)
+
+***Fragmento de codigo utilizado en la Class MenuHandler.java:***
+```java
+ public RegistroConversion convertir(String codMonOrigen, String codMonDestino, int monto) {
+
+ // Resto del código omitido...
+            public class MenuHandler {
+    // Método para mostrar el menú de opciones
+    public static void mostrarMenu() {
+        System.out.println("\n**************************");
+        System.out.println("""
+                1-Convertir de USD (dólar) a ARS (peso Argentino).
+                2-Convertir de ARS (peso Argentino) a USD (dólar).
+                3-Convertir de USD (dólar) a BOB (peso Boliviano).
+                4-Convertir de BOB (peso Boliviano) a USD (dólar).
+
+ // Resto del código omitido...
+
+// Método para ejecutar la opción seleccionada por el usuario
+    public static void ejecutarOpcion(int opcion) {
+        Conversion c = new Conversion(); // Instancia de la clase Conversion para realizar conversiones
+        Scanner lectura = new Scanner(System.in); // Objeto Scanner para leer la entrada del usuario
+
+        switch (opcion) {
+            case 1:
+                convertirMoneda("USD", "ARS", c, lectura); // Convertir de USD a ARS
+                break;
+            case 2:
+                convertirMoneda("ARS", "USD", c, lectura); // Convertir de ARS a USD
+                break;
+            case 3:
+                convertirMoneda("USD", "BOB", c, lectura); // Convertir de USD a BOB
+                break;
+            case 4:
+                convertirMoneda("BOB", "USD", c, lectura); // Convertir de BOB a USD
+                break;
+
+             // Resto del código omitido...
+
+            case 8:
+                System.out.println("Gracias por utilizar el convertidor de monedas"); // Mensaje de despedida
+                System.exit(0); // Finaliza el programa
+            default:
+                System.out.println("Opción digitada inválida. Por favor, seleccione una opción válida del menú."); // Mensaje de opción inválida
+        }
+    }
+
+        // Resto del código omitido...
+```
+
+&nbsp;
+
+### 8. Convirtiendo Valores
+![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/intellij.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/consumoapi.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/json.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/java.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/postman.svg) 
+
+En esta novena fase, se nos pidio  las conversiones entre las monedas. Se crearon tres clases en el package una clase 
+![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/intellij.svg) 
+
+
+
+La CLASS ConversionResponse.java se utiliza para representar los datos de respuesta de una conversión de moneda obtenida de la API externa. Aquí está un resumen de su propósito y uso:
+1. Atributos: La clase tiene tres atributos que representan los datos de la conversión:
+* monedaOrigen: Representa la moneda de origen de la conversión.
+* monedaDestino: Representa la moneda de destino de la conversión.
+* resultado: Representa el resultado de la conversión.
+
+2. Anotaciones de SerializedName: Las anotaciones @SerializedName se utilizan para especificar el nombre de los campos en el JSON que se utilizarán para mapear los datos a los atributos de la clase. Esto es útil cuando los nombres de los campos en el JSON no coinciden con los nombres de los atributos en la clase.
+
+3. Getters y setters: Se proporcionan métodos para acceder y modificar los atributos de la clase.
+
+4. Método toString: Se sobrescribe el método toString para proporcionar una representación de cadena de la clase. Esto es útil para imprimir fácilmente los objetos de tipo ConversionResponse en forma legible para los humanos.
+
+En resumen, la clase ConversionResponse se utiliza como un contenedor de datos para representar la respuesta de una conversión de moneda, facilitando el procesamiento y manipulación de estos datos en el código del programa.
+
+
+
+
+
+
+
+:
+
+1.	ARS - Peso argentino
+2.	BOB - Boliviano boliviano
+3.	BRL - Real brasileño
+4.	CLP - Peso chileno
+5.	COP - Peso colombiano
+6.	USD - Dólar estadounidense
+
+Para esto se creo una Class clase MenuHandler.java por los siguientes motivos: 
+1. Separación de responsabilidades: La clase MenuHandler se encarga específicamente de manejar la interacción con el usuario a través del menú y ejecutar las opciones seleccionadas. Esto mantiene la clase principal más enfocada en la lógica principal del programa.
+2. Facilita la reutilización y mantenimiento del código: Al separar la lógica del menú en una clase separada, se hace más fácil reutilizarla en otros contextos o modificarla sin afectar la lógica principal del programa.
+3. Mejora la legibilidad y organización del código: Dividir el código en clases más pequeñas y específicas ayuda a que sea más fácil de entender y mantener. Cada clase tiene una responsabilidad clara y se puede entender por sí sola sin necesidad de revisar todo el código.
+En resumen, separar la lógica del menú en la clase MenuHandler ayuda a mantener el código más organizado, modular y fácil de mantener, además de mejorar la legibilidad y la reutilización del código.
+
+
+
+> [!IMPORTANT]
+> Recordar utilizar la biblioteca Gson. Para descargar la biblioteca Gson, debemos ir a Maven Repository en Google. Buscamos Gson y seleccionamos la primera opción. La version descargada para este challenge es la 2.10.1.  [MVN Repository Gson](https://mvnrepository.com/artifact/com.google.code.gson/gson)
+
+***Fragmento de codigo utilizado en la Class MenuHandler.java:***
+```java
+ public RegistroConversion convertir(String codMonOrigen, String codMonDestino, int monto) {
+
+ // Resto del código omitido...
+            public class MenuHandler {
+    // Método para mostrar el menú de opciones
+    public static void mostrarMenu() {
+        System.out.println("\n**************************");
+        System.out.println("""
+                1-Convertir de USD (dólar) a ARS (peso Argentino).
+                2-Convertir de ARS (peso Argentino) a USD (dólar).
+                3-Convertir de USD (dólar) a BOB (peso Boliviano).
+                4-Convertir de BOB (peso Boliviano) a USD (dólar).
+
+ // Resto del código omitido...
+
+// Método para ejecutar la opción seleccionada por el usuario
+    public static void ejecutarOpcion(int opcion) {
+        Conversion c = new Conversion(); // Instancia de la clase Conversion para realizar conversiones
+        Scanner lectura = new Scanner(System.in); // Objeto Scanner para leer la entrada del usuario
+
+        switch (opcion) {
+            case 1:
+                convertirMoneda("USD", "ARS", c, lectura); // Convertir de USD a ARS
+                break;
+            case 2:
+                convertirMoneda("ARS", "USD", c, lectura); // Convertir de ARS a USD
+                break;
+            case 3:
+                convertirMoneda("USD", "BOB", c, lectura); // Convertir de USD a BOB
+                break;
+            case 4:
+                convertirMoneda("BOB", "USD", c, lectura); // Convertir de BOB a USD
+                break;
+
+             // Resto del código omitido...
+
+            case 8:
+                System.out.println("Gracias por utilizar el convertidor de monedas"); // Mensaje de despedida
+                System.exit(0); // Finaliza el programa
+            default:
+                System.out.println("Opción digitada inválida. Por favor, seleccione una opción válida del menú."); // Mensaje de opción inválida
+        }
+    }
+
+        // Resto del código omitido...
+```
+
+&nbsp;
+
 ## Documentation
 
 Documentation is available on the [Open MCT website](https://nasa.github.io/openmct/documentation/).
