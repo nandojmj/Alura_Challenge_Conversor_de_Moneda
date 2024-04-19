@@ -34,7 +34,7 @@ En esta primera fase, nos piden que se lleve acabo la instalación y configuraci
 
 &nbsp;
 
-## 2.Conociendo la API para traer datos
+### 2.Conociendo la API para traer datos
 ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/apiexchange.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/configentorno.svg)
 
 En este paso crucial, es fundamental comprender mejor la API de tasas de cambio a utilizar, revisar su documentación y aprender cómo obtener la clave de API. Esta clave es esencial para realizar solicitudes y obtener datos actualizados. Asegúrate de seguir cuidadosamente las instrucciones proporcionadas por la API Exchange Rate API.
@@ -85,11 +85,36 @@ Para importar la biblioteca Gson en IntelliJ, sigue estos pasos:
 6.	Busca "gson" en el cuadro de búsqueda.
 7.	Selecciona la versión de Gson que desees utilizar.
 8.	Haz clic en "OK" para cerrar la ventana.
-
+&nbsp;
 > [!IMPORTANT]
-> Para descargar la biblioteca Gson, debemos ir a Maven Repository. Buscamos Gson y seleccionamos la primera opción, que es de Google. La version descargada para este challenge es la 2.10.1.  [MVN Repository Gson](https://mvnrepository.com/artifact/com.google.code.gson/gson)
+> Para descargar la biblioteca Gson, debemos ir a Maven Repository en Google. Buscamos Gson y seleccionamos la primera opción. La version descargada para este challenge es la 2.10.1.  [MVN Repository Gson](https://mvnrepository.com/artifact/com.google.code.gson/gson)
 
 &nbsp;
+
+### 4. Construyendo el Cliente para Solicitudes (HttpClient)  
+![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/consumoapi.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/java.svg) 
+
+Se utilizo la clase HttpClient para realizar solicitudes a la API de tasas de cambio y obtener datos esenciales. El uso de HttpClient en Java facilita la conexión y la obtención de respuestas de manera eficiente.
+
+1. Clone the source code:
+
+```
+git clone https://github.com/nasa/openmct.git
+```
+
+2. (Optional) Install the correct node version using [nvm](https://github.com/nvm-sh/nvm):
+
+```
+nvm install
+```
+
+
+&nbsp;
+> [!IMPORTANT]
+> Para descargar la biblioteca Gson, debemos ir a Maven Repository en Google. Buscamos Gson y seleccionamos la primera opción. La version descargada para este challenge es la 2.10.1.  [MVN Repository Gson](https://mvnrepository.com/artifact/com.google.code.gson/gson)
+
+&nbsp;
+
 
 ## Documentation
 
