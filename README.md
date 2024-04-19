@@ -258,13 +258,12 @@ En resumen, separar la lógica del menú en la clase MenuHandler ayuda a mantene
 ```
 
 &nbsp;
-### 8. Convirtiendo Valores
+
+### 9. Convirtiendo Valores
 ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/intellij.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/consumoapi.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/json.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/java.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/postman.svg) 
 
 En esta novena fase, se nos pidio  las conversiones entre las monedas. Se crearon tres clases en el package una clase 
-![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/packageconversion.jpg) 
-
-
+![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/packageconversion.JPG) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/intellij.svg)
 
 La CLASS ConversionResponse.java se utiliza para representar los datos de respuesta de una conversión de moneda obtenida de la API externa. Aquí está un resumen de su propósito y uso:
 1. Atributos: La clase tiene tres atributos que representan los datos de la conversión:
@@ -279,14 +278,6 @@ La CLASS ConversionResponse.java se utiliza para representar los datos de respue
 4. Método toString: Se sobrescribe el método toString para proporcionar una representación de cadena de la clase. Esto es útil para imprimir fácilmente los objetos de tipo ConversionResponse en forma legible para los humanos.
 
 En resumen, la clase ConversionResponse se utiliza como un contenedor de datos para representar la respuesta de una conversión de moneda, facilitando el procesamiento y manipulación de estos datos en el código del programa.
-
-
-
-
-
-
-
-:
 
 1.	ARS - Peso argentino
 2.	BOB - Boliviano boliviano
