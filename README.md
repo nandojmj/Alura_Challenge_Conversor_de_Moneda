@@ -213,16 +213,31 @@ En resumen, separar la lógica del menú en la clase MenuHandler ayuda a mantene
  public RegistroConversion convertir(String codMonOrigen, String codMonDestino, int monto) {
 
  // Resto del código omitido...
-            public class MenuHandler {
+ public class MenuHandler {
     // Método para mostrar el menú de opciones
     public static void mostrarMenu() {
-        System.out.println("\n**************************");
+        System.out.println("\n***********************************");
         System.out.println("""
                 1-Convertir de USD (dólar) a ARS (peso Argentino).
                 2-Convertir de ARS (peso Argentino) a USD (dólar).
                 3-Convertir de USD (dólar) a BOB (peso Boliviano).
                 4-Convertir de BOB (peso Boliviano) a USD (dólar).
+                5-Convertir de USD (dólar) a COP (peso Colombiano).
+                6-Convertir de COP (peso Colombiano) a USD (dólar).
+                7-Elegir otro tipo de monedas a convertir.
+                8-Salir
+                Elija una opción: """);
+    }
 
+    // Método para ejecutar la opción seleccionada por el usuario
+    public static void ejecutarOpcion(int opcion) {
+        Conversion c = new Conversion(); // Instancia de la clase Conversion para realizar conversiones
+        Scanner lectura = new Scanner(System.in); // Objeto Scanner para leer la entrada del usuario
+
+        switch (opcion) {
+            case 1:
+                convertirMoneda("USD", "ARS", c, lectura); // Convertir de USD a ARS
+                break;
  // Resto del código omitido...
 
 // Método para ejecutar la opción seleccionada por el usuario
@@ -434,6 +449,245 @@ import java.time.format.DateTimeFormatter;
 ```
 &nbsp;
 
+
+
+### 10. Interactuando con el usuario
+![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/intellij.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/json.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/java.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/postman.svg) 
+
+En esta etapa del desafío, se solicito  la interacción con el usuario, implementando una interfaz textual a través de la consola que presenta opciones de conversión de monedas. La estructura incluirá un menú dentro de un bucle de repetición, permitiendo al usuario seleccionar opciones numéricas y proporcionar datos para la conversión, utilizando la  `clase Scanner` para capturar la entrada del usuario.
+
+Al final, el programa mostrará el valor convertido según la elección del usuario. Además, es fundamental realizar pruebas exhaustivas para garantizar el correcto funcionamiento del programa, simulando diversas situaciones y recorridos para identificar y corregir posibles errores.
+
+
+***Fragmento de codigo utilizado en la Class MenuHandler.java:***
+```java
+ // Resto del código omitido...
+
+// Método para ejecutar la opción seleccionada por el usuario
+    public class MenuHandler {
+    // Método para mostrar el menú de opciones
+    public static void mostrarMenu() {
+        System.out.println("\n**************************");
+        System.out.println("""
+                1-Convertir de USD (dólar) a ARS (peso Argentino).
+                2-Convertir de ARS (peso Argentino) a USD (dólar).
+                3-Convertir de USD (dólar) a BOB (peso Boliviano).
+                4-Convertir de BOB (peso Boliviano) a USD (dólar).
+                5-Convertir de USD (dólar) => a COP (peso Colombiano).
+                6-Convertir de COP (peso Colombiano) => a USD (dólar).
+                7-Elegir las monedas que desea convertir.
+                8-Salir
+                Elija una opción: """);
+    }
+
+    // Método para ejecutar la opción seleccionada por el usuario
+    public static void ejecutarOpcion(int opcion) {
+        Conversion c = new Conversion(); // Instancia de la clase Conversion para realizar conversiones
+        Scanner lectura = new Scanner(System.in); // Objeto Scanner para leer la entrada del usuario
+
+        switch (opcion) {
+            case 1:
+                convertirMoneda("USD", "ARS", c, lectura); // Convertir de USD a ARS
+                break;
+
+             // Resto del código omitido...
+
+            case 8:
+                System.out.println("Gracias por utilizar el convertidor de monedas"); // Mensaje de despedida
+                System.exit(0); // Finaliza el programa
+            default:
+                System.out.println("Opción digitada inválida. Por favor, seleccione una opción válida del menú."); // Mensaje de opción inválida
+        }
+    }
+
+        // Resto del código omitido...
+```
+
+
+
+
+## **ADICIONALES:**
+
+A.	Hacer un README
+Uno de los pasos más importantes al participar en una selección de trabajo es resolver un desafío propuesto por la empresa con la información de la resolución, y generalmente esto debe estar en el README. ¿Y qué es el README? Es un archivo con extensión .md y es un documento con la descripción del proyecto. Este mismo archivo que se esta leyendo fue el resultado.
+
+B.	Extra (Opcional)
+
+•	Historial de Conversiones: Agregar la capacidad de rastrear y mostrar el historial de las últimas conversiones realizadas, brindando a los usuarios una visión completa de sus actividades.
+
+
+
+
+
+***Fragmento de codigo utilizado en la Class MenuHandler.java:***
+```java
+ // Resto del código omitido...
+
+// Método para ejecutar la opción seleccionada por el usuario
+    public class MenuHandler {
+    // Método para mostrar el menú de opciones
+    public static void mostrarMenu() {
+        System.out.println("\n**************************");
+        System.out.println("""
+                1-Convertir de USD (dólar) a ARS (peso Argentino).
+                2-Convertir de ARS (peso Argentino) a USD (dólar).
+                3-Convertir de USD (dólar) a BOB (peso Boliviano).
+                4-Convertir de BOB (peso Boliviano) a USD (dólar).
+                5-Convertir de USD (dólar) => a COP (peso Colombiano).
+                6-Convertir de COP (peso Colombiano) => a USD (dólar).
+                7-Elegir las monedas que desea convertir.
+                8-Salir
+                Elija una opción: """);
+    }
+
+    // Método para ejecutar la opción seleccionada por el usuario
+    public static void ejecutarOpcion(int opcion) {
+        Conversion c = new Conversion(); // Instancia de la clase Conversion para realizar conversiones
+        Scanner lectura = new Scanner(System.in); // Objeto Scanner para leer la entrada del usuario
+
+        switch (opcion) {
+            case 1:
+                convertirMoneda("USD", "ARS", c, lectura); // Convertir de USD a ARS
+                break;
+
+             // Resto del código omitido...
+
+            case 8:
+                System.out.println("Gracias por utilizar el convertidor de monedas"); // Mensaje de despedida
+                System.exit(0); // Finaliza el programa
+            default:
+                System.out.println("Opción digitada inválida. Por favor, seleccione una opción válida del menú."); // Mensaje de opción inválida
+        }
+    }
+
+        // Resto del código omitido...
+```
+
+
+
+
+
+•	Soporte para Más Monedas: Amplía la lista de monedas disponibles para la elección, permitiendo a los usuarios convertir entre una variedad aún mayor de opciones monetarias.
+
+***Fragmento de codigo utilizado en la Class `MenuHandler.java` para seleccionar otras monedas que se desea convertir. En el menu principal la opcion 7 nos lleva a `7-Elegir otro tipo de monedas a convertir.:` cumpliendo con la opcion adicional del challenge de Soporte para Más Monedas ***
+```java
+// Resto del código omitido...
+ public class MenuHandler {
+    // Método para mostrar el menú de opciones
+    public static void mostrarMenu() {
+        System.out.println("\n***********************************");
+        System.out.println("""
+
+       // Resto del código omitido...
+                5-Convertir de USD (dólar) a COP (peso Colombiano).
+                6-Convertir de COP (peso Colombiano) a USD (dólar).
+                7-Elegir otro tipo de monedas a convertir.
+                8-Salir
+                Elija una opción: """);
+    }
+
+    // Método para ejecutar la opción seleccionada por el usuario
+    public static void ejecutarOpcion(int opcion) {
+        Conversion c = new Conversion(); // Instancia de la clase Conversion para realizar conversiones
+        Scanner lectura = new Scanner(System.in); // Objeto Scanner para leer la entrada del usuario
+
+        switch (opcion) {
+            case 1:
+                convertirMoneda("USD", "ARS", c, lectura); // Convertir de USD a ARS
+                break;
+
+ // Resto del código omitido...
+
+           case 6:
+                System.out.println("Ingrese el monto a convertir");
+                monto = lectura.nextInt();
+                base = "COP";
+                fin = "USD";
+                System.out.println(monto + " " + base + c.convertir(base, fin, monto));
+                break;
+            case 7:
+                String monedaBase = """
+                        Lista de códigos de moneda junto con los países correspondientes para su opcion de convertir:
+                        1. **AFN**: Afganistán
+                        2. **ALL**: Albania
+                        3. **DZD**: Argelia
+                        4. **USD**: Samoa Americana
+                        5. **EUR**: Andorra
+                        6. **AOA**: Angola
+                        7. **XCD**: Anguila
+                        8. **XCD**: Antigua y Barbuda
+                        9. **ARS**: Argentina
+                        10. **AMD**: Armenia
+                        11. **AWG**: Aruba
+// Resto del código omitido...
+
+                        71. **ETB**: Etiopía
+                        72. **EUR**: Unión Europea
+                        73. **FKP**: Islas Malvinas (Falkland)
+                        74. **DKK**: Islas Feroe
+                        75. **FJD**: Fiyi
+                        76. **EUR**: Finlandia
+                         Elija un codigo de la moneda que quiera converir.
+                        """;
+                System.out.println(monedaBase);
+                base = lectura.next();
+
+                System.out.println("Ingrese el monto que desea convertir");
+                monto = lectura.nextInt();
+
+```
+
+&nbsp;
+
+
+
+
+
+•	Registros con Marca de Tiempo: Utiliza las funciones de la biblioteca java.time para crear registros que registren las conversiones realizadas, incluyendo información sobre qué monedas se convirtieron y en qué momento.
+
+***Fragmento del registro del archivo `registros_data_time.json` en formato json, donde se registran y actualizan las consultas realizadas, incluyendo información sobre qué monedas se convirtieron y en qué fecha para cumplir con la parte adicional de este challenge:***
+
+![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/packageconversion.JPG) 
+
+
+***Fragmento del registro del archivo `registros_data_time.json` en formato json, donde se registran y actualizan las consultas realizadas, incluyendo información sobre qué monedas se convirtieron y en qué fecha para cumplir con la parte adicional de este challenge:***
+```java
+ // Resto del código omitido...
+
+{
+    "conversion": {
+      "Moneda_Origen": "USD",
+      "Moneda_Destino": "COP",
+      "monto": 7690.0,
+      "Resultado_Conversion": 3.0014249946E7
+    },
+    "timestamp": "2024-04-19 18:19:49"
+  },
+  {
+    "conversion": {
+      "Moneda_Origen": "ARS",
+      "Moneda_Destino": "USD",
+      "monto": 1200.0,
+      "Resultado_Conversion": 1.3872
+    },
+    "timestamp": "2024-04-19 18:19:57"
+  },
+  {
+    "conversion": {
+      "Moneda_Origen": "USD",
+      "Moneda_Destino": "COP",
+      "monto": 1000.0,
+      "Resultado_Conversion": 3903023.4
+    },
+    "timestamp": "2024-04-19 18:40:24"
+  }
+             // Resto del código omitido...
+
+```
+
+
+> [!IMPORTANT]
+> Recordar utilizar la biblioteca Gson. Para descargar la biblioteca Gson, debemos ir a Maven Repository en Google. Buscamos Gson y seleccionamos la primera opción. La version descargada para este challenge es la 2.10.1.  [MVN Repository Gson](https://mvnrepository.com/artifact/com.google.code.gson/gson)
 
 
 ## Documentation
