@@ -258,12 +258,11 @@ En resumen, separar la lógica del menú en la clase MenuHandler ayuda a mantene
 ```
 
 &nbsp;
-
 ### 8. Convirtiendo Valores
 ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/intellij.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/consumoapi.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/json.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/java.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/postman.svg) 
 
 En esta novena fase, se nos pidio  las conversiones entre las monedas. Se crearon tres clases en el package una clase 
-![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/intellij.svg) 
+![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/packageconversion.jpg) 
 
 
 
