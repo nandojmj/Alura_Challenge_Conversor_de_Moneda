@@ -262,91 +262,179 @@ En resumen, separar la lógica del menú en la clase MenuHandler ayuda a mantene
 ### 9. Convirtiendo Valores
 ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/intellij.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/consumoapi.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/json.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/java.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/postman.svg) 
 
-En esta novena fase, se nos pidio  las conversiones entre las monedas. Se crearon tres clases en el package una clase 
-![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/packageconversion.JPG) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/intellij.svg)
+En esta novena fase, se nos pidio  las conversiones entre las monedas. Se crearon tres clases en el package Conversion:
 
-La CLASS ConversionResponse.java se utiliza para representar los datos de respuesta de una conversión de moneda obtenida de la API externa. Aquí está un resumen de su propósito y uso:
-1. Atributos: La clase tiene tres atributos que representan los datos de la conversión:
-* monedaOrigen: Representa la moneda de origen de la conversión.
-* monedaDestino: Representa la moneda de destino de la conversión.
-* resultado: Representa el resultado de la conversión.
+![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/packageconversion.JPG) 
 
-2. Anotaciones de SerializedName: Las anotaciones @SerializedName se utilizan para especificar el nombre de los campos en el JSON que se utilizarán para mapear los datos a los atributos de la clase. Esto es útil cuando los nombres de los campos en el JSON no coinciden con los nombres de los atributos en la clase.
+1. **Class Conversion:** La clase `Conversion` se utiliza para realizar conversiones de moneda utilizando una API externa y gestionar el historial de conversiones. Aquí está un resumen de su propósito y uso:
 
-3. Getters y setters: Se proporcionan métodos para acceder y modificar los atributos de la clase.
+      a. Atributos: La clase tiene atributos que representan los datos necesarios para realizar una conversión de moneda:
+         - `monedaOrigen`: Representa la moneda de origen de la conversión.
+         - `monedaDestino`: Representa la moneda de destino de la conversión.
+         - `monto`: Representa el monto a convertir.
+         - `resultado`: Representa el resultado de la conversión.
+      
+      b. Método `convertir`: Este método realiza la conversión de moneda utilizando una API externa. Utiliza un cliente HTTP para enviar una solicitud a la API, recibe la           respuesta en formato JSON, la parsea y extrae los datos necesarios utilizando la biblioteca Gson. Luego, crea un objeto `Conversion` con los datos obtenidos y              lo guarda en el historial de conversiones.
+      
+      c. Adaptador personalizado para `LocalDateTime`: La clase incluye un adaptador personalizado para serializar y deserializar objetos `LocalDateTime`. Esto se                  utiliza para formatear adecuadamente las fechas y horas al guardar y recuperar el historial de conversiones (`class HistorialConversion`).
 
-4. Método toString: Se sobrescribe el método toString para proporcionar una representación de cadena de la clase. Esto es útil para imprimir fácilmente los objetos de tipo ConversionResponse en forma legible para los humanos.
-
-En resumen, la clase ConversionResponse se utiliza como un contenedor de datos para representar la respuesta de una conversión de moneda, facilitando el procesamiento y manipulación de estos datos en el código del programa.
-
-1.	ARS - Peso argentino
-2.	BOB - Boliviano boliviano
-3.	BRL - Real brasileño
-4.	CLP - Peso chileno
-5.	COP - Peso colombiano
-6.	USD - Dólar estadounidense
-
-Para esto se creo una Class clase MenuHandler.java por los siguientes motivos: 
-1. Separación de responsabilidades: La clase MenuHandler se encarga específicamente de manejar la interacción con el usuario a través del menú y ejecutar las opciones seleccionadas. Esto mantiene la clase principal más enfocada en la lógica principal del programa.
-2. Facilita la reutilización y mantenimiento del código: Al separar la lógica del menú en una clase separada, se hace más fácil reutilizarla en otros contextos o modificarla sin afectar la lógica principal del programa.
-3. Mejora la legibilidad y organización del código: Dividir el código en clases más pequeñas y específicas ayuda a que sea más fácil de entender y mantener. Cada clase tiene una responsabilidad clara y se puede entender por sí sola sin necesidad de revisar todo el código.
-En resumen, separar la lógica del menú en la clase MenuHandler ayuda a mantener el código más organizado, modular y fácil de mantener, además de mejorar la legibilidad y la reutilización del código.
-
-
-
-> [!IMPORTANT]
-> Recordar utilizar la biblioteca Gson. Para descargar la biblioteca Gson, debemos ir a Maven Repository en Google. Buscamos Gson y seleccionamos la primera opción. La version descargada para este challenge es la 2.10.1.  [MVN Repository Gson](https://mvnrepository.com/artifact/com.google.code.gson/gson)
-
-***Fragmento de codigo utilizado en la Class MenuHandler.java:***
-```java
- public RegistroConversion convertir(String codMonOrigen, String codMonDestino, int monto) {
-
- // Resto del código omitido...
-            public class MenuHandler {
-    // Método para mostrar el menú de opciones
-    public static void mostrarMenu() {
-        System.out.println("\n**************************");
-        System.out.println("""
-                1-Convertir de USD (dólar) a ARS (peso Argentino).
-                2-Convertir de ARS (peso Argentino) a USD (dólar).
-                3-Convertir de USD (dólar) a BOB (peso Boliviano).
-                4-Convertir de BOB (peso Boliviano) a USD (dólar).
-
- // Resto del código omitido...
-
-// Método para ejecutar la opción seleccionada por el usuario
-    public static void ejecutarOpcion(int opcion) {
-        Conversion c = new Conversion(); // Instancia de la clase Conversion para realizar conversiones
-        Scanner lectura = new Scanner(System.in); // Objeto Scanner para leer la entrada del usuario
-
-        switch (opcion) {
-            case 1:
-                convertirMoneda("USD", "ARS", c, lectura); // Convertir de USD a ARS
-                break;
-            case 2:
-                convertirMoneda("ARS", "USD", c, lectura); // Convertir de ARS a USD
-                break;
-            case 3:
-                convertirMoneda("USD", "BOB", c, lectura); // Convertir de USD a BOB
-                break;
-            case 4:
-                convertirMoneda("BOB", "USD", c, lectura); // Convertir de BOB a USD
-                break;
-
-             // Resto del código omitido...
-
-            case 8:
-                System.out.println("Gracias por utilizar el convertidor de monedas"); // Mensaje de despedida
-                System.exit(0); // Finaliza el programa
-            default:
-                System.out.println("Opción digitada inválida. Por favor, seleccione una opción válida del menú."); // Mensaje de opción inválida
-        }
-    }
-
-        // Resto del código omitido...
-```
+En resumen, la clase `Conversion` se utiliza como una interfaz para realizar conversiones de moneda utilizando una API externa, gestionando el historial de conversiones y proporcionando métodos para acceder y modificar los datos relacionados con la conversión.
 
 &nbsp;
+
+***Fragmento de codigo utilizado en la `Class Conversion.java`:***
+```java
+ // Resto del código omitido...
+ public class Conversion {
+    // Atributos para la conversión
+    @SerializedName("Moneda_Origen")
+    private String monedaOrigen;
+    @SerializedName("Moneda_Destino")
+    private String monedaDestino;
+    private double monto; // Cambiar el tipo de dato a double
+    @SerializedName("Resultado_Conversion")
+    private double resultado;
+
+    // Constructor por defecto
+    public Conversion() {
+    }
+
+    // Constructor con parámetros
+    public Conversion(String monedaOrigen, String monedaDestino, double monto) {
+        this.monedaOrigen = monedaOrigen;
+        this.monedaDestino = monedaDestino;
+        this.monto = monto;
+    }
+
+    // Getters y setters
+ // Resto del código omitido...
+
+ 
+```
+&nbsp;
+
+ 
+2. **Class ConversionResponse**: se utiliza para representar los datos de respuesta de una conversión de moneda obtenida de la API externa. Aquí está un resumen de su propósito y uso:
+
+      a. Atributos: La clase tiene tres atributos que representan los datos de la conversión:
+       - `monedaOrigen`: Representa la moneda de origen de la conversión.
+       - `monedaDestino`: Representa la moneda de destino de la conversión.
+       - `resultado`: Representa el resultado de la conversión.
+      
+      b. Anotaciones de SerializedName: Las anotaciones `@SerializedName` se utilizan para especificar el nombre de los campos en el JSON que se utilizarán para mapear los          datos a los atributos de la clase. Esto es útil cuando los nombres de los campos en el JSON no coinciden con los nombres de los atributos en la clase.
+      
+      c. Getters y setters: Se proporcionan métodos para acceder y modificar los atributos de la clase.
+      
+      d. Método toString: Se sobrescribe el método `toString` para proporcionar una representación de cadena de la clase. Esto es útil para imprimir fácilmente los objetos             de tipo  `ConversionResponse` en forma legible para los humanos.
+
+En resumen, la clase `ConversionResponse` se utiliza como un contenedor de datos para representar la respuesta de una conversión de moneda, facilitando el procesamiento y manipulación de estos datos en el código del programa.
+
+&nbsp;
+
+
+***Fragmento de codigo utilizado en la `Class ConversionResponse.java`:***
+```java
+ // Resto del código omitido...
+     // Getters y setters
+    public String getMonedaOrigen() {
+        return monedaOrigen; // Retorna la moneda de origen
+    }
+
+    public void setMonedaOrigen(String monedaOrigen) {
+        this.monedaOrigen = monedaOrigen; // Establece la moneda de origen
+    }
+
+    public String getMonedaDestino() {
+        return monedaDestino; // Retorna la moneda de destino
+    }
+
+    public void setMonedaDestino(String monedaDestino) {
+        this.monedaDestino = monedaDestino; // Establece la moneda de destino
+    }
+
+    public double getResultado() {
+        return resultado; // Retorna el resultado de la conversión
+    }
+
+    public void setResultado(double resultado) {
+        this.resultado = resultado; // Establece el resultado de la conversión
+    }
+
+    // Método toString para representación de cadena
+    @Override
+    public String toString() {
+        // Retorna una cadena que representa este objeto ConversionResponse
+        return "conversion.ConversionResponse{" +
+                "origen='" + monedaOrigen + '\'' + // Moneda de origen
+                ", destino='" + monedaDestino + '\'' + // Moneda de destino
+                ", resultado=" + resultado + // Resultado de la conversión
+                '}';
+    }
+}
+ 
+```
+&nbsp;
+
+
+3. **Class RegistroConversion**: La clase `RegistroConversion` se utiliza para representar un registro de conversión, que incluye los detalles de la conversión realizada y la marca de tiempo en la que se realizó. Aquí está un resumen de su propósito y uso:
+
+      a. Atributos: La clase tiene dos atributos:
+       - `conversion`: Representa el objeto de conversión asociado a este registro.
+       - `timestamp`: Representa la marca de tiempo del registro, indicando cuándo se realizó la conversión.
+
+      b. Anotaciones de SerializedName: Las anotaciones `@SerializedName` se utilizan para especificar el nombre de los campos en el JSON que se utilizarán para mapear los          datos a los atributos de la clase. Esto es útil cuando los nombres de los campos en el JSON no coinciden con los nombres de los atributos en la clase.
+      
+      c. Getters y setters: Se proporcionan métodos para acceder y modificar los atributos de la clase.
+      
+      d. Método toString: Se sobrescribe el método `toString` para proporcionar una representación de cadena de la clase. Esto es útil para imprimir fácilmente los objetos             de tipo  `ConversionResponse` en forma legible para los humanos.
+
+En resumen, la clase `ConversionResponse` se utiliza como un contenedor de datos para representar la respuesta de una conversión de moneda, facilitando el procesamiento y manipulación de estos datos en el código del programa.
+
+&nbsp;
+
+&nbsp;
+
+***Fragmento de codigo utilizado en la `Class RegistroConversion.java`:***
+```java
+ package conversion;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+ public class RegistroConversion {
+    // Atributos
+    private Conversion conversion; // Objeto de conversión asociado a este registro
+    private LocalDateTime timestamp; // Marca de tiempo del registro
+
+    // Constructor
+    public RegistroConversion(Conversion conversion) {
+        this.conversion = conversion; // Asigna el objeto de conversión proporcionado
+        this.timestamp = LocalDateTime.now(); // Establece la marca de tiempo actual
+    }
+
+    // Getters y setters
+    public Conversion getConversion() {
+        return conversion; // Retorna el objeto de conversión asociado a este registro
+    }
+
+    public void setConversion(Conversion conversion) {
+        this.conversion = conversion; // Establece el objeto de conversión asociado a este registro
+    }
+
+    public LocalDateTime getTimestamp() {
+        return timestamp; // Retorna la marca de tiempo del registro
+    }
+
+    public void setTimestamp(LocalDateTime timestamp) {
+        this.timestamp = timestamp; // Establece la marca de tiempo del registro
+    }
+ // Resto del código omitido...
+
+ 
+```
+&nbsp;
+
+
 
 ## Documentation
 
