@@ -647,7 +647,7 @@ B.	Extra (Opcional)
 
 ***Fragmento del registro del archivo `registros_data_time.json` en formato json, donde se registran y actualizan las consultas realizadas, incluyendo información sobre qué monedas se convirtieron y en qué fecha para cumplir con la parte adicional de este challenge:***
 
-![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/packageconversion.JPG) 
+![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/registro_pruebaejecucion.JPG) 
 
 
 ***Fragmento del registro del archivo `registros_data_time.json` en formato json, donde se registran y actualizan las consultas realizadas, incluyendo información sobre qué monedas se convirtieron y en qué fecha para cumplir con la parte adicional de este challenge:***
