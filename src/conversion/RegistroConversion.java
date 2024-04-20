@@ -3,39 +3,44 @@ package conversion;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * Clase que representa un registro de conversión.
+ */
 public class RegistroConversion {
-    // Atributos
-    private Conversion conversion; // Objeto de conversión asociado a este registro
-    private LocalDateTime timestamp; // Marca de tiempo del registro
+    private Conversion conversion;
+    private LocalDateTime timestamp;
 
-    // Constructor
     public RegistroConversion(Conversion conversion) {
-        this.conversion = conversion; // Asigna el objeto de conversión proporcionado
-        this.timestamp = LocalDateTime.now(); // Establece la marca de tiempo actual
+        this.conversion = conversion;
+        this.timestamp = LocalDateTime.now();
     }
 
-    // Getters y setters
     public Conversion getConversion() {
-        return conversion; // Retorna el objeto de conversión asociado a este registro
+        return conversion;
     }
 
     public void setConversion(Conversion conversion) {
-        this.conversion = conversion; // Establece el objeto de conversión asociado a este registro
+        this.conversion = conversion;
     }
 
     public LocalDateTime getTimestamp() {
-        return timestamp; // Retorna la marca de tiempo del registro
+        return timestamp;
     }
 
     public void setTimestamp(LocalDateTime timestamp) {
-        this.timestamp = timestamp; // Establece la marca de tiempo del registro
+        this.timestamp = timestamp;
     }
 
-    // Método toString para representación de cadena
     @Override
     public String toString() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        // Construye y retorna una cadena que representa este registro de conversión
-        return conversion.getMonedaOrigen() + " " + conversion.getMonedaDestino() + " " + conversion.getMonto() + " " + conversion.getResultado() + " " + timestamp.format(formatter);
+        return "Registro de Conversión: {" +
+                "\n  Moneda de Origen: " + conversion.getMonedaOrigen() +
+                "\n  Moneda de Destino: " + conversion.getMonedaDestino() +
+                "\n  Monto: " + conversion.getMonto() +
+                "\n  Conversion Rate: " + conversion.getConversionRate() +
+                "\n  Resultado: " + conversion.getResultado() +
+                "\n  Marca de Tiempo: " + timestamp.format(formatter) +
+                "\n}";
     }
 }

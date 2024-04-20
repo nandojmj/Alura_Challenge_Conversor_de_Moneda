@@ -2,50 +2,78 @@ package conversion;
 
 import com.google.gson.annotations.SerializedName;
 
+/**
+ * Clase que representa la respuesta de la API de ExchangeRate-API.
+ * Proporciona métodos para acceder a los datos de la conversión.
+ */
 public class ConversionResponse {
-    // Atributos
-    @SerializedName("base_code") // Nombre del campo en el JSON
-    private String monedaOrigen; // Moneda de origen de la conversión
 
-    @SerializedName("target_code") // Nombre del campo en el JSON
-    private String monedaDestino; // Moneda de destino de la conversión
+    /** El código de la moneda base en la conversión. Índices de la API de ExchangeRate-API:
+     * "base_code"."target_code" "conversion_rate" "conversion_result"*/
 
-    @SerializedName("conversion_result") // Nombre del campo en el JSON
-    private double resultado; // Resultado de la conversión
+    @SerializedName("base_code")
+    private String monedaOrigen;
 
-    // Getters y setters
+    /** El código de la moneda destino en la conversión. */
+    @SerializedName("target_code")
+    private String monedaDestino;
+
+    /** La tasa de conversión entre la moneda base y la moneda destino. */
+    @SerializedName("conversion_rate")
+    private double conversionRate;
+
+    /** El resultado de la conversión. */
+    @SerializedName("conversion_result")
+    private double resultado;
+
+    /** Obtiene el código de la moneda base. */
     public String getMonedaOrigen() {
-        return monedaOrigen; // Retorna la moneda de origen
+        return monedaOrigen;
     }
 
+    /** Establece el código de la moneda base. */
     public void setMonedaOrigen(String monedaOrigen) {
-        this.monedaOrigen = monedaOrigen; // Establece la moneda de origen
+        this.monedaOrigen = monedaOrigen;
     }
 
+    /** Obtiene el código de la moneda destino. */
     public String getMonedaDestino() {
-        return monedaDestino; // Retorna la moneda de destino
+        return monedaDestino;
     }
 
+    /** Establece el código de la moneda destino. */
     public void setMonedaDestino(String monedaDestino) {
-        this.monedaDestino = monedaDestino; // Establece la moneda de destino
+        this.monedaDestino = monedaDestino;
     }
 
+    /** Obtiene la tasa de conversión. */
+    public double getConversionRate() {
+        return conversionRate;
+    }
+
+    /** Establece la tasa de conversión. */
+    public void setConversionRate(double conversionRate) {
+        this.conversionRate = conversionRate;
+    }
+
+    /** Obtiene el resultado de la conversión. */
     public double getResultado() {
-        return resultado; // Retorna el resultado de la conversión
+        return resultado;
     }
 
+    /** Establece el resultado de la conversión. */
     public void setResultado(double resultado) {
-        this.resultado = resultado; // Establece el resultado de la conversión
+        this.resultado = resultado;
     }
 
-    // Método toString para representación de cadena
+    /** Devuelve una representación de cadena de la respuesta de conversión. */
     @Override
     public String toString() {
-        // Retorna una cadena que representa este objeto ConversionResponse
-        return "conversion.ConversionResponse{" +
-                "origen='" + monedaOrigen + '\'' + // Moneda de origen
-                ", destino='" + monedaDestino + '\'' + // Moneda de destino
-                ", resultado=" + resultado + // Resultado de la conversión
+        return "ConversionResponse{" +
+                "monedaOrigen='" + monedaOrigen + '\'' +
+                ", monedaDestino='" + monedaDestino + '\'' +
+                ", conversionRate=" + conversionRate +
+                ", resultado=" + resultado +
                 '}';
     }
 }

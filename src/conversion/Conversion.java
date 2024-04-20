@@ -1,5 +1,6 @@
 package conversion;
 
+import adapters.LocalDateTimeAdapter;
 import com.google.gson.*;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
@@ -10,23 +11,41 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
+/**
+ * Clase que representa una conversión entre monedas.
+ */
 public class Conversion {
-    // Atributos para la conversión
+
+    /** El código de la moneda de origen. */
     @SerializedName("Moneda_Origen")
     private String monedaOrigen;
+
+    /** El código de la moneda de destino. */
     @SerializedName("Moneda_Destino")
     private String monedaDestino;
-    private double monto; // Cambiar el tipo de dato a double
-    @SerializedName("Resultado_Conversion")
+
+    /** El monto o cantidad de moneda a convertir. */
+    @SerializedName("Monto_a_Convertir")
+    private double monto;
+
+    /** El resultado de la conversión. */
+    @SerializedName("Resultado")
     private double resultado;
 
-    // Constructor por defecto
-    public Conversion() {
-    }
+    /** La tasa de conversión. */
+    @SerializedName("Tasa_Conversion")
+    private double conversionRate;
 
-    // Constructor con parámetros
+    /** Constructor vacío. */
+    public Conversion() {}
+
+    /**
+     * Constructor con parámetros.
+     * @param monedaOrigen El código de la moneda de origen.
+     * @param monedaDestino El código de la moneda de destino.
+     * @param monto El monto a convertir.
+     */
     public Conversion(String monedaOrigen, String monedaDestino, double monto) {
         this.monedaOrigen = monedaOrigen;
         this.monedaDestino = monedaDestino;
@@ -34,6 +53,7 @@ public class Conversion {
     }
 
     // Getters y setters
+
     public String getMonedaOrigen() {
         return monedaOrigen;
     }
@@ -66,91 +86,88 @@ public class Conversion {
         this.resultado = resultado;
     }
 
-    // Método para realizar la conversión
+    public double getConversionRate() {
+        return conversionRate;
+    }
+
+    public void setConversionRate(double conversionRate) {
+        this.conversionRate = conversionRate;
+    }
+
+    /**
+     * Realiza la conversión de moneda.
+     * @param codMonOrigen El código de la moneda de origen.
+     * @param codMonDestino El código de la moneda de destino.
+     * @param monto El monto a convertir.
+     * @return El registro de la conversión.
+     */
     public RegistroConversion convertir(String codMonOrigen, String codMonDestino, int monto) {
-        // Realizar la conversión
+        // Construir la URI para la solicitud a la API
         URI direccion = URI.create("https://v6.exchangerate-api.com/v6/d50362c2646d99e082d99a42/pair/"
                 + codMonOrigen + "/" + codMonDestino + "/" + monto);
 
+        // Crear cliente y solicitud HTTP
         HttpClient client = HttpClient.newHttpClient();
-
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(direccion)
                 .build();
-
         HttpResponse<String> response = null;
+
         try {
-            response = client
-                    .send(request, HttpResponse.BodyHandlers.ofString());
+            // Realizar la solicitud HTTP
+            response = client.send(request, HttpResponse.BodyHandlers.ofString());
         } catch (IOException | InterruptedException e) {
             throw new RuntimeException(e);
         }
 
-        // Crear un JsonReader y configurarlo para aceptar JSON malformado
-        JsonReader reader = new JsonReader(new StringReader(response.body()));
-        reader.setLenient(true);
+        // Leer el JSON de la respuesta
+        try (JsonReader reader = new JsonReader(new StringReader(response.body()))) {
+            reader.setLenient(true);
 
-        try {
-            // Parsear la respuesta JSON
+            // Configurar Gson para deserializar la respuesta
             Gson gson = new GsonBuilder()
                     .registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter())
                     .create();
 
+            // Deserializar la respuesta en un objeto ConversionResponse
             ConversionResponse conversionResponse = gson.fromJson(reader, ConversionResponse.class);
 
-            // Crear un nuevo objeto Conversion con los datos de la respuesta
-            Conversion conversion = new Conversion(conversionResponse.getMonedaOrigen(), conversionResponse.getMonedaDestino(), monto);
-            conversion.setResultado(conversionResponse.getResultado());
+            // Calcular el resultado y la tasa de conversión
+            this.conversionRate = conversionResponse.getConversionRate();
+            this.resultado = monto * conversionRate;
 
-            // Crear un nuevo registro de conversión con la marca de tiempo actual
+            // Crear un objeto Conversion con los datos de la respuesta
+            Conversion conversion = new Conversion(conversionResponse.getMonedaOrigen(), conversionResponse.getMonedaDestino(), monto);
+            conversion.setResultado(resultado);
+            conversion.setConversionRate(conversionResponse.getConversionRate());
+
+            // Crear un registro de la conversión
             RegistroConversion registroConversion = new RegistroConversion(conversion);
 
-            // Leer el contenido actual del archivo registros_data_time.json
+            // Leer el historial de conversiones desde el archivo JSON
             RegistroConversion[] historial;
             try (Reader fileReader = new FileReader("registros_data_time.json")) {
                 historial = gson.fromJson(fileReader, RegistroConversion[].class);
             } catch (FileNotFoundException e) {
-                historial = new RegistroConversion[0]; // Si el archivo no existe, inicializamos el historial como un array vacío
-            } catch (IOException e) {
-                e.printStackTrace();
-                return null; // Manejamos otros errores de lectura de archivo retornando null
+                historial = new RegistroConversion[0];
             }
 
-            // Agregar el nuevo registro de conversión al historial
+            // Agregar el nuevo registro al historial
             RegistroConversion[] nuevoHistorial = new RegistroConversion[historial.length + 1];
             System.arraycopy(historial, 0, nuevoHistorial, 0, historial.length);
             nuevoHistorial[historial.length] = registroConversion;
 
-            // Escribir el historial completo en el archivo JSON
-            try (FileWriter fileWriter = new FileWriter("registros_data_time.json")) {
+            // Escribir el historial actualizado en el archivo JSON
+            try (Writer fileWriter = new FileWriter("registros_data_time.json")) {
                 gson.toJson(nuevoHistorial, fileWriter);
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
-            return registroConversion;
-        } finally {
-            try {
-                reader.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    // Adaptador personalizado para LocalDateTime
-    static class LocalDateTimeAdapter implements JsonSerializer<LocalDateTime>, JsonDeserializer<LocalDateTime> {
-        private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-
-        @Override
-        public JsonElement serialize(LocalDateTime src, java.lang.reflect.Type typeOfSrc, JsonSerializationContext context) {
-            return new JsonPrimitive(formatter.format(src));
-        }
-
-        @Override
-        public LocalDateTime deserialize(JsonElement json, java.lang.reflect.Type typeOfT, JsonDeserializationContext context)
-                throws JsonParseException {
-            return LocalDateTime.parse(json.getAsString(), formatter);
+            return registroConversion; // Devolver el registro de la conversión
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
         }
     }
 }
