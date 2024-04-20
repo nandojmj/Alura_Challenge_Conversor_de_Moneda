@@ -248,5 +248,25 @@
       "Tasa_Conversion": 3.5307E-4
     },
     "timestamp": "2024-04-20 14:22:43"
+  },
+  {
+    "conversion": {
+      "Moneda_Origen": "USD",
+      "Moneda_Destino": "ARS",
+      "Monto_a_Convertir": 12347.0,
+      "Resultado": 1.067706825E7,
+      "Tasa_Conversion": 864.75
+    },
+    "timestamp": "2024-04-20 16:05:35"
+  },
+  {
+    "conversion": {
+      "Moneda_Origen": "ARS",
+      "Moneda_Destino": "USD",
+      "Monto_a_Convertir": 4500.0,
+      "Resultado": 5.202,
+      "Tasa_Conversion": 0.001156
+    },
+    "timestamp": "2024-04-20 16:05:46"
   }
 ]
