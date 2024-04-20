@@ -515,59 +515,56 @@ B.	Extra (Opcional)
 
 •	Historial de Conversiones: Agregar la capacidad de rastrear y mostrar el historial de las últimas conversiones realizadas, brindando a los usuarios una visión completa de sus actividades.
 
+Se crea la clase `HistorialConversion.java`, que proporciona una estructura para almacenar registros de conversiones. Aquí está un resumen de lo que hace:
+
+   - Importa las clases RegistroConversion del paquete conversion, ArrayList y List del paquete java.util.
+   - Tiene un campo privado llamado historial que es una lista de objetos de tipo RegistroConversion. Esta lista almacena los registros de conversiones.
+   - Tiene un constructor por defecto que inicializa el campo historial como una nueva instancia de ArrayList, lo que garantiza que esté lista para almacenar los registros.
+   - Proporciona un getter (getHistorial) para obtener el historial de conversiones.
+   - Proporciona un setter (setHistorial) para establecer el historial de conversiones con una lista proporcionada.
+   - Proporciona un método (addRegistro) para agregar un nuevo registro al historial de conversiones. Este método añade el registro proporcionado a la lista historial.
+   
+   En resumen, esta clase encapsula la funcionalidad relacionada con el historial de conversiones, proporcionando métodos para acceder, modificar y agregar registros de conversiones a una lista interna.
 
 
+***Captura de pantalla de la ejecucion del proyecto mostrando resultados de conversion y se observa el contenido en el archivo `registros_data_time.json` en formato json, donde se registran y actualizan las consultas realizadas, incluyendo información sobre qué monedas se convirtieron y en qué fecha para cumplir con la parte adicional de este challenge:***
+
+![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/registro_pruebaejecucion.JPG) 
 
 
-***Fragmento de codigo utilizado en la Class MenuHandler.java:***
+***Fragmento de codigo utilizado en la Class `HistorialConversion.java`:***
+
 ```java
  // Resto del código omitido...
 
-// Método para ejecutar la opción seleccionada por el usuario
-    public class MenuHandler {
-    // Método para mostrar el menú de opciones
-    public static void mostrarMenu() {
-        System.out.println("\n**************************");
-        System.out.println("""
-                1-Convertir de USD (dólar) a ARS (peso Argentino).
-                2-Convertir de ARS (peso Argentino) a USD (dólar).
-                3-Convertir de USD (dólar) a BOB (peso Boliviano).
-                4-Convertir de BOB (peso Boliviano) a USD (dólar).
-                5-Convertir de USD (dólar) => a COP (peso Colombiano).
-                6-Convertir de COP (peso Colombiano) => a USD (dólar).
-                7-Elegir las monedas que desea convertir.
-                8-Salir
-                Elija una opción: """);
+public class HistorialConversion {
+    private List<RegistroConversion> historial; // Lista para almacenar registros de conversión
+
+    // Constructor por defecto
+    public HistorialConversion() {
+        this.historial = new ArrayList<>(); // Inicializa la lista como un nuevo ArrayList
     }
 
-    // Método para ejecutar la opción seleccionada por el usuario
-    public static void ejecutarOpcion(int opcion) {
-        Conversion c = new Conversion(); // Instancia de la clase Conversion para realizar conversiones
-        Scanner lectura = new Scanner(System.in); // Objeto Scanner para leer la entrada del usuario
-
-        switch (opcion) {
-            case 1:
-                convertirMoneda("USD", "ARS", c, lectura); // Convertir de USD a ARS
-                break;
-
-             // Resto del código omitido...
-
-            case 8:
-                System.out.println("Gracias por utilizar el convertidor de monedas"); // Mensaje de despedida
-                System.exit(0); // Finaliza el programa
-            default:
-                System.out.println("Opción digitada inválida. Por favor, seleccione una opción válida del menú."); // Mensaje de opción inválida
-        }
+    // Getter para obtener el historial de conversiones
+    public List<RegistroConversion> getHistorial() {
+        return historial; // Retorna la lista de historial de conversiones
     }
 
+    // Setter para establecer el historial de conversiones
+    public void setHistorial(List<RegistroConversion> historial) {
+        this.historial = historial; // Establece el historial de conversiones con la lista proporcionada
+    }
+
+    // Método para agregar un nuevo registro al historial de conversiones
+    public void addRegistro(RegistroConversion registro) {
+        this.historial.add(registro); // Agrega el registro proporcionado a la lista de historial
+    }
+}
         // Resto del código omitido...
 ```
 
 
-
-
-
-•	Soporte para Más Monedas: Amplía la lista de monedas disponibles para la elección, permitiendo a los usuarios convertir entre una variedad aún mayor de opciones monetarias.
+C.	Soporte para Más Monedas: Se amplía la lista de monedas disponibles para la elección, permitiendo a los usuarios convertir entre una variedad aún mayor de opciones monetarias.
 
 ***Fragmento de codigo utilizado en la Class `MenuHandler.java` para seleccionar otras monedas que se desea convertir. En el menu principal la opcion 7 nos lleva a `7-Elegir otro tipo de monedas a convertir.:` cumpliendo con la opcion adicional del challenge de Soporte para Más Monedas ***
 ```java
@@ -639,15 +636,63 @@ B.	Extra (Opcional)
 
 &nbsp;
 
-
-
-
-
 •	Registros con Marca de Tiempo: Utiliza las funciones de la biblioteca java.time para crear registros que registren las conversiones realizadas, incluyendo información sobre qué monedas se convirtieron y en qué momento.
 
-***Fragmento del registro del archivo `registros_data_time.json` en formato json, donde se registran y actualizan las consultas realizadas, incluyendo información sobre qué monedas se convirtieron y en qué fecha para cumplir con la parte adicional de este challenge:***
+En esta clase se declara una matriz de objetos de tipo RegistroConversion llamada historial. Este array almacenará los registros de conversiones leídos desde el archivo JSON. Se intenta abrir el archivo "registros_data_time.json" para lectura utilizando un FileReader dentro de un bloque try-with-resources. Si el archivo existe, se utiliza el objeto gson para deserializar el contenido del archivo en la matriz historial. Si el archivo no existe, se captura la excepción FileNotFoundException y se inicializa historial como un array vacío.
 
-![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/registro_pruebaejecucion.JPG) 
+Si ocurre algún error de lectura durante la apertura del archivo, se imprimirá la traza de la pila y se devolverá null.
+
+Se crea una nueva matriz llamada nuevoHistorial con una longitud un elemento mayor que la longitud de la matriz historial. Se copian todos los elementos de historial a nuevoHistorial utilizando System.arraycopy, y luego se agrega el nuevo registro de conversión (registroConversion) al final de nuevoHistorial.
+
+Se intenta abrir el archivo "registros_data_time.json" para escritura utilizando un FileWriter dentro de un bloque try-with-resources. Se utiliza el objeto gson para serializar el contenido de nuevoHistorial y escribirlo en el archivo JSON.
+
+Si ocurre algún error durante la escritura en el archivo, se imprimirá la traza de la pila.
+
+
+***Fragmento de codigo utilizado en la Class `RegistroConversion.java` donde se crea  `registros_data_time.json` en formato json, donde se registran y actualizan las consultas realizadas, incluyendo información sobre qué monedas se convirtieron y en qué fecha para cumplir con la parte adicional de este challenge:***
+```java
+ // Resto del código omitido...
+
+ // Agregar el nuevo registro de conversión al historial
+            RegistroConversion[] nuevoHistorial = new RegistroConversion[historial.length + 1];
+            System.arraycopy(historial, 0, nuevoHistorial, 0, historial.length);
+            nuevoHistorial[historial.length] = registroConversion;
+
+            // Escribir el historial completo en el archivo JSON
+            try (FileWriter fileWriter = new FileWriter("registros_data_time.json")) {
+                gson.toJson(nuevoHistorial, fileWriter);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return registroConversion;
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    // Adaptador personalizado para LocalDateTime
+    static class LocalDateTimeAdapter implements JsonSerializer<LocalDateTime>, JsonDeserializer<LocalDateTime> {
+        private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
+        @Override
+        public JsonElement serialize(LocalDateTime src, java.lang.reflect.Type typeOfSrc, JsonSerializationContext context) {
+            return new JsonPrimitive(formatter.format(src));
+        }
+
+        @Override
+        public LocalDateTime deserialize(JsonElement json, java.lang.reflect.Type typeOfT, JsonDeserializationContext context)
+                throws JsonParseException {
+            return LocalDateTime.parse(json.getAsString(), formatter);
+        }
+    }
+             // Resto del código omitido...
+
+```
 
 
 ***Fragmento del registro del archivo `registros_data_time.json` en formato json, donde se registran y actualizan las consultas realizadas, incluyendo información sobre qué monedas se convirtieron y en qué fecha para cumplir con la parte adicional de este challenge:***
