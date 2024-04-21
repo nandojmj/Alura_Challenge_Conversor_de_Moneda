@@ -11,7 +11,24 @@
 [![Static Badge](https://img.shields.io/badge/Postman-gray?style=flat&logo=Postman&logoColor=orange)](https://www.postman.com/)
 [![Static Badge](https://img.shields.io/badge/app-Trello-%231466c3?style=flat&logo=trello)](https://trello.com/)
 
-[![Static Badge](https://img.shields.io/badge/unlicense-%23009929?style=flat&logo=unlicense&logoColor=white)]()
+[![Static Badge](https://img.shields.io/badge/unlicense-%23009929?style=flat&logo=unlicense&logoColor=white)](#)
+[![Static Badge](https://img.shields.io/badge/Language-Java-%23ff0000?style=flat)](#)
+[![Static Badge](https://img.shields.io/badge/Consumo_de_la_API-%23ff9900?style=flat)](#)
+[![Static Badge](https://img.shields.io/badge/Configuracion_del_entorno-%230067ff?style=flat)](#)
+[![Static Badge](https://img.shields.io/badge/Http-Client-%23ff1a00?style=flat)](#)
+[![Static Badge](https://img.shields.io/badge/Http-Request-%23f7a40c?style=flat)](#)
+[![Static Badge](https://img.shields.io/badge/Http-Response-%235ccb5f?style=flat)](#)
+[![Static Badge](https://img.shields.io/badge/Pruebas_finales-%2340a5ff?style=flat)](#)
+
+
+
+
+
+
+
+
+
+
 
 
 prueba desde destokp
