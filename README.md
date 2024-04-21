@@ -95,7 +95,9 @@ y observamos los key que nos sirven para nuestro proyecto:
   "conversion_rate": 3906.1426, (TASA DE CONVERSION) a esa fecha.
   "conversion_result": 3906142.6 (RESULTADO DE LA CONVERSION)
 ```
-Asi que identificamos que con los campos "base_code", "target_code", "conversion_rate", y "conversion_result" podemos interactuar con la API Exchange Rate.
+Asi que identificamos que con los campos "base_code", "target_code", "conversion_rate", y "conversion_result" podemos interactuar con la API Exchange Rate y obtener esos datos para nuestro conversor.
+
+![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/packageconversion.JPG) 
 
 ### 3. Importando la biblioteca Gson en IntelliJ IDEA  
 [![Static Badge](https://img.shields.io/badge/IDE-IntelliJ_IDEA-%23ff0534?style=flat&logo=IntelliJ%20IDEA&logoColor=%232196f3)](https://www.jetbrains.com/es-es/idea/) 
