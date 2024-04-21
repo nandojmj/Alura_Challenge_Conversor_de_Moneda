@@ -1,7 +1,34 @@
 # Open Challenge Backend ONE - Conversor de Monedas
  ***ONE | Fase 3 - Especialización Back-End  G6 Alura - Oracle Next Education***
 
-![ ](/recursos/images/aluralatam.svg) ![ ](/recursos/images/oracleone.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/java.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/intellij.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/maven.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/git.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/apiexchange.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/json.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/postman.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/trello.svg) ![Static Badge](https://img.shields.io/badge/Pruebas_finales-%2340E0D0?style=flat&color=%23696969)
+[![Alura Latam](https://img.shields.io/badge/Alura-Latam-blue?style=flat)](https://www.aluracursos.com/)
+[![Static Badge](https://img.shields.io/badge/ONE-Oracle_Next_Education-orange?style=flat&logo=oracle&logoColor=orange)](https://www.oracle.com/co/education/oracle-next-education/) 
+[![Static Badge](https://img.shields.io/badge/IDE-IntelliJ_IDEA-%23ff0534?style=flat&logo=IntelliJ%20IDEA&logoColor=%232196f3)](https://www.jetbrains.com/es-es/idea/)
+[![Static Badge](https://img.shields.io/badge/Built_tool-Maven-%23%2376ff03?style=flat&logo=Apache%20Maven&logoColor=%2300e676)](https://mvnrepository.com/artifact/com.google.code.gson/gson)
+[![Static Badge](https://img.shields.io/badge/Git-Github-blue?style=flat&logo=GitHub)](https://github.com/)
+[![Static Badge](https://img.shields.io/badge/API-Exchange_Rate_API-%23e90000?style=flat)](https://www.exchangerate-api.com/docs/java-currency-api)
+[![Static Badge](https://img.shields.io/badge/Java_Library-Gson_%2F_Json-%230404e2?style=flat&logo=json)](https://mvnrepository.com/artifact/com.google.code.gson/gson)
+[![Static Badge](https://img.shields.io/badge/Postman-gray?style=flat&logo=Postman&logoColor=orange)](https://www.postman.com/)
+[![Static Badge](https://img.shields.io/badge/app-Trello-%231466c3?style=flat&logo=trello)](https://trello.com/)
+
+[![Static Badge](https://img.shields.io/badge/unlicense-%23009929?style=flat&logo=unlicense&logoColor=white)](#)
+[![Static Badge](https://img.shields.io/badge/Language-Java-%23ff0000?style=flat)](#)
+[![Static Badge](https://img.shields.io/badge/Consumo_de_la_API-%23ff9900?style=flat)](#)
+[![Static Badge](https://img.shields.io/badge/Configuracion_del_entorno-%230067ff?style=flat)](#)
+[![Static Badge](https://img.shields.io/badge/Http-Client-%23ff1a00?style=flat)](#)
+[![Static Badge](https://img.shields.io/badge/Http-Request-%23f7a40c?style=flat)](#)
+[![Static Badge](https://img.shields.io/badge/Http-Response-%235ccb5f?style=flat)](#)
+[![Static Badge](https://img.shields.io/badge/Pruebas_finales-%2340a5ff?style=flat)](#)
+
+
+
+
+
+
+
+
+
+
 
 
 prueba desde destokp
