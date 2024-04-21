@@ -2,13 +2,18 @@
  ***ONE | Fase 3 - Especialización Back-End  G6 Alura - Oracle Next Education***
 
 [![Alura Latam](https://img.shields.io/badge/Alura-Latam-blue?style=flat)](https://www.aluracursos.com/)
-[![Static Badge](https://img.shields.io/badge/ONE-Oracle_Next_Education-orange?style=flat&logo=oracle&logoColor=orange)](https://www.oracle.com/co/education/oracle-next-education/) 
+[![Static Badge](https://img.shields.io/badge/ONE-Oracle_Next_Education-orange?style=flat&logo=oracle&logoColor=orange)](https://www.oracle.com/co/education/oracle-next-education/) [![Static Badge](https://img.shields.io/badge/IDE-IntelliJ_IDEA-%23ff0534?style=flat&logo=IntelliJ%20IDEA&logoColor=%232196f3)](https://www.jetbrains.com/es-es/idea/) [![Static Badge](https://img.shields.io/badge/Language-Java-%23ff0000?style=flat)](#)
+[![Static Badge](https://img.shields.io/badge/Java_Library-Gson_%2F_Json-%230404e2?style=flat&logo=json)](https://mvnrepository.com/artifact/com.google.code.gson/gson)
+[![Static Badge](https://img.shields.io/badge/API-Exchange_Rate_API-%23e90000?style=flat)](https://www.exchangerate-api.com/docs/java-currency-api)
+[![Actions Status](https://github.com/getgauge/Intellij-Plugin/workflows/tests/badge.svg)](#)
+
+
+
+
+
 [![Static Badge](https://img.shields.io/badge/IDE-IntelliJ_IDEA-%23ff0534?style=flat&logo=IntelliJ%20IDEA&logoColor=%232196f3)](https://www.jetbrains.com/es-es/idea/)
-
 [![Static Badge](https://img.shields.io/badge/JSON--In--Java--20220320-JAR-blue)](https://mvnrepository.com/artifact/com.google.code.gson/gson)
-
 [![Static Badge](https://img.shields.io/badge/license-MIT-blue)](*)
-
 [![Static Badge](https://img.shields.io/badge/Git-Github-blue?style=flat&logo=GitHub)](https://github.com/)
 [![Static Badge](https://img.shields.io/badge/API-Exchange_Rate_API-%23e90000?style=flat)](https://www.exchangerate-api.com/docs/java-currency-api)
 [![Static Badge](https://img.shields.io/badge/Java_Library-Gson_%2F_Json-%230404e2?style=flat&logo=json)](https://mvnrepository.com/artifact/com.google.code.gson/gson)
@@ -23,18 +28,23 @@
 [![Static Badge](https://img.shields.io/badge/Http-Request-%23f7a40c?style=flat)](#)
 [![Static Badge](https://img.shields.io/badge/Http-Response-green?style=flat)](#)
 [![Static Badge](https://img.shields.io/badge/Pruebas_finales-%2340a5ff?style=flat)](#)
-[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v1.4%20adopted-ff69b4.svg)](CODE_OF_CONDUCT.md)
-[![Actions Status](https://github.com/getgauge/Intellij-Plugin/workflows/tests/badge.svg)](https://github.com/getgauge/Intellij-Plugin/actions)
 
-En este Challenge Conversor de Monedas de la Especialización Back-End  G6 Alura - Oracle Next Education. Se realizaran solicitudes a una API de tasas de cambio, manipular datos JSON y, finalmente, a filtrar y mostrar las monedas de interés para realizar la conversion. 
+
+Este es un desafío de la Especialización __Back-End G6 Alura - Oracle Next Education.__ Consiste en desarrollar un Conversor de Monedas en lenguaje Java, donde se realizarán solicitudes a una API de tasas de cambio para manipular datos JSON. Finalmente, se debe filtrar y mostrar las monedas de interés para realizar la conversión de monedas o divisas de diferentes países.
+
 Los pasos solicitados para completar este desafío:
 
-1.	Configuración del Ambiente Java;
-2.	Creación del Proyecto;
-3.	Consumo de la API;
-4.	Análisis de la Respuesta JSON;
-5.	Filtro de Monedas;
-6.	Exhibición de Resultados a los usuarios;
+1.  Configurando el entorno Java
+2.	Conociendo la API para traer datos
+3.	Importando la biblioteca Gson en IntelliJ IDEA 
+4.	Construyendo el Cliente para Solicitudes (HttpClient)
+5.	Construyendo la Solicitud (HttpRequest)
+6.	Construyendo la la Respuesta (HttpResponse)
+7.	Analizando la respuesta en formato JSON
+8.	Filtrando las monedas
+9.	Convirtiendo Valores
+10. Interactuando con el usuario
+11. Adicionales
    
 &nbsp;
 
@@ -45,9 +55,17 @@ Los pasos solicitados para completar este desafío:
 &nbsp;
 
 ### 1. Configurando el entorno Java  
-![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/java.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/intellij.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/git.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/json.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/postman.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/trello.svg) 
 
-En esta primera fase, nos piden que se lleve acabo la instalación y configuración del entorno de desarrollo Java para nuestro desafío de construcción del Conversor de Monedas. Asegúrate de contar con los siguientes programas, archivos y versiones:
+[![Static Badge](https://img.shields.io/badge/IDE-IntelliJ_IDEA-%23ff0534?style=flat&logo=IntelliJ%20IDEA&logoColor=%232196f3)](https://www.jetbrains.com/es-es/idea/) 
+[![Static Badge](https://img.shields.io/badge/Language-Java-%23ff0000?style=flat)](#)
+[![Static Badge](https://img.shields.io/badge/Java_Library-Gson_%2F_Json-%230404e2?style=flat&logo=json)](https://mvnrepository.com/artifact/com.google.code.gson/gson)
+[![Static Badge](https://img.shields.io/badge/API-Exchange_Rate_API-%23e90000?style=flat)](https://www.exchangerate-api.com/docs/java-currency-api) 
+[![Static Badge](https://img.shields.io/badge/JSON--In--Java--20220320-JAR-blue)](https://mvnrepository.com/artifact/com.google.code.gson/gson) 
+[![Static Badge](https://img.shields.io/badge/Git-Github-blue?style=flat&logo=GitHub)](https://github.com/)
+[![Static Badge](https://img.shields.io/badge/Postman-gray?style=flat&logo=Postman&logoColor=orange)](https://www.postman.com/)
+[![Static Badge](https://img.shields.io/badge/app-Trello-%231466c3?style=flat&logo=trello)](https://trello.com/)
+
+En esta primera fase, nos piden que se lleve acabo la instalación y configuración del entorno de desarrollo Java para nuestro desafío de construcción del Conversor de Monedas. Asegúrate de contar con los siguientes programas, archivos, versiones y app necesarias:
 - IntelliJ IDEA Community Edition
 - JDK 
 - JSON en Java y la librería Gson
@@ -58,24 +76,27 @@ En esta primera fase, nos piden que se lleve acabo la instalación y configuraci
 &nbsp;
 
 ### 2.Conociendo la API para traer datos
-![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/apiexchange.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/configentorno.svg)
+[![Static Badge](https://img.shields.io/badge/Configuracion_del_entorno-%230067ff?style=flat)](#)
+[![Static Badge](https://img.shields.io/badge/API-Exchange_Rate_API-%23e90000?style=flat)](https://www.exchangerate-api.com/docs/java-currency-api) 
 
 En este paso crucial, es fundamental comprender mejor la API de tasas de cambio a utilizar, revisar su documentación y aprender cómo obtener la clave de API. Esta clave es esencial para realizar solicitudes y obtener datos actualizados. Asegúrate de seguir cuidadosamente las instrucciones proporcionadas por la API Exchange Rate-API.
 
 > [!NOTE]
 > Para este challenge se utilizo la siguiente API: 
-> [Exchange Rate-API](https://www.exchangerate-api.com/), debe registrase para obtener su clave API.
+> [Exchange Rate-API](https://www.exchangerate-api.com/), debe registrase para obtener su clave API (YOUR-API-KEY).
 
 Ejemplo:
 
-```
+```java
 // Setting URL
 String url_str = "https://v6.exchangerate-api.com/v6/YOUR-API-KEY/latest/USD";
 
 ```
 
 ### 3. Importando la biblioteca Gson en IntelliJ IDEA  
-![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/intellij.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/json.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/configentorno.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/maven.svg)
+[![Static Badge](https://img.shields.io/badge/IDE-IntelliJ_IDEA-%23ff0534?style=flat&logo=IntelliJ%20IDEA&logoColor=%232196f3)](https://www.jetbrains.com/es-es/idea/) 
+[![Static Badge](https://img.shields.io/badge/Java_Library-Gson_%2F_Json-%230404e2?style=flat&logo=json)](https://mvnrepository.com/artifact/com.google.code.gson/gson)
+[![Static Badge](https://img.shields.io/badge/Configuracion_del_entorno-%230067ff?style=flat)](#)
 
 Para importar la biblioteca Gson en IntelliJ, sigue estos pasos:
 1.	Abre tu proyecto en IntelliJ.
@@ -84,7 +105,7 @@ Para importar la biblioteca Gson en IntelliJ, sigue estos pasos:
 4.	En la ventana que se abre, ve a la pestaña "Dependencies".
 5.	Haz clic en el signo "+" en la esquina inferior izquierda y elige "Library".
 6.	Busca "gson" en el cuadro de búsqueda.
-7.	Selecciona la versión de Gson que desees utilizar.
+7.	Selecciona la versión de Gson que desees utilizar, previamente descargada.
 8.	Haz clic en "OK" para cerrar la ventana.
 &nbsp;
 > [!IMPORTANT]
