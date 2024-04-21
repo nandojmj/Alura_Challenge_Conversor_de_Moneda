@@ -20,6 +20,7 @@
 [![Static Badge](https://img.shields.io/badge/Http-Response-%2376ff03f?style=flat)](#)
 [![Static Badge](https://img.shields.io/badge/Pruebas_finales-%2340a5ff?style=flat)](#)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v1.4%20adopted-ff69b4.svg)](CODE_OF_CONDUCT.md)
+[![Actions Status](https://github.com/getgauge/Intellij-Plugin/workflows/tests/badge.svg)](https://github.com/getgauge/Intellij-Plugin/actions)
 
 En este Challenge Conversor de Monedas de la Especialización Back-End  G6 Alura - Oracle Next Education. Se realizaran solicitudes a una API de tasas de cambio, manipular datos JSON y, finalmente, a filtrar y mostrar las monedas de interés para realizar la conversion. 
 Los pasos solicitados para completar este desafío:
