@@ -1,8 +1,17 @@
 # Open Challenge Backend ONE - Conversor de Monedas
  ***ONE | Fase 3 - Especialización Back-End  G6 Alura - Oracle Next Education***
 
-[![Static Badge](https://img.shields.io/badge/Alura-Latam-blue?style=flat)](https://www.aluracursos.com/)
-![ ](/recursos/images/aluralatam.svg) ![ ](/recursos/images/oracleone.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/java.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/intellij.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/maven.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/git.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/apiexchange.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/json.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/postman.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/trello.svg) ![Static Badge](https://img.shields.io/badge/Pruebas_finales-%2340E0D0?style=flat&color=%23696969)
+[![Alura Latam](https://img.shields.io/badge/Alura-Latam-blue?style=flat)](https://www.aluracursos.com/)
+[![Static Badge](https://img.shields.io/badge/ONE-Oracle_Next_Education-orange?style=flat&logo=oracle&logoColor=orange)](https://www.oracle.com/co/education/oracle-next-education/) 
+[![Static Badge](https://img.shields.io/badge/IDE-IntelliJ_IDEA-%23ff0534?style=flat&logo=IntelliJ%20IDEA&logoColor=%232196f3)](https://www.jetbrains.com/es-es/idea/)
+[![Static Badge](https://img.shields.io/badge/Built_tool-Maven-%23%2376ff03?style=flat&logo=Apache%20Maven&logoColor=%2300e676)](https://mvnrepository.com/artifact/com.google.code.gson/gson)
+[![Static Badge](https://img.shields.io/badge/Git-Github-blue?style=flat&logo=GitHub)](https://github.com/)
+[![Static Badge](https://img.shields.io/badge/API-Exchange_Rate_API-%23e90000?style=flat)](https://www.exchangerate-api.com/docs/java-currency-api)
+
+
+
+
+![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/apiexchange.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/json.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/postman.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/trello.svg) ![Static Badge](https://img.shields.io/badge/Pruebas_finales-%2340E0D0?style=flat&color=%23696969)
 
 
 prueba desde destokp
