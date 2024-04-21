@@ -4,7 +4,11 @@
 [![Alura Latam](https://img.shields.io/badge/Alura-Latam-blue?style=flat)](https://www.aluracursos.com/)
 [![Static Badge](https://img.shields.io/badge/ONE-Oracle_Next_Education-orange?style=flat&logo=oracle&logoColor=orange)](https://www.oracle.com/co/education/oracle-next-education/) 
 [![Static Badge](https://img.shields.io/badge/IDE-IntelliJ_IDEA-%23ff0534?style=flat&logo=IntelliJ%20IDEA&logoColor=%232196f3)](https://www.jetbrains.com/es-es/idea/)
-[![Static Badge](https://img.shields.io/badge/Built_tool-Maven-%23%2376ff03?style=flat&logo=Apache%20Maven&logoColor=%2300e676)](https://mvnrepository.com/artifact/com.google.code.gson/gson)
+
+[![Static Badge](https://img.shields.io/badge/JSON--In--Java--20220320-JAR-blue)](https://mvnrepository.com/artifact/com.google.code.gson/gson)
+
+[![Static Badge](https://img.shields.io/badge/license-MIT-blue)](*)
+
 [![Static Badge](https://img.shields.io/badge/Git-Github-blue?style=flat&logo=GitHub)](https://github.com/)
 [![Static Badge](https://img.shields.io/badge/API-Exchange_Rate_API-%23e90000?style=flat)](https://www.exchangerate-api.com/docs/java-currency-api)
 [![Static Badge](https://img.shields.io/badge/Java_Library-Gson_%2F_Json-%230404e2?style=flat&logo=json)](https://mvnrepository.com/artifact/com.google.code.gson/gson)
@@ -17,8 +21,10 @@
 [![Static Badge](https://img.shields.io/badge/Configuracion_del_entorno-%230067ff?style=flat)](#)
 [![Static Badge](https://img.shields.io/badge/Http-Client-%23ff1a00?style=flat)](#)
 [![Static Badge](https://img.shields.io/badge/Http-Request-%23f7a40c?style=flat)](#)
-[![Static Badge](https://img.shields.io/badge/Http-Response-%235ccb5f?style=flat)](#)
+[![Static Badge](https://img.shields.io/badge/Http-Response-green?style=flat)](#)
 [![Static Badge](https://img.shields.io/badge/Pruebas_finales-%2340a5ff?style=flat)](#)
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v1.4%20adopted-ff69b4.svg)](CODE_OF_CONDUCT.md)
+[![Actions Status](https://github.com/getgauge/Intellij-Plugin/workflows/tests/badge.svg)](https://github.com/getgauge/Intellij-Plugin/actions)
 
 En este Challenge Conversor de Monedas de la Especialización Back-End  G6 Alura - Oracle Next Education. Se realizaran solicitudes a una API de tasas de cambio, manipular datos JSON y, finalmente, a filtrar y mostrar las monedas de interés para realizar la conversion. 
 Los pasos solicitados para completar este desafío:
@@ -875,7 +881,13 @@ documentation, may presume an understanding of these terms.
   it, and it is thereafter considered the _navigated_ object (until the
   user makes another such choice.)
 * _namespace_: A name used to identify a persistence store. A running open MCT 
-application could potentially use multiple persistence stores, with the 
+application could potentially use multiple persistence stores, with the
+## Instalación.
+Clona el repositorio o descarga los archivos del proyecto. Importa el proyecto en tu entorno de desarrollo Java preferido. Compila y ejecuta la aplicación.
+## Contribuciones.
+Este proyecto se desarrolló como parte del curso impartido por Alura Latam y auspiciado por Oracle en su plan de desarrollo Next Education. permitiendo visualizar el avance del participante demostrando sus habilidades y conocimiento adquirido en el area de programacion POO, y el uso del lenguaje JAVA.
+
+
 
 ## Open MCT v2.0.0
 Support for our legacy bundle-based API, and the libraries that it was built on (like Angular 1.x), have now been removed entirely from this repository.
