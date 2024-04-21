@@ -104,10 +104,10 @@ public class MenuHandler {
             | 94. **OMR**: Oman                      | 95. **PAB**: Panama               | 96. **PEN**: Peru
             | 97. **PGK**: Papua New Guinea          | 98. **PHP**: Philippines          | 99. **PKR**: Pakistan
             | 100. **PLN**: Poland
-            Selecciona la moneda que deseas convertir mediante su código (3 letras).
+            Selecciona la moneda que desea convertir mediante su código (3 letras).
             """);
 
-            System.out.println("Ingrese el código de la moneda base:");
+            System.out.println("Ingrese el código de la moneda base a convertir:");
             String monedaBase = lectura.next().toUpperCase(); // Convertir a mayúsculas
 
             System.out.println("Ingrese el código de la moneda destino:");
@@ -119,10 +119,10 @@ public class MenuHandler {
                 return;
             }
 
-            System.out.println("Ingrese el monto a convertir:");
-            // Verificar si el monto es un número entero
+            System.out.println("Ingrese la cantidad de monedad a convertir:");
+            // Verificar si el cantidad ingresada es un número entero
             if (!lectura.hasNextInt()) {
-                System.out.println("El monto debe ser un número entero.");
+                System.out.println("La cantidad de moneda a convertir debe ser un número entero.");
                 return;
             }
             int monto = lectura.nextInt();
