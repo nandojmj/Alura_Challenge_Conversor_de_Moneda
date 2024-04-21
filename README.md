@@ -7,11 +7,11 @@
 [![Static Badge](https://img.shields.io/badge/Built_tool-Maven-%23%2376ff03?style=flat&logo=Apache%20Maven&logoColor=%2300e676)](https://mvnrepository.com/artifact/com.google.code.gson/gson)
 [![Static Badge](https://img.shields.io/badge/Git-Github-blue?style=flat&logo=GitHub)](https://github.com/)
 [![Static Badge](https://img.shields.io/badge/API-Exchange_Rate_API-%23e90000?style=flat)](https://www.exchangerate-api.com/docs/java-currency-api)
+[![Static Badge](https://img.shields.io/badge/Java_Library-Gson_%2F_Json-%230404e2?style=flat&logo=json)](https://mvnrepository.com/artifact/com.google.code.gson/gson)
+[![Static Badge](https://img.shields.io/badge/Postman-gray?style=flat&logo=Postman&logoColor=orange)](https://www.postman.com/)
+[![Static Badge](https://img.shields.io/badge/app-Trello-%231466c3?style=flat&logo=trello)](https://trello.com/)
 
-
-
-
-![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/apiexchange.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/json.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/postman.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/trello.svg) ![Static Badge](https://img.shields.io/badge/Pruebas_finales-%2340E0D0?style=flat&color=%23696969)
+[![Static Badge](https://img.shields.io/badge/unlicense-%23009929?style=flat&logo=unlicense&logoColor=white)]()
 
 
 prueba desde destokp
