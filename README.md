@@ -61,15 +61,41 @@ En este paso crucial, es fundamental comprender mejor la API de tasas de cambio 
 
 > [!NOTE]
 > Para este challenge se utilizo la siguiente API: 
-> [Exchange Rate-API](https://www.exchangerate-api.com/), debe registrase para obtener su clave API (YOUR-API-KEY).
+> [Exchange Rate-API](https://www.exchangerate-api.com/), debe registrarse para obtener su clave API (YOUR-API-KEY).
 
-Ejemplo:
+Interactuando con la API, encontramos como se realizan las consultas, 
+Ejemplo: USD a COP, Dolares EEUU a Pesos Colombianos y un monto a convertir de 1000USD
 
 ```java
 // Setting URL
-String url_str = "https://v6.exchangerate-api.com/v6/YOUR-API-KEY/latest/USD";
-
+https://v6.exchangerate-api.com/v6/YOUR-API-KEY/pair//USD/COP/1000
 ```
+al realizar la consulta  en la API nos arroja lo siguiente:
+```java
+// 20240421181021
+// https://v6.exchangerate-api.com/v6/d50362c2646d99e082d99a42/pair//USD/COP/1000
+{
+  "result": "success",
+  "documentation": "https://www.exchangerate-api.com/docs",
+  "terms_of_use": "https://www.exchangerate-api.com/terms",
+  "time_last_update_unix": 1713657602,
+  "time_last_update_utc": "Sun, 21 Apr 2024 00:00:02 +0000",
+  "time_next_update_unix": 1713744002,
+  "time_next_update_utc": "Mon, 22 Apr 2024 00:00:02 +0000",
+  "base_code": "USD",
+  "target_code": "COP",
+  "conversion_rate": 3906.1426,
+  "conversion_result": 3906142.6
+}
+```
+y observamos los key que nos sirven para nuestro proyecto: 
+```java
+  "base_code": "USD" (MONEDA ORIGEN)
+  "target_code": "COP" (MONEDA DESTINO)
+  "conversion_rate": 3906.1426, (TASA DE CONVERSION) a esa fecha.
+  "conversion_result": 3906142.6 (RESULTADO DE LA CONVERSION)
+```
+Asi que identificamos que con los campos "base_code", "target_code", "conversion_rate", y "conversion_result" podemos interactuar con la API Exchange Rate.
 
 ### 3. Importando la biblioteca Gson en IntelliJ IDEA  
 [![Static Badge](https://img.shields.io/badge/IDE-IntelliJ_IDEA-%23ff0534?style=flat&logo=IntelliJ%20IDEA&logoColor=%232196f3)](https://www.jetbrains.com/es-es/idea/) 
