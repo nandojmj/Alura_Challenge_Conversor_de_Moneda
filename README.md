@@ -20,20 +20,7 @@
 [![Static Badge](https://img.shields.io/badge/Http-Response-%235ccb5f?style=flat)](#)
 [![Static Badge](https://img.shields.io/badge/Pruebas_finales-%2340a5ff?style=flat)](#)
 
-
-
-
-
-
-
-
-
-
-
-
-prueba desde destokp
-
-prueba En este Challenge Conversor de Monedas de la Especialización Back-End  G6 Alura - Oracle Next Education. Se realizaran solicitudes a una API de tasas de cambio, manipular datos JSON y, finalmente, a filtrar y mostrar las monedas de interés para realizar la conversion. 
+En este Challenge Conversor de Monedas de la Especialización Back-End  G6 Alura - Oracle Next Education. Se realizaran solicitudes a una API de tasas de cambio, manipular datos JSON y, finalmente, a filtrar y mostrar las monedas de interés para realizar la conversion. 
 Los pasos solicitados para completar este desafío:
 
 1.	Configuración del Ambiente Java;
