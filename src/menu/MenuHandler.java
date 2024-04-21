@@ -68,86 +68,44 @@ public class MenuHandler {
     private static void elegirOtrasMonedas(Conversion c, Scanner lectura) {
         try {
             System.out.println("""
-        A continuación, te presento una lista completa de códigos de moneda junto con los países correspondientes:
-        1. **AFN**: Afganistán
-        2. **ALL**: Albania
-        3. **DZD**: Argelia
-        4. **USD**: Samoa Americana
-                        5. **EUR**: Andorra
-                        6. **AOA**: Angola
-                        7. **XCD**: Anguila
-                        8. **XCD**: Antigua y Barbuda
-                        9. **ARS**: Argentina
-                        10. **AMD**: Armenia
-                        11. **AWG**: Aruba
-                        12. **AUD**: Australia
-                        13. **EUR**: Austria
-                        14. **AZN**: Azerbaiyán
-                        15. **BSD**: Bahamas
-                        16. **BHD**: Bahréin
-                        17. **BDT**: Bangladés
-                        18. **BBD**: Barbados
-                        19. **BYN**: Bielorrusia
-                        20. **EUR**: Bélgica
-                        21. **BZD**: Belice
-                        22. **XOF**: Benín
-                        23. **BMD**: Bermudas
-                        24. **BTN**: Bután
-                        25. **BOB**: Bolivia
-                        26. **BOV**: Bolivia (Mvdol)
-                        27. **BAM**: Bosnia y Herzegovina
-                        28. **BWP**: Botsuana
-                        29. **BRL**: Brasil
-                        30. **USD**: Territorio Británico del Océano Índico
-                        31. **BND**: Brunéi
-                        32. **BGN**: Bulgaria
-                        33. **XOF**: Burkina Faso
-                        34. **BIF**: Burundi
-                        35. **CVE**: Cabo Verde
-                        36. **KHR**: Camboya
-                        37. **XAF**: Camerún
-                        38. **CAD**: Canadá
-                        39. **KYD**: Islas Caimán
-                        40. **XAF**: República Centroafricana
-                        41. **XAF**: Chad
-                        42. **CLF**: Chile (Unidad de Fomento)
-                        43. **CLP**: Chile (Peso chileno)
-                        44. **CNY**: China
-                        45. **AUD**: Isla de Navidad
-                        46. **AUD**: Islas Cocos (Keeling)
-                        47. **COP**: Colombia
-                        48. **COU**: Colombia (Unidad de Valor Real)
-                        49. **KMF**: Comoras
-                        50. **CDF**: República Democrática del Congo
-                        51. **XAF**: Congo
-                        52. **NZD**: Islas Cook
-                        53. **CRC**: Costa Rica
-                        54. **EUR**: Croacia
-                        55. **CUC**: Cuba (Peso convertible)
-                        56. **CUP**: Cuba (Peso cubano)
-                        57. **ANG**: Curazao
-                        58. **EUR**: Chipre
-                        59. **CZK**: República Checa
-                        60. **XOF**: Costa de Marfil
-                        61. **DKK**: Dinamarca
-                        62. **DJF**: Yibuti
-                        63. **XCD**: Dominica
-                        64. **DOP**: República Dominicana
-                        65. **USD**: Ecuador
-                        66. **EGP**: Egipto
-                        67. **SVC**: El Salvador
-                        68. **USD**: Guinea Ecuatorial
-                        69. **ERN**: Eritrea
-                        70. **EUR**: Estonia
-                        71. **ETB**: Etiopía
-                        72. **EUR**: Unión Europea
-                        73. **FKP**: Islas Malvinas (Falkland)
-                        74. **DKK**: Islas Feroe
-                        75. **FJD**: Fiyi
-                        76. **EUR**: Finlandia
-        ...
-        Elije el código de la moneda que quieras convertir (las 3 letras).
-        """);
+            Esta lista contiene los códigos de moneda y sus respectivos países para facilitar la conversión de moneda:
+        
+            | 1.  **AED**: United Arab Emirates      | 2.  **AFN**: Afghanistan          | 3.  **ALL**: Albania
+            | 4.  **AMD**: Armenia                   | 5.  **ANG**: Netherlands Antilles | 6.  **AOA**: Angola
+            | 7.  **ARS**: Argentina                 | 8.  **AUD**: Australia            | 9.  **AWG**: Aruba
+            | 10. **AZN**: Azerbaijan                | 11. **BBD**: Barbados             | 12. **BGN**: Bulgaria
+            | 13. **BHD**: Bahrain                   | 14. **BRL**: Brazil               | 15. **BSD**: Bahamas
+            | 16. **BTN**: Bhutan                    | 17. **BWP**: Botswana             | 18. **BZD**: Belize
+            | 19. **CAD**: Canada                    | 20. **CHF**: Switzerland          | 21. **CLP**: Chile
+            | 22. **CNY**: China                     | 23. **COP**: Colombia             | 24. **CRC**: Costa Rica
+            | 25. **CUP**: Cuba                      | 26. **CVE**: Cape Verde           | 27. **CZK**: Czech Republic
+            | 28. **DKK**: Denmark                   | 29. **DOP**: Dominican Republic   | 30. **DZD**: Algeria
+            | 31. **EGP**: Egypt                     | 32. **ERN**: Eritrea              | 33. **ETB**: Ethiopia
+            | 34. **EUR**: European Union            | 35. **FJD**: Fiji                 | 36. **FKP**: Falkland Islands
+            | 37. **GBP**: United Kingdom            | 38. **GEL**: Georgia              | 39. **GHS**: Ghana
+            | 40. **GIP**: Gibraltar                 | 41. **GMD**: The Gambia           | 42. **GNF**: Guinea
+            | 43. **GTQ**: Guatemala                 | 44. **GYD**: Guyana               | 45. **HKD**: Hong Kong
+            | 46. **HNL**: Honduras                  | 47. **HRK**: Croatia              | 48. **HTG**: Haiti
+            | 49. **HUF**: Hungary                   | 50. **IDR**: Indonesia            | 51. **ILS**: Israel
+            | 52. **IMP**: Isle of Man               | 53. **INR**: India                | 54. **IQD**: Iraq
+            | 55. **IRR**: Iran                      | 56. **ISK**: Iceland              | 57. **JMD**: Jamaica
+            | 58. **JOD**: Jordan                    | 59. **JPY**: Japan                | 60. **KES**: Kenya
+            | 61. **KGS**: Kyrgyzstan                | 62. **KHR**: Cambodia             | 63. **KID**: Kiribati
+            | 64. **KMF**: Comoros                   | 65. **KRW**: South Korea          | 66. **KWD**: Kuwait
+            | 67. **KYD**: Cayman Islands            | 68. **KZT**: Kazakhstan           | 69. **LAK**: Laos
+            | 70. **LBP**: Lebanon                   | 71. **LKR**: Sri Lanka            | 72. **LRD**: Liberia
+            | 73. **LSL**: Lesotho                   | 74. **LYD**: Libya                | 75. **MAD**: Morocco
+            | 76. **MDL**: Moldova                   | 77. **MGA**: Madagascar           | 78. **MKD**: North Macedonia
+            | 79. **MMK**: Myanmar                   | 80. **MNT**: Mongolia             | 81. **MOP**: Macau
+            | 82. **MUR**: Mauritius                 | 83. **MVR**: Maldives             | 84. **MWK**: Malawi
+            | 85. **MXN**: Mexico                    | 86. **MYR**: Malaysia             | 87. **MZN**: Mozambique
+            | 88. **NAD**: Namibia                   | 89. **NGN**: Nigeria              | 90. **NIO**: Nicaragua
+            | 91. **NOK**: Norway                    | 92. **NPR**: Nepal                | 93. **NZD**: New Zealand
+            | 94. **OMR**: Oman                      | 95. **PAB**: Panama               | 96. **PEN**: Peru
+            | 97. **PGK**: Papua New Guinea          | 98. **PHP**: Philippines          | 99. **PKR**: Pakistan
+            | 100. **PLN**: Poland
+            Selecciona la moneda que deseas convertir mediante su código (3 letras).
+            """);
 
             System.out.println("Ingrese el código de la moneda base:");
             String monedaBase = lectura.next().toUpperCase(); // Convertir a mayúsculas
