@@ -6,29 +6,7 @@
 [![Static Badge](https://img.shields.io/badge/Java_Library-Gson_%2F_Json-%230404e2?style=flat&logo=json)](https://mvnrepository.com/artifact/com.google.code.gson/gson)
 [![Static Badge](https://img.shields.io/badge/API-Exchange_Rate_API-%23e90000?style=flat)](https://www.exchangerate-api.com/docs/java-currency-api)
 [![Actions Status](https://github.com/getgauge/Intellij-Plugin/workflows/tests/badge.svg)](#)
-
-
-
-
-
-[![Static Badge](https://img.shields.io/badge/IDE-IntelliJ_IDEA-%23ff0534?style=flat&logo=IntelliJ%20IDEA&logoColor=%232196f3)](https://www.jetbrains.com/es-es/idea/)
-[![Static Badge](https://img.shields.io/badge/JSON--In--Java--20220320-JAR-blue)](https://mvnrepository.com/artifact/com.google.code.gson/gson)
 [![Static Badge](https://img.shields.io/badge/license-MIT-blue)](*)
-[![Static Badge](https://img.shields.io/badge/Git-Github-blue?style=flat&logo=GitHub)](https://github.com/)
-[![Static Badge](https://img.shields.io/badge/API-Exchange_Rate_API-%23e90000?style=flat)](https://www.exchangerate-api.com/docs/java-currency-api)
-[![Static Badge](https://img.shields.io/badge/Java_Library-Gson_%2F_Json-%230404e2?style=flat&logo=json)](https://mvnrepository.com/artifact/com.google.code.gson/gson)
-[![Static Badge](https://img.shields.io/badge/Postman-gray?style=flat&logo=Postman&logoColor=orange)](https://www.postman.com/)
-[![Static Badge](https://img.shields.io/badge/app-Trello-%231466c3?style=flat&logo=trello)](https://trello.com/)
-
-[![Static Badge](https://img.shields.io/badge/unlicense-%23009929?style=flat&logo=unlicense&logoColor=white)](#)
-[![Static Badge](https://img.shields.io/badge/Language-Java-%23ff0000?style=flat)](#)
-[![Static Badge](https://img.shields.io/badge/Consumo_de_la_API-%23ff9900?style=flat)](#)
-[![Static Badge](https://img.shields.io/badge/Configuracion_del_entorno-%230067ff?style=flat)](#)
-[![Static Badge](https://img.shields.io/badge/Http-Client-%23ff1a00?style=flat)](#)
-[![Static Badge](https://img.shields.io/badge/Http-Request-%23f7a40c?style=flat)](#)
-[![Static Badge](https://img.shields.io/badge/Http-Response-green?style=flat)](#)
-[![Static Badge](https://img.shields.io/badge/Pruebas_finales-%2340a5ff?style=flat)](#)
-
 
 Este es un desafío de la Especialización __Back-End G6 Alura - Oracle Next Education.__ Consiste en desarrollar un Conversor de Monedas en lenguaje Java, donde se realizarán solicitudes a una API de tasas de cambio para manipular datos JSON. Finalmente, se debe filtrar y mostrar las monedas de interés para realizar la conversión de monedas o divisas de diferentes países.
 
@@ -75,7 +53,7 @@ En esta primera fase, nos piden que se lleve acabo la instalación y configuraci
 
 &nbsp;
 
-### 2.Conociendo la API para traer datos
+### 2. Conociendo la API para traer datos
 [![Static Badge](https://img.shields.io/badge/Configuracion_del_entorno-%230067ff?style=flat)](#)
 [![Static Badge](https://img.shields.io/badge/API-Exchange_Rate_API-%23e90000?style=flat)](https://www.exchangerate-api.com/docs/java-currency-api) 
 
@@ -114,7 +92,11 @@ Para importar la biblioteca Gson en IntelliJ, sigue estos pasos:
 &nbsp;
 
 ### 4. Construyendo el Cliente para Solicitudes (HttpClient)  
-![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/intellij.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/consumoapi.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/java.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/httpclient.svg)
+[![Static Badge](https://img.shields.io/badge/IDE-IntelliJ_IDEA-%23ff0534?style=flat&logo=IntelliJ%20IDEA&logoColor=%232196f3)](https://www.jetbrains.com/es-es/idea/) 
+[![Static Badge](https://img.shields.io/badge/Language-Java-%23ff0000?style=flat)](#)
+[![Static Badge](https://img.shields.io/badge/Consumo_de_la_API-%23ff9900?style=flat)](#)
+[![Static Badge](https://img.shields.io/badge/Http-Client-%23ff1a00?style=flat)](#)
+
 
 Se utilizo la clase HttpClient para realizar solicitudes a la API de tasas de cambio y obtener datos esenciales. El uso de HttpClient en Java facilita la conexión y la obtención de respuestas de manera eficiente.
 
@@ -139,8 +121,11 @@ Se utilizo la clase HttpClient para realizar solicitudes a la API de tasas de ca
 &nbsp;
 
 ### 5. Construyendo la Solicitud (HttpRequest)
-![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/intellij.svg) ![Static Badge](https://img.shields.io/badge/Consumo_de_la_API-%23FFA500?style=flat)
- ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/consumoapi.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/java.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/httprequest.svg)
+
+[![Static Badge](https://img.shields.io/badge/IDE-IntelliJ_IDEA-%23ff0534?style=flat&logo=IntelliJ%20IDEA&logoColor=%232196f3)](https://www.jetbrains.com/es-es/idea/) 
+[![Static Badge](https://img.shields.io/badge/Language-Java-%23ff0000?style=flat)](#)
+[![Static Badge](https://img.shields.io/badge/Consumo_de_la_API-%23ff9900?style=flat)](#)
+[![Static Badge](https://img.shields.io/badge/Http-Request-%23f7a40c?style=flat)](#)
 
 Uso de la clase HttpRequest para configurar y personalizar nuestras solicitudes a la API de tasas de cambio. La clase HttpRequest en Java nos brinda un control detallado sobre los parámetros de nuestras solicitudes.
 
@@ -168,7 +153,11 @@ Uso de la clase HttpRequest para configurar y personalizar nuestras solicitudes 
 &nbsp;
 
 ### 6. Construyendo la la Respuesta (HttpResponse)
-![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/intellij.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/consumoapi.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/java.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/httpresponse.svg)
+
+[![Static Badge](https://img.shields.io/badge/IDE-IntelliJ_IDEA-%23ff0534?style=flat&logo=IntelliJ%20IDEA&logoColor=%232196f3)](https://www.jetbrains.com/es-es/idea/) 
+[![Static Badge](https://img.shields.io/badge/Language-Java-%23ff0000?style=flat)](#)
+[![Static Badge](https://img.shields.io/badge/Consumo_de_la_API-%23ff9900?style=flat)](#)
+[![Static Badge](https://img.shields.io/badge/Http-Response-green?style=flat)](#)
 
 En esta parte se solicito el uso de la interfaz HttpResponse para gestionar las respuestas recibidas de la API. La interfaz HttpResponse en Java ofrece una estructura que permite acceder y analizar los diferentes elementos de una respuesta HTTP. Al entender cómo trabajar con esta interfaz, podrás extraer información significativa de las respuestas, como códigos de estado, encabezados y el cuerpo de la respuesta, que normalmente se presenta en formato JSON.
 
@@ -200,7 +189,13 @@ En esta parte se solicito el uso de la interfaz HttpResponse para gestionar las 
 &nbsp;
 
 ### 7.	Analizando la respuesta en formato JSON
-![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/intellij.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/consumoapi.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/json.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/java.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/postman.svg) 
+[![Static Badge](https://img.shields.io/badge/IDE-IntelliJ_IDEA-%23ff0534?style=flat&logo=IntelliJ%20IDEA&logoColor=%232196f3)](https://www.jetbrains.com/es-es/idea/) 
+[![Static Badge](https://img.shields.io/badge/Language-Java-%23ff0000?style=flat)](#)
+[![Static Badge](https://img.shields.io/badge/Consumo_de_la_API-%23ff9900?style=flat)](#)
+[![Static Badge](https://img.shields.io/badge/Java_Library-Gson_%2F_Json-%230404e2?style=flat&logo=json)](https://mvnrepository.com/artifact/com.google.code.gson/gson)
+[![Static Badge](https://img.shields.io/badge/API-Exchange_Rate_API-%23e90000?style=flat)](https://www.exchangerate-api.com/docs/java-currency-api)
+[![Static Badge](https://img.shields.io/badge/Postman-gray?style=flat&logo=Postman&logoColor=orange)](https://www.postman.com/)
+
 
 En esta parte de  nuestro Challenge se nos solicito el análisis de la respuesta JSON utilizando la biblioteca Gson en Java. La manipulación de datos JSON es esencial, ya que la mayoría de las respuestas de las API se presentan en este formato.  Se nos recomendo el uso de herramientas como Postman, para facilitar el análisis de los datos que se obtendrán de la API. Con la biblioteca Gson, puedes realizar el mapeo eficiente de los datos JSON a objetos Java, facilitando así la extracción y manipulación de la información necesaria.
 
@@ -230,7 +225,20 @@ En esta parte de  nuestro Challenge se nos solicito el análisis de la respuesta
 &nbsp;
 
 ### 8. Filtrando las monedas
-![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/intellij.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/consumoapi.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/json.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/java.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/postman.svg) 
+[![Static Badge](https://img.shields.io/badge/IDE-IntelliJ_IDEA-%23ff0534?style=flat&logo=IntelliJ%20IDEA&logoColor=%232196f3)](https://www.jetbrains.com/es-es/idea/) 
+[![Static Badge](https://img.shields.io/badge/Language-Java-%23ff0000?style=flat)](#)
+[![Static Badge](https://img.shields.io/badge/Consumo_de_la_API-%23ff9900?style=flat)](#)
+[![Static Badge](https://img.shields.io/badge/Java_Library-Gson_%2F_Json-%230404e2?style=flat&logo=json)](https://mvnrepository.com/artifact/com.google.code.gson/gson)
+[![Static Badge](https://img.shields.io/badge/API-Exchange_Rate_API-%23e90000?style=flat)](https://www.exchangerate-api.com/docs/java-currency-api)
+[![Static Badge](https://img.shields.io/badge/Postman-gray?style=flat&logo=Postman&logoColor=orange)](https://www.postman.com/)
+
+
+
+![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/intellij.svg) 
+![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/consumoapi.svg) 
+![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/json.svg) 
+![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/java.svg) 
+![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/postman.svg) 
 
 En la octava fase de nuestro Challenge, nos pidieron el proceso de filtrar las monedas utilizando la biblioteca Gson en Java.
 Para acceder a datos específicos, como los valores de las diferentes monedas, es esencial comprender cómo navegar por la estructura JSON de la respuesta de la API. En el desafio se nos solicito utilizar estos codigos de monedas  a convertir:
@@ -320,7 +328,12 @@ En resumen, separar la lógica del menú en la clase MenuHandler ayuda a mantene
 &nbsp;
 
 ### 9. Convirtiendo Valores
-![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/intellij.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/consumoapi.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/json.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/java.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/postman.svg) 
+[![Static Badge](https://img.shields.io/badge/IDE-IntelliJ_IDEA-%23ff0534?style=flat&logo=IntelliJ%20IDEA&logoColor=%232196f3)](https://www.jetbrains.com/es-es/idea/) 
+[![Static Badge](https://img.shields.io/badge/Language-Java-%23ff0000?style=flat)](#)
+[![Static Badge](https://img.shields.io/badge/Consumo_de_la_API-%23ff9900?style=flat)](#)
+[![Static Badge](https://img.shields.io/badge/Java_Library-Gson_%2F_Json-%230404e2?style=flat&logo=json)](https://mvnrepository.com/artifact/com.google.code.gson/gson)
+[![Static Badge](https://img.shields.io/badge/API-Exchange_Rate_API-%23e90000?style=flat)](https://www.exchangerate-api.com/docs/java-currency-api)
+
 
 En esta novena fase, se nos pidio  las conversiones entre las monedas. Se crearon tres clases en el package Conversion:
 
@@ -497,7 +510,10 @@ import java.time.format.DateTimeFormatter;
 
 
 ### 10. Interactuando con el usuario
-![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/intellij.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/json.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/java.svg) ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/postman.svg) 
+[![Static Badge](https://img.shields.io/badge/IDE-IntelliJ_IDEA-%23ff0534?style=flat&logo=IntelliJ%20IDEA&logoColor=%232196f3)](https://www.jetbrains.com/es-es/idea/) 
+[![Static Badge](https://img.shields.io/badge/Language-Java-%23ff0000?style=flat)](#)
+[![Static Badge](https://img.shields.io/badge/Pruebas_finales-%2340a5ff?style=flat)](#)
+
 
 En esta etapa del desafío, se solicito  la interacción con el usuario, implementando una interfaz textual a través de la consola que presenta opciones de conversión de monedas. La estructura incluirá un menú dentro de un bucle de repetición, permitiendo al usuario seleccionar opciones numéricas y proporcionar datos para la conversión, utilizando la  `clase Scanner` para capturar la entrada del usuario.
 
