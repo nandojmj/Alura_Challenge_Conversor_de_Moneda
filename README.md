@@ -912,10 +912,14 @@ Para ejecutar el proyecto, sigue estos pasos:
 * Configura las dependencias y ajusta la configuración según sea necesario.
 * Corre la aplicacion para interactuar con consola.
 
-### 15. VIDEO DE LA EJECUCION
+### 15. Capturas y Video
 [![Static Badge](https://img.shields.io/badge/status-under%20construction-%2393a8ac)](#)
 
-![ ![Screenshot interactuando y probando los key con la aplicacion Postman]](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/ExchangePostman.png) 
+![ ![Screenshot interactuando y probando los key con la aplicacion Postman]](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/captura.gif) 
+
+
+
+
 
 ## Documentation
 [![Static Badge](https://img.shields.io/badge/status-under%20construction-%2393a8ac)](#)
