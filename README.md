@@ -124,7 +124,7 @@ Para importar la biblioteca Gson en IntelliJ, sigue estos pasos:
 
 &nbsp;
 *En esta captura de pantalla se muestra la importacion de la biblioteca Gson.*
-![ ![Screenshot interactuando y probando los key con la aplicacion Postman]](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/json.JPG)
+![ ![Screenshot interactuando y probando los key con la aplicacion Postman]](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/json.png)
 
 &nbsp;
 
