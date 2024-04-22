@@ -769,6 +769,14 @@ Si ocurre algún error durante la escritura en el archivo, se imprimirá la traz
              // Resto del código omitido...
 
 ```
+# Ejecución del Proyecto
+Para ejecutar el proyecto, sigue estos pasos:
+
+* Clona o descarga desde Github el repositorio en tu disco local.
+* Importa el proyecto en tu IDE de Java (este proyecto se realizo en IntelliJ IDEA).
+* Configura las dependencias y ajusta la configuración según sea necesario.
+* Corre la aplicacion para interactuar con consola.
+
 
 
 > [!IMPORTANT]
