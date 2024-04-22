@@ -740,7 +740,7 @@ En la clase `Conversion`, se mantiene un registro de todas las conversiones real
 
 De esta manera, cada vez que se realiza una conversión de moneda, se agrega un nuevo registro al historial y se actualiza el archivo JSON con el nuevo historial. Así, se mantiene un registro completo y actualizado de todas las conversiones realizadas.
 
-*Captura de pantalla de la ejecucion del proyecto mostrando resultados de conversion y se observa el contenido en el archivo `registros_data_time.json` en formato json, donde se registran y actualizan las consultas realizadas, incluyendo información sobre qué monedas se convirtieron *
+*Captura de pantalla de la ejecucion del proyecto mostrando resultados de conversion y se observa el contenido en el archivo `registros_data_time.json` en formato json, donde se registran y actualizan las consultas realizadas, incluyendo información sobre qué monedas se convirtieron*
 
 ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/json2.png) 
 
