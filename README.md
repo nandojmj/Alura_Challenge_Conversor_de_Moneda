@@ -915,6 +915,8 @@ Para ejecutar el proyecto, sigue estos pasos:
 ### 15. VIDEO DE LA EJECUCION
 [![Static Badge](https://img.shields.io/badge/status-under%20construction-%2393a8ac)](#)
 
+![ ![Screenshot interactuando y probando los key con la aplicacion Postman]](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/ExchangePostman.png) 
+
 ## Documentation
 [![Static Badge](https://img.shields.io/badge/status-under%20construction-%2393a8ac)](#)
 
