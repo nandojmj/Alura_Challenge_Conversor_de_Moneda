@@ -95,11 +95,6 @@ y observamos los key que nos sirven para nuestro proyecto:
   "conversion_rate": 3906.1426, (TASA DE CONVERSION) a esa fecha.
   "conversion_result": 3906142.6 (RESULTADO DE LA CONVERSION)
 ```
-Asi que identificamos que con los campos __`base_code`, `target_code`, `conversion_rate`__, y __`conversion_result`__ podemos interactuar con la API Exchange Rate y obtener esos datos para nuestro conversor.
-
-&nbsp;
-*En esta captura de pantalla se muestra la interacción con el software Postman.*
-![ ![Screenshot interactuando y probando los key con la aplicacion Postman]](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/ExchangePostman.png) 
 
 &nbsp;
 
@@ -134,15 +129,17 @@ Para importar la biblioteca Gson en IntelliJ, sigue estos pasos:
 [![Static Badge](https://img.shields.io/badge/Consumo_de_la_API-%23009929?style=flat)](#)
 [![Static Badge](https://img.shields.io/badge/Http-Client-%23ff1a00?style=flat)](#)
 
-Se utilizo la clase HttpClient para realizar solicitudes a la API de tasas de cambio y obtener datos esenciales. El uso de HttpClient en Java facilita la conexión y la obtención de respuestas de manera eficiente.
+Se utilizo la instancia HttpClient para realizar solicitudes a la API de tasas de cambio y obtener datos esenciales. El uso de`HttpClient` en Java facilita la conexión y la obtención de respuestas de manera eficiente. Se utiliza para enviar solicitudes HTTP y recibir respuestas HTTP sin la necesidad de bibliotecas externas.
 
 > [!NOTE]
 >  Es necesario obtener su clave API para agregarla al codigo:  
 > [Exchange Rate API](https://www.exchangerate-api.com/)
 > [Documentacion Exchange Rate API Java ](https://www.exchangerate-api.com/docs/java-currency-api)
+
+
 &nbsp;
 
-*Fragmento de codigo ejemplo utilizado en la Class ""Conversion.java", en YOUR-API-KEY se utiliza la llave solicitada:*
+*En este fragmento de código, de la Class ""Conversion", se crea una instancia de `HttpClient` utilizando el método estático `newHttpClient()`. en YOUR-API-KEY se utiliza la llave solicitada:*
 ```java
 // Método para realizar la conversión
      public RegistroConversion convertir(String codMonOrigen, String codMonDestino, int monto) {
@@ -162,9 +159,11 @@ Se utilizo la clase HttpClient para realizar solicitudes a la API de tasas de ca
 [![Static Badge](https://img.shields.io/badge/Consumo_de_la_API-%23009929?style=flat)](#)
 [![Static Badge](https://img.shields.io/badge/Http-Request-%23f7a40c?style=flat)](#)
 
-Uso de la clase HttpRequest para configurar y personalizar nuestras solicitudes a la API de tasas de cambio. La clase HttpRequest en Java nos brinda un control detallado sobre los parámetros de nuestras solicitudes.
+El uso de la instancia HttpRequest para configurar y personalizar nuestras solicitudes a la API de tasas de cambio. La instancia HttpRequest en Java nos brinda un control detallado sobre los parámetros de nuestras solicitudes.
 
-*Fragmento de codigo utilizado en la Class Conversion.java:*
+`HttpRequest` representa una solicitud HTTP y se utiliza para construir la solicitud HTTP que se enviará al servidor.
+
+*En este fragmento de código, de la Class ""Conversion", se crea una instancia de `HttpRequest` utilizando el método `newBuilder()` de la clase `HttpRequest`, al cual se le pasa la URI del recurso solicitado.*
 ```java
  public RegistroConversion convertir(String codMonOrigen, String codMonDestino, int monto) {
        // Resto del código omitido...
@@ -186,11 +185,15 @@ Uso de la clase HttpRequest para configurar y personalizar nuestras solicitudes 
 [![Static Badge](https://img.shields.io/badge/Consumo_de_la_API-%23009929?style=flat)](#)
 [![Static Badge](https://img.shields.io/badge/Http-Response-green?style=flat)](#)
 
-En esta parte se solicito el uso de la interfaz HttpResponse para gestionar las respuestas recibidas de la API. La interfaz HttpResponse en Java ofrece una estructura que permite acceder y analizar los diferentes elementos de una respuesta HTTP. Al entender cómo trabajar con esta interfaz, podrás extraer información significativa de las respuestas, como códigos de estado, encabezados y el cuerpo de la respuesta, que normalmente se presenta en formato JSON.
+En esta parte se solicito el uso de la interfaz HttpResponse para gestionar las respuestas recibidas de la API. 
+
+- `HttpResponse` representa una respuesta HTTP recibida después de enviar una solicitud HTTP al servidor.
+- Se utiliza para leer la respuesta del servidor, incluyendo el código de estado, encabezados y el cuerpo de la respuesta.
+
 
 &nbsp;
 
-*Fragmento de codigo donde se crea la variable para almacenar la respuesta de la solicitud. Enviar la solicitud HTTP y recibir la respuesta:*
+*En este código, se declara una instancia de `HttpResponse<String>`, donde `<String>` especifica el tipo de cuerpo esperado en la respuesta, en este caso, una cadena de texto.*
 ```java
  public RegistroConversion convertir(String codMonOrigen, String codMonDestino, int monto) {
        // Resto del código omitido...
@@ -239,6 +242,22 @@ En esta parte de  nuestro Challenge se nos solicito el análisis de la respuesta
 
 &nbsp;
 
+Como ya habiamos identificado los campos de la API,  __`base_code`, `target_code`, `conversion_rate`__, y __`conversion_result`__ podemos interactuar con la API Exchange Rate y obtener esos datos para nuestro conversor.
+
+&nbsp;
+*En esta captura de pantalla se muestra la interacción con el software Postman.*
+![ ![Screenshot interactuando y probando los key con la aplicacion Postman]](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/ExchangePostman.png) 
+
+&nbsp;
+
+y observamos los key que nos sirven para nuestro proyecto: 
+```java
+  "base_code": "USD" (MONEDA ORIGEN)
+  "target_code": "COP" (MONEDA DESTINO)
+  "conversion_rate": 3906.1426, (TASA DE CONVERSION) a esa fecha.
+  "conversion_result": 3906142.6 (RESULTADO DE LA CONVERSION)
+```
+
 ### 8. Filtrando las monedas
 [![Static Badge](https://img.shields.io/badge/IDE-IntelliJ_IDEA-%23ff0534?style=flat&logo=IntelliJ%20IDEA&logoColor=%232196f3)](https://www.jetbrains.com/es-es/idea/) 
 [![Static Badge](https://img.shields.io/badge/Language-Java-%23ff0000?style=flat)](#)
@@ -248,7 +267,9 @@ En esta parte de  nuestro Challenge se nos solicito el análisis de la respuesta
 [![Static Badge](https://img.shields.io/badge/Postman-gray?style=flat&logo=Postman&logoColor=orange)](https://www.postman.com/)
 
 En la octava fase de nuestro Challenge, nos pidieron el proceso de filtrar las monedas utilizando la biblioteca Gson en Java.
-Para acceder a datos específicos, como los valores de las diferentes monedas, es esencial comprender cómo navegar por la estructura JSON de la respuesta de la API. En el desafio se nos solicito utilizar estos codigos de monedas  a convertir:
+Para acceder a datos específicos, como los valores de las diferentes monedas, es esencial comprender cómo navegar por la estructura JSON de la respuesta de la API. 
+
+Para el filtrado de monedas, será necesario utilizar el atributo "Currency Code" del JSON. Para el desafío, nos dieron a elegir al menos tres "Currency Code" para incluir en la aplicación. Estos códigos son:
 
 1.	ARS - Peso argentino
 2.	BOB - Boliviano boliviano
@@ -258,51 +279,65 @@ Para acceder a datos específicos, como los valores de las diferentes monedas, e
 6.	USD - Dólar estadounidense
 
   Como ya tenemos los campos identificados __`base_code`, `target_code`, `conversion_rate`__, y __`conversion_result`__  ahora podemos interactuar con la API Exchange Rate y obtener esos datos para nuestro conversor.
+En este proyecto se utilizaron 4 codigos iniciales:
 
-*Fragmento de codigo utilizado en la Class MenuHandler.java:*
-```java
- // Resto del código omitido...
- public class MenuHandler {
-    // Método para mostrar el menú de opciones
-    public static void mostrarMenu() {
-        System.out.println("************************************************************");
-        System.out.println("""
-                1- Convertir de USD (dólar) a ARS (peso argentino).
-                2- Convertir de ARS (peso argentino) a USD (dólar).
-                3- Convertir de USD (dólar) a BOB (peso boliviano).
-                4- Convertir de BOB (peso boliviano) a USD (dólar).
-                5- Convertir de USD (dólar) a COP (peso colombiano).
-                6- Convertir de COP (peso colombiano) a USD (dólar).
-                7- Elegir otras monedas para convertir.
-                8- Salir
-                Elija una opción:
-                """);
-    }
+1.	COP - Peso colombiano
+2.	USD - Dólar estadounidense
+3.	BRL - Real brasileño
+4.	ARS - Peso argentino
 
-   // Método para ejecutar la opción seleccionada por el usuario
-    public static void ejecutarOpcion(int opcion, Conversion c, Scanner lectura) {
-        switch (opcion) {
-            case 1:
-                convertirMoneda("USD", "ARS", c, lectura); // Convertir de USD a ARS
-                break;
-            case 2:
- // Resto del código omitido...
-            case 8:
-                System.out.println("Gracias por utilizar el convertidor de monedas"); // Mensaje de despedida
-                System.exit(0); // Finaliza el programa
-            default:
-                System.out.println("Opción digitada inválida. Por favor, seleccione una opción válida del menú."); 
-        }
-    }
 
-// Método privado para realizar la conversión de moneda
-    private static void convertirMoneda(String monedaBase, String monedaDestino, Conversion c, Scanner lectura) {
-        System.out.println("Ingrese el monto a convertir:"); // Solicita al usuario ingresar el monto a convertir
-        int monto = lectura.nextInt(); // Lee el monto ingresado por el usuario
-        RegistroConversion registro = c.convertir(monedaBase, monedaDestino, monto); // Realiza la conversión
-        mostrarResultado(registro, monedaBase, monedaDestino);
-    }
-        // Resto del código omitido...
+  
+
+*(https://v6.exchangerate-api.com/v6/YOUR-API-KEY/pair//USD/COP/100000):*
+```
+{
+    "result": "success",
+    "documentation": "https://www.exchangerate-api.com/docs",
+    "terms_of_use": "https://www.exchangerate-api.com/terms",
+    "time_last_update_unix": 1713744001,
+    "time_last_update_utc": "Mon, 22 Apr 2024 00:00:01 +0000",
+    "time_next_update_unix": 1713830401,
+    "time_next_update_utc": "Tue, 23 Apr 2024 00:00:01 +0000",
+    "base_code": "USD",
+    "target_code": "COP",
+    "conversion_rate": 3913.8964,
+    "conversion_result": 391389640
+}
+```
+
+*(https://v6.exchangerate-api.com/v6/YOUR-API-KEY/pair//BRL/COP/100000):*
+```
+{
+    "result": "success",
+    "documentation": "https://www.exchangerate-api.com/docs",
+    "terms_of_use": "https://www.exchangerate-api.com/terms",
+    "time_last_update_unix": 1713744001,
+    "time_last_update_utc": "Mon, 22 Apr 2024 00:00:01 +0000",
+    "time_next_update_unix": 1713830401,
+    "time_next_update_utc": "Tue, 23 Apr 2024 00:00:01 +0000",
+    "base_code": "BRL",
+    "target_code": "COP",
+    "conversion_rate": 747.1028,
+    "conversion_result": 74710280
+}
+```
+
+*https://v6.exchangerate-api.com/v6/YOUR-API-KEY/pair//ARS/COP/100000*
+{
+    "result": "success",
+    "documentation": "https://www.exchangerate-api.com/docs",
+    "terms_of_use": "https://www.exchangerate-api.com/terms",
+    "time_last_update_unix": 1713744001,
+    "time_last_update_utc": "Mon, 22 Apr 2024 00:00:01 +0000",
+    "time_next_update_unix": 1713830401,
+    "time_next_update_utc": "Tue, 23 Apr 2024 00:00:01 +0000",
+    "base_code": "ARS",
+    "target_code": "COP",
+    "conversion_rate": 4.5260,
+    "conversion_result": 452600
+}
+ 
 ```
 
 &nbsp;
