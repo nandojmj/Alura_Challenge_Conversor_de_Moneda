@@ -689,7 +689,7 @@ public class MenuHandler {
 &nbsp;
 &nbsp;
 
-### 11. **Hacer un README:**
+### 11. **Hacer un README:** [![Static Badge](https://img.shields.io/badge/status-OK-gree)](#)
 Uno de los pasos más importantes al participar en una selección de trabajo es resolver un desafío propuesto por la empresa con la información de la resolución, y generalmente esto debe estar en el README. ¿Y qué es el README? Es un archivo con extensión .md y es un documento con la descripción del proyecto. 
 Este mismo archivo que se esta leyendo fue el resultado del README para el Challenge.
 
@@ -698,10 +698,10 @@ Este mismo archivo que se esta leyendo fue el resultado del README para el Chall
 
 Se nos propueso nn caso que quiecieramos desafiarnos aún más y proporcionar a los usuarios una experiencia más rica y personalizada, hay diversas funcionalidades interesantes que puedes explorar:
 
-#### 12.1  Historial de Conversiones: 
+#### 12.1  Historial de Conversiones: [![Static Badge](https://img.shields.io/badge/status-OK-gree)](#)
 Agregar la capacidad de rastrear y mostrar el historial de las últimas conversiones realizadas, brindando a los usuarios una visión completa de sus actividades.
 
-####  Registro de Historial en Archivo JSON
+####  Registro de Historial en Archivo JSON 
 
 En la clase `Conversion`, se mantiene un registro de todas las conversiones realizadas en un archivo JSON llamado "registros_data_time.json". Aquí está cómo se realiza:
 
@@ -717,7 +717,8 @@ En la clase `Conversion`, se mantiene un registro de todas las conversiones real
     }
     ```
 
-2. **Actualización del Historial**:
+2. **Actualización del Historial**: 
+
    Se agrega el nuevo registro de conversión al final del historial existente.
 
     ```java
@@ -768,7 +769,7 @@ Registro en el archivo `registros_data_time.json`:
 ```
 
 
-#### 12.2  Soporte para Más Monedas: 
+#### 12.2  Soporte para Más Monedas: [![Static Badge](https://img.shields.io/badge/status-OK-gree)](#)
 Se amplía la lista de monedas disponibles para la elección, permitiendo a los usuarios convertir entre una variedad aún mayor de opciones monetarias.La API admite las 161 monedas mundiales que circulan habitualmente. Estos cubren el 99% de todos los estados y territorios reconocidos por la ONU.
 
 ***Fragmento de codigo utilizado en la Class `MenuHandler.java` para seleccionar otras monedas que se desea convertir. En el menu principal la opcion 7 nos lleva a `7-Elegir otro tipo de monedas a convertir: donde nos mostra 100 codigos currency con sus respectivos paises` cumpliendo con la opcion adicional del challenge de Soporte para Más Monedas ***
@@ -826,9 +827,11 @@ Se amplía la lista de monedas disponibles para la elección, permitiendo a los 
 // Resto del código omitido...
 ```
 
+
+
 &nbsp;
 
-#### 12.3  Registros con Marca de Tiempo: 
+#### 12.3  Registros con Marca de Tiempo: [![Static Badge](https://img.shields.io/badge/status-OK-gree)](#)
 
 Se creo la clase `LocalDateTimeAdapter`, para cumplir con este adicional del desafio.
 
@@ -901,7 +904,7 @@ public class LocalDateTimeAdapter implements JsonSerializer<LocalDateTime>, Json
   }
 ```
             
-### Ejecución del Proyecto
+### 14. Ejecución del Proyecto
 Para ejecutar el proyecto, sigue estos pasos:
 
 * Clona o descarga desde Github el repositorio en tu disco local.
@@ -909,12 +912,12 @@ Para ejecutar el proyecto, sigue estos pasos:
 * Configura las dependencias y ajusta la configuración según sea necesario.
 * Corre la aplicacion para interactuar con consola.
 
-
+### 15. VIDEO DE LA EJECUCION
+[![Static Badge](https://img.shields.io/badge/status-under%20construction-%2393a8ac)](#)
 
 ## Documentation
-
-En Contruccion
+[![Static Badge](https://img.shields.io/badge/status-under%20construction-%2393a8ac)](#)
 
 ## Glossary
 
-En Contruccion
+[![Static Badge](https://img.shields.io/badge/status-under%20construction-%2393a8ac)](#)
