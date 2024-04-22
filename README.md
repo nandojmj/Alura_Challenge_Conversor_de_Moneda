@@ -911,62 +911,10 @@ Para ejecutar el proyecto, sigue estos pasos:
 
 
 
-> [!IMPORTANT]
-> Recordar utilizar la biblioteca Gson. Para descargar la biblioteca Gson, debemos ir a Maven Repository en Google. Buscamos Gson y seleccionamos la primera opción. La version descargada para este challenge es la 2.10.1.  [MVN Repository Gson](https://mvnrepository.com/artifact/com.google.code.gson/gson)
-
-
 ## Documentation
 
-Documentation is available on the [Open MCT website](https://nasa.github.io/openmct/documentation/).
+En Contruccion
 
-# Glossary
+## Glossary
 
-Certain terms are used throughout Open MCT with consistent meanings
-or conventions. Any deviations from the below are issues and should be
-addressed (either by updating this glossary or changing code to reflect
-correct usage.) Other developer documentation, particularly in-line
-documentation, may presume an understanding of these terms.
-
-* _plugin_: A plugin is a removable, reusable grouping of software elements.
-  The application is composed of plugins.
-* _composition_: In the context of a domain object, this refers to the set of
-  other domain objects that compose or are contained by that object. A domain
-  object's composition is the set of domain objects that should appear
-  immediately beneath it in a tree hierarchy. A domain object's composition is
-  described in its model as an array of id's; its composition capability
-  provides a means to retrieve the actual domain object instances associated
-  with these identifiers asynchronously.
-* _description_: When used as an object property, this refers to the human-readable
-  description of a thing; usually a single sentence or short paragraph.
-  (Most often used in the context of extensions, domain
-  object models, or other similar application-specific objects.)
-* _domain object_: A meaningful object to the user; a distinct thing in
-  the work support by Open MCT. Anything that appears in the left-hand
-  tree is a domain object.
-* _identifier_: A tuple consisting of a namespace and a key, which together uniquely
-  identifies a domain object.
-* _model_: The persistent state associated with a domain object. A domain
-  object's model is a JavaScript object which can be converted to JSON
-  without losing information (that is, it contains no methods.)
-* _name_: When used as an object property, this refers to the human-readable
-  name for a thing. (Most often used in the context of extensions, domain
-  object models, or other similar application-specific objects.)
-* _navigation_: Refers to the current state of the application with respect
-  to the user's expressed interest in a specific domain object; e.g. when
-  a user clicks on a domain object in the tree, they are _navigating_ to
-  it, and it is thereafter considered the _navigated_ object (until the
-  user makes another such choice.)
-* _namespace_: A name used to identify a persistence store. A running open MCT 
-application could potentially use multiple persistence stores, with the
-## Instalación.
-Clona el repositorio o descarga los archivos del proyecto. Importa el proyecto en tu entorno de desarrollo Java preferido. Compila y ejecuta la aplicación.
-## Contribuciones.
-Este proyecto se desarrolló como parte del curso impartido por Alura Latam y auspiciado por Oracle en su plan de desarrollo Next Education. permitiendo visualizar el avance del participante demostrando sus habilidades y conocimiento adquirido en el area de programacion POO, y el uso del lenguaje JAVA.
-
-
-| Repository | Description |
-| --- | --- |
-
-| [Open MCT YAMCS Plugin](https://github.com/akhenry/openmct-yamcs) | Plugin for integrating YAMCS telemetry and command server with Open MCT. |
-| [openmct-performance](https://github.com/unlikelyzero/openmct-performance) | Resources for performance testing Open MCT. |
-| [openmct-as-a-dependency](https://github.com/unlikelyzero/openmct-as-a-dependency) | An advanced guide for users on how to build, develop, and test Open MCT when it's used as a dependency. |
+En Contruccion
