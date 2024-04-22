@@ -103,13 +103,13 @@ public class Conversion {
      */
     public RegistroConversion convertir(String codMonOrigen, String codMonDestino, int monto) {
         // Construir la URI para la solicitud a la API
-        URI direccion = URI.create("https://v6.exchangerate-api.com/v6/d50362c2646d99e082d99a42/pair/"
+        URI direccion_API = URI.create("https://v6.exchangerate-api.com/v6/d50362c2646d99e082d99a42/pair/"
                 + codMonOrigen + "/" + codMonDestino + "/" + monto);
 
         // Crear cliente y solicitud HTTP
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(direccion)
+                .uri(direccion_API)
                 .build();
         HttpResponse<String> response = null;
 
