@@ -389,10 +389,6 @@ System.out.println("La conversión se realizó con éxito. El resultado es: " + 
 
 ```
 
-
-
-
-
 *Fragmento de codigo utilizado en la clase `Conversion`:*
 ```java
 
@@ -507,7 +503,7 @@ public class ConversionResponse {
 ```
 &nbsp;
 
-### RegistroConversion
+### Clase RegistroConversion
 
 La clase `RegistroConversion` se utiliza para representar un registro de conversión, que incluye los detalles de la conversión realizada y la marca de tiempo en la que se realizó. Aquí está un resumen de su propósito y uso:
 
@@ -620,50 +616,52 @@ Al final, el programa mostrará el valor convertido según la elección del usua
 ```java
  // Resto del código omitido...
 
-// Método para ejecutar la opción seleccionada por el usuario
-    public class MenuHandler {
+public class MenuHandler {
     // Método para mostrar el menú de opciones
     public static void mostrarMenu() {
-        System.out.println("\n**************************");
+        System.out.println("************************************************************");
         System.out.println("""
-                1-Convertir de USD (dólar) a ARS (peso Argentino).
-                2-Convertir de ARS (peso Argentino) a USD (dólar).
-                3-Convertir de USD (dólar) a BOB (peso Boliviano).
-                4-Convertir de BOB (peso Boliviano) a USD (dólar).
-                5-Convertir de USD (dólar) => a COP (peso Colombiano).
-                6-Convertir de COP (peso Colombiano) => a USD (dólar).
-                7-Elegir las monedas que desea convertir.
-                8-Salir
-                Elija una opción: """);
+                1- Convertir de COP (peso colombiano) a USD (dólar).
+                2- Convertir de USD (dólar) a COP (peso colombiano).
+                3- Convertir de BRL (real brasileño) a USD (dólar).
+                4- Convertir de USD (dólar) a BRL (real brasileño).
+                5- Convertir de ARS (peso argentino) a USD (dólar).
+                6- Convertir de USD (dólar) a ARS (peso argentino).
+                7- Elegir otras monedas para convertir.
+                8- Salir
+                Elija una opción:""");
     }
 
     // Método para ejecutar la opción seleccionada por el usuario
-    public static void ejecutarOpcion(int opcion) {
-        Conversion c = new Conversion(); // Instancia de la clase Conversion para realizar conversiones
-        Scanner lectura = new Scanner(System.in); // Objeto Scanner para leer la entrada del usuario
-
+    public static void ejecutarOpcion(int opcion, Conversion conversion, Scanner lectura) {
         switch (opcion) {
             case 1:
-                convertirMoneda("USD", "ARS", c, lectura); // Convertir de USD a ARS
+                convertirMoneda("COP", "USD", conversion, lectura); // Convertir de COP a USD
+                break;
+             case 2:
+                convertirMoneda("USD", "COP", conversion, lectura); // Convertir de USD a COP
+                break;
+            case 3:
+                convertirMoneda("BRL", "USD", conversion, lectura); // Convertir de BRL a USD
                 break;
 
              // Resto del código omitido...
 
-            case 8:
-                System.out.println("Gracias por utilizar el convertidor de monedas"); // Mensaje de despedida
+             case 8:
+                System.out.println("¡Gracias por usar el convertidor! ¡Hasta luego!"); // Mensaje de despedida
                 System.exit(0); // Finaliza el programa
             default:
-                System.out.println("Opción digitada inválida. Por favor, seleccione una opción válida del menú."); // Mensaje de opción inválida
+                System.out.println("Opción inválida. Por favor, seleccione una opción válida del menú."); // Mensaje de opción inválida
+                break;
         }
     }
-
-        // Resto del código omitido...
+            // Resto del código omitido...
 ```
 
 
 
 
-## **ADICIONALES:**
+### 11. **ADICIONALES:**
 
 A.	Hacer un README
 Uno de los pasos más importantes al participar en una selección de trabajo es resolver un desafío propuesto por la empresa con la información de la resolución, y generalmente esto debe estar en el README. ¿Y qué es el README? Es un archivo con extensión .md y es un documento con la descripción del proyecto. Este mismo archivo que se esta leyendo fue el resultado.
