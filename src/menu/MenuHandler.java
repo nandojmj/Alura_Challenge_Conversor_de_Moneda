@@ -3,7 +3,6 @@ package menu;
 import conversion.Conversion;
 import conversion.RegistroConversion;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class MenuHandler {
@@ -19,33 +18,33 @@ public class MenuHandler {
                 6- Convertir de COP (peso colombiano) a USD (dólar).
                 7- Elegir otras monedas para convertir.
                 8- Salir
-                Elija una opción: """);
-
+                Elija una opción:
+                """);
     }
 
     // Método para ejecutar la opción seleccionada por el usuario
-    public static void ejecutarOpcion(int opcion, Conversion c, Scanner lectura) {
+    public static void ejecutarOpcion(int opcion, Conversion conversion, Scanner lectura) {
         switch (opcion) {
             case 1:
-                convertirMoneda("USD", "ARS", c, lectura); // Convertir de USD a ARS
+                convertirMoneda("USD", "ARS", conversion, lectura); // Convertir de USD a ARS
                 break;
             case 2:
-                convertirMoneda("ARS", "USD", c, lectura); // Convertir de ARS a USD
+                convertirMoneda("ARS", "USD", conversion, lectura); // Convertir de ARS a USD
                 break;
             case 3:
-                convertirMoneda("USD", "BOB", c, lectura); // Convertir de USD a BOB
+                convertirMoneda("USD", "BOB", conversion, lectura); // Convertir de USD a BOB
                 break;
             case 4:
-                convertirMoneda("BOB", "USD", c, lectura); // Convertir de BOB a USD
+                convertirMoneda("BOB", "USD", conversion, lectura); // Convertir de BOB a USD
                 break;
             case 5:
-                convertirMoneda("USD", "COP", c, lectura); // Convertir de USD a COP
+                convertirMoneda("USD", "COP", conversion, lectura); // Convertir de USD a COP
                 break;
             case 6:
-                convertirMoneda("COP", "USD", c, lectura); // Convertir de COP a USD
+                convertirMoneda("COP", "USD", conversion, lectura); // Convertir de COP a USD
                 break;
             case 7:
-                elegirOtrasMonedas(c, lectura); // Llama al método para elegir otras monedas a convertir
+                elegirOtrasMonedas(conversion, lectura); // Llama al método para elegir otras monedas a convertir
                 break;
             case 8:
                 System.out.println("¡Gracias por usar el convertidor! ¡Hasta luego!"); // Mensaje de despedida
@@ -59,13 +58,14 @@ public class MenuHandler {
     // Método privado para realizar la conversión de moneda
     private static void convertirMoneda(String monedaBase, String monedaDestino, Conversion c, Scanner lectura) {
         System.out.println("Ingrese el monto a convertir:"); // Solicita al usuario ingresar el monto a convertir
-        int monto = lectura.nextInt(); // Lee el monto ingresado por el usuario
-        RegistroConversion registro = c.convertir(monedaBase, monedaDestino, monto); // Realiza la conversión
+        double monto = lectura.nextDouble(); // Lee el monto ingresado por el usuario
+        int montoEntero = (int) monto; // Convertir el monto a entero
+        RegistroConversion registro = c.convertir(monedaBase, monedaDestino, montoEntero); // Realiza la conversión
         mostrarResultado(registro, monedaBase, monedaDestino);
     }
 
     // Método para elegir otras monedas a convertir
-    private static void elegirOtrasMonedas(Conversion c, Scanner lectura) {
+    private static void elegirOtrasMonedas(Conversion conversion, Scanner lectura) {
         try {
             System.out.println("""
             Esta lista contiene los códigos de moneda y sus respectivos países para facilitar la conversión de moneda:
@@ -95,47 +95,42 @@ public class MenuHandler {
             | 67. **KYD**: Cayman Islands            | 68. **KZT**: Kazakhstan           | 69. **LAK**: Laos
             | 70. **LBP**: Lebanon                   | 71. **LKR**: Sri Lanka            | 72. **LRD**: Liberia
             | 73. **LSL**: Lesotho                   | 74. **LYD**: Libya                | 75. **MAD**: Morocco
-            | 76. **MDL**: Moldova                   | 77. **MGA**: Madagascar           | 78. **MKD**: North Macedonia
+            | 76. **MDL**: Moldova                   | 77. **MGA**: Madagascar           | 78. **MKD**: Macedonia
             | 79. **MMK**: Myanmar                   | 80. **MNT**: Mongolia             | 81. **MOP**: Macau
-            | 82. **MUR**: Mauritius                 | 83. **MVR**: Maldives             | 84. **MWK**: Malawi
-            | 85. **MXN**: Mexico                    | 86. **MYR**: Malaysia             | 87. **MZN**: Mozambique
-            | 88. **NAD**: Namibia                   | 89. **NGN**: Nigeria              | 90. **NIO**: Nicaragua
-            | 91. **NOK**: Norway                    | 92. **NPR**: Nepal                | 93. **NZD**: New Zealand
-            | 94. **OMR**: Oman                      | 95. **PAB**: Panama               | 96. **PEN**: Peru
-            | 97. **PGK**: Papua New Guinea          | 98. **PHP**: Philippines          | 99. **PKR**: Pakistan
-            | 100. **PLN**: Poland
-            Selecciona la moneda que desea convertir mediante su código (3 letras).
-            """);
-
-            System.out.println("Ingrese el código de la moneda base a convertir:");
-            String monedaBase = lectura.next().toUpperCase(); // Convertir a mayúsculas
-
-            System.out.println("Ingrese el código de la moneda destino:");
-            String monedaDestino = lectura.next().toUpperCase(); // Convertir a mayúsculas
-
-            // Verificar si la moneda base y destino son cadenas de letras
-            if (!monedaBase.matches("[A-Z]+") || !monedaDestino.matches("[A-Z]+")) {
-                System.out.println("Los códigos de moneda deben ser cadenas de letras en mayúsculas.");
-                return;
-            }
-
-            System.out.println("Ingrese la cantidad de monedad a convertir:");
-            // Verificar si el cantidad ingresada es un número entero
-            if (!lectura.hasNextInt()) {
-                System.out.println("La cantidad de moneda a convertir debe ser un número entero.");
-                return;
-            }
-            int monto = lectura.nextInt();
-
-            RegistroConversion registro = c.convertir(monedaBase, monedaDestino, monto);
-            mostrarResultado(registro, monedaBase, monedaDestino);
-        } catch (RuntimeException e) {
-            System.out.println("Error al conectar con el servicio de tasas de cambio. Verifica tu conexión a Internet.");
+            | 82. **MRU**: Mauritania                | 83. **MUR**: Mauritius            | 84. **MVR**: Maldives
+            | 85. **MWK**: Malawi                    | 86. **MXN**: Mexico               | 87. **MYR**: Malaysia
+            | 88. **MZN**: Mozambique                | 89. **NAD**: Namibia              | 90. **NGN**: Nigeria
+            | 91. **NIO**: Nicaragua                 | 92. **NOK**: Norway               | 93. **NPR**: Nepal
+            | 94. **NZD**: New Zealand               | 95. **OMR**: Oman                 | 96. **PAB**: Panama
+            | 97. **PEN**: Peru                      | 98. **PGK**: Papua New Guinea     | 99. **PHP**: Philippines
+            | 100. **PKR**: Pakistan                 | 101. **PLN**: Poland              | 102. **PYG**: Paraguay
+            | 103. **QAR**: Qatar                    | 104. **RON**: Romania             | 105. **RSD**: Serbia
+            | 106. **RUB**: Russia                   | 107. **RWF**: Rwanda              | 108. **SAR**: Saudi Arabia
+            | 109. **SBD**: Solomon Islands          | 110. **SCR**: Seychelles          | 111. **SDG**: Sudan
+            | 112. **SEK**: Sweden                   | 113. **SGD**: Singapore           | 114. **SHP**: Saint Helena
+            | 115. **SLL**: Sierra Leone             | 116. **SOS**: Somalia             | 117. **SRD**: Suriname
+            | 118. **SSP**: South Sudan              | 119. **STN**: São Tomé and Príncipe| 120. **SYP**: Syria
+            | 121. **SZL**: Eswatini                 | 122. **THB**: Thailand            | 123. **TJS**: Tajikistan
+            | 124. **TMT**: Turkmenistan             | 125. **TND**: Tunisia             | 126. **TOP**: Tonga
+            | 127. **TRY**: Turkey                   | 128. **TTD**: Trinidad and Tobago | 129. **TWD**: Taiwan
+            | 130. **TZS**: Tanzania                 | 131. **UAH**: Ukraine             | 132. **UGX**: Uganda
+            | 133. **UYU**: Uruguay                  | 134. **UZS**: Uzbekistan          | 135. **VES**: Venezuela
+            | 136. **VND**: Vietnam                  | 137. **VUV**: Vanuatu             | 138. **WST**: Samoa
+            | 139. **XAF**: CFA franc BEAC           | 140. **XCD**: East Caribbean dollar| 141. **XDR**: Special Drawing Rights
+            | 142. **XOF**: CFA franc BCEAO          | 143. **XPF**: CFP franc           | 144. **YER**: Yemen
+            | 145. **ZAR**: South Africa             | 146. **ZMW**: Zambia              | 147. **ZWL**: Zimbabwe
+        
+            Ingrese el código de moneda base:""");
+            String monedaBase = lectura.next().toUpperCase(); // Lee el código de moneda base ingresado por el usuario
+            System.out.println("Ingrese el código de moneda destino:");
+            String monedaDestino = lectura.next().toUpperCase(); // Lee el código de moneda destino ingresado por el usuario
+            convertirMoneda(monedaBase, monedaDestino, conversion, lectura); // Realiza la conversión
+        } catch (Exception e) {
+            System.out.println("Error: Ingrese un código de moneda válido.");
         }
     }
 
 
-    // Método privado para mostrar el resultado de la conversión
     // Método privado para mostrar el resultado de la conversión
     private static void mostrarResultado(RegistroConversion registro, String monedaBase, String monedaDestino) {
         if (registro != null) {
@@ -167,5 +162,4 @@ public class MenuHandler {
             System.out.println("Ha ocurrido un error al convertir la moneda.");
         }
     }
-
 }
