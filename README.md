@@ -73,7 +73,7 @@ https://v6.exchangerate-api.com/v6/YOUR-API-KEY/pair//USD/COP/1000
 al realizar la consulta  en la API nos arroja lo siguiente:
 ```java
 // 20240421181021
-// https://v6.exchangerate-api.com/v6/d50362c2646d99e082d99a42/pair//USD/COP/1000
+// https://v6.exchangerate-api.com/v6/YOUR-API-KEY/pair//USD/COP/1000
 {
   "result": "success",
   "documentation": "https://www.exchangerate-api.com/docs",
@@ -95,9 +95,13 @@ y observamos los key que nos sirven para nuestro proyecto:
   "conversion_rate": 3906.1426, (TASA DE CONVERSION) a esa fecha.
   "conversion_result": 3906142.6 (RESULTADO DE LA CONVERSION)
 ```
-Asi que identificamos que con los campos "base_code", "target_code", "conversion_rate", y "conversion_result" podemos interactuar con la API Exchange Rate y obtener esos datos para nuestro conversor.
+Asi que identificamos que con los campos __`base_code`, `target_code`, `conversion_rate`__, y __`conversion_result`__ podemos interactuar con la API Exchange Rate y obtener esos datos para nuestro conversor.
 
-![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/packageconversion.JPG) 
+&nbsp;
+*En esta captura de pantalla se muestra la interacción con el software Postman.*
+![ ![Screenshot interactuando y probando los key con la aplicacion Postman]](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/ExchangePostman.png) 
+
+&nbsp;
 
 ### 3. Importando la biblioteca Gson en IntelliJ IDEA  
 [![Static Badge](https://img.shields.io/badge/IDE-IntelliJ_IDEA-%23ff0534?style=flat&logo=IntelliJ%20IDEA&logoColor=%232196f3)](https://www.jetbrains.com/es-es/idea/) 
@@ -119,6 +123,10 @@ Para importar la biblioteca Gson en IntelliJ, sigue estos pasos:
 > Para descargar la biblioteca Gson, debemos ir a Maven Repository en Google. Buscamos Gson y seleccionamos la primera opción. La version descargada para este challenge es la 2.10.1.  [MVN Repository Gson](https://mvnrepository.com/artifact/com.google.code.gson/gson)
 
 &nbsp;
+*En esta captura de pantalla se muestra la interacción con el software Postman.*
+![ ![Screenshot interactuando y probando los key con la aplicacion Postman]](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/ExchangePostman.png)
+
+&nbsp;
 
 ### 4. Construyendo el Cliente para Solicitudes (HttpClient)  
 [![Static Badge](https://img.shields.io/badge/IDE-IntelliJ_IDEA-%23ff0534?style=flat&logo=IntelliJ%20IDEA&logoColor=%232196f3)](https://www.jetbrains.com/es-es/idea/) 
@@ -126,27 +134,25 @@ Para importar la biblioteca Gson en IntelliJ, sigue estos pasos:
 [![Static Badge](https://img.shields.io/badge/Consumo_de_la_API-%23009929?style=flat)](#)
 [![Static Badge](https://img.shields.io/badge/Http-Client-%23ff1a00?style=flat)](#)
 
-
 Se utilizo la clase HttpClient para realizar solicitudes a la API de tasas de cambio y obtener datos esenciales. El uso de HttpClient en Java facilita la conexión y la obtención de respuestas de manera eficiente.
 
 > [!NOTE]
 >  Es necesario obtener su clave API para agregarla al codigo:  
 > [Exchange Rate API](https://www.exchangerate-api.com/)
 > [Documentacion Exchange Rate API Java ](https://www.exchangerate-api.com/docs/java-currency-api)
+&nbsp;
 
-***Fragmento de codigo ejemplo utilizado en la Class ""Conversion.java", en YOUR-API-KEY se utiliza la llave solicitada:***
+*Fragmento de codigo ejemplo utilizado en la Class ""Conversion.java", en YOUR-API-KEY se utiliza la llave solicitada:*
 ```java
 // Método para realizar la conversión
-    public RegistroConversion convertir(String codMonOrigen, String codMonDestino, int monto) {
-        // Realizar la conversión
-        URI direccion = URI.create("https://v6.exchangerate-api.com/v6/d50362c2646d99e082d99a42/pair/"
+     public RegistroConversion convertir(String codMonOrigen, String codMonDestino, int monto) {
+        // Construir la URI para la solicitud a la API
+        URI direccion_API = URI.create("https://v6.exchangerate-api.com/v6/YOUR-API-KEY/pair/"
                 + codMonOrigen + "/" + codMonDestino + "/" + monto);
-        // Crear un cliente HTTP
+        // Crear cliente y solicitud HTTP
         HttpClient client = HttpClient.newHttpClient();
-
          // Resto del código omitido...
 ```
-
 &nbsp;
 
 ### 5. Construyendo la Solicitud (HttpRequest)
@@ -158,25 +164,17 @@ Se utilizo la clase HttpClient para realizar solicitudes a la API de tasas de ca
 
 Uso de la clase HttpRequest para configurar y personalizar nuestras solicitudes a la API de tasas de cambio. La clase HttpRequest en Java nos brinda un control detallado sobre los parámetros de nuestras solicitudes.
 
-> [!NOTE]
->  Es necesario obtener su clave API para agragarla al codigo: 
-> [Exchange Rate API](https://www.exchangerate-api.com/)
-> [Documentacion Exchange Rate API Java ](https://www.exchangerate-api.com/docs/java-currency-api)
-
-***Fragmento de codigo utilizado en la Class Conversion.java:***
+*Fragmento de codigo utilizado en la Class Conversion.java:*
 ```java
  public RegistroConversion convertir(String codMonOrigen, String codMonDestino, int monto) {
        // Resto del código omitido...
 
-        // Crear un cliente HTTP
+           // Crear cliente y solicitud HTTP
         HttpClient client = HttpClient.newHttpClient();
-
-        // Construir la solicitud HTTP
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(direccion)
+                .uri(direccion_API)
                 .build();
-
-        // Resto del código omitido...
+       // Resto del código omitido...
 ```
 
 &nbsp;
@@ -192,26 +190,19 @@ En esta parte se solicito el uso de la interfaz HttpResponse para gestionar las 
 
 &nbsp;
 
-***Fragmento de codigo utilizado en la Class Conversion.java, se  crea la variable para almacenar la respuesta de la solicitud. Enviar la solicitud HTTP y recibir la respuesta:***
+*Fragmento de codigo donde se crea la variable para almacenar la respuesta de la solicitud. Enviar la solicitud HTTP y recibir la respuesta:*
 ```java
  public RegistroConversion convertir(String codMonOrigen, String codMonDestino, int monto) {
        // Resto del código omitido...
 
          // Variable para almacenar la respuesta de la solicitud
-        HttpResponse<String> response = null;
+           HttpResponse<String> response;
         try {
-            // Enviar la solicitud HTTP y recibir la respuesta
-            response = client
-                    .send(request, HttpResponse.BodyHandlers.ofString());
+            // Realizar la solicitud HTTP
+            response = client.send(request, HttpResponse.BodyHandlers.ofString());
         } catch (IOException | InterruptedException e) {
-            // Capturar excepciones de E/S o interrupciones y lanzar una RuntimeException
             throw new RuntimeException(e);
         }
-
-       // Crear un JsonReader y configurarlo para aceptar JSON no válido
-        JsonReader reader = new JsonReader(new StringReader(response.body()));
-        reader.setLenient(true);
-
         // Resto del código omitido...
 ```
 
@@ -231,23 +222,18 @@ En esta parte de  nuestro Challenge se nos solicito el análisis de la respuesta
 > [!IMPORTANT]
 > Recordar utilizar la biblioteca Gson. Para descargar la biblioteca Gson, debemos ir a Maven Repository en Google. Buscamos Gson y seleccionamos la primera opción. La version descargada para este challenge es la 2.10.1.  [MVN Repository Gson](https://mvnrepository.com/artifact/com.google.code.gson/gson)
 
-***Fragmento de codigo utilizado en la Class Conversion.java, se  crea un JsonReader y se configura para aceptar JSON no valido:***
+*Fragmento de codigo utilizado en la Class Conversion.java, se  crea un JsonReader y se configura para aceptar JSON no valido:*
 ```java
  public RegistroConversion convertir(String codMonOrigen, String codMonDestino, int monto) {
        // Resto del código omitido...
+// Leer el JSON de la respuesta
+        try (JsonReader reader = new JsonReader(new StringReader(response.body()))) {
+            reader.setLenient(true);
 
-            // Crear un JsonReader y configurarlo para aceptar JSON no válido 
-        JsonReader reader = new JsonReader(new StringReader(response.body()));
-        reader.setLenient(true);
-
-        try {
-            // Analizar la respuesta JSON
+            // Configurar Gson para deserializar la respuesta
             Gson gson = new GsonBuilder()
                     .registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter())
                     .create();
-
-            ConversionResponse conversionResponse = gson.fromJson(reader, ConversionResponse.class);
-
         // Resto del código omitido...
 ```
 
@@ -271,78 +257,51 @@ Para acceder a datos específicos, como los valores de las diferentes monedas, e
 5.	COP - Peso colombiano
 6.	USD - Dólar estadounidense
 
-Para esto se creo una Class clase MenuHandler.java por los siguientes motivos: 
-1. Separación de responsabilidades: La clase MenuHandler se encarga específicamente de manejar la interacción con el usuario a través del menú y ejecutar las opciones seleccionadas. Esto mantiene la clase principal más enfocada en la lógica principal del programa.
-2. Facilita la reutilización y mantenimiento del código: Al separar la lógica del menú en una clase separada, se hace más fácil reutilizarla en otros contextos o modificarla sin afectar la lógica principal del programa.
-3. Mejora la legibilidad y organización del código: Dividir el código en clases más pequeñas y específicas ayuda a que sea más fácil de entender y mantener. Cada clase tiene una responsabilidad clara y se puede entender por sí sola sin necesidad de revisar todo el código.
-En resumen, separar la lógica del menú en la clase MenuHandler ayuda a mantener el código más organizado, modular y fácil de mantener, además de mejorar la legibilidad y la reutilización del código.
+  Como ya tenemos los campos identificados __`base_code`, `target_code`, `conversion_rate`__, y __`conversion_result`__  ahora podemos interactuar con la API Exchange Rate y obtener esos datos para nuestro conversor.
 
-
-
-> [!IMPORTANT]
-> Recordar utilizar la biblioteca Gson. Para descargar la biblioteca Gson, debemos ir a Maven Repository en Google. Buscamos Gson y seleccionamos la primera opción. La version descargada para este challenge es la 2.10.1.  [MVN Repository Gson](https://mvnrepository.com/artifact/com.google.code.gson/gson)
-
-***Fragmento de codigo utilizado en la Class MenuHandler.java:***
+*Fragmento de codigo utilizado en la Class MenuHandler.java:*
 ```java
- public RegistroConversion convertir(String codMonOrigen, String codMonDestino, int monto) {
-
  // Resto del código omitido...
  public class MenuHandler {
     // Método para mostrar el menú de opciones
     public static void mostrarMenu() {
-        System.out.println("\n***********************************");
+        System.out.println("************************************************************");
         System.out.println("""
-                1-Convertir de USD (dólar) a ARS (peso Argentino).
-                2-Convertir de ARS (peso Argentino) a USD (dólar).
-                3-Convertir de USD (dólar) a BOB (peso Boliviano).
-                4-Convertir de BOB (peso Boliviano) a USD (dólar).
-                5-Convertir de USD (dólar) a COP (peso Colombiano).
-                6-Convertir de COP (peso Colombiano) a USD (dólar).
-                7-Elegir otro tipo de monedas a convertir.
-                8-Salir
-                Elija una opción: """);
+                1- Convertir de USD (dólar) a ARS (peso argentino).
+                2- Convertir de ARS (peso argentino) a USD (dólar).
+                3- Convertir de USD (dólar) a BOB (peso boliviano).
+                4- Convertir de BOB (peso boliviano) a USD (dólar).
+                5- Convertir de USD (dólar) a COP (peso colombiano).
+                6- Convertir de COP (peso colombiano) a USD (dólar).
+                7- Elegir otras monedas para convertir.
+                8- Salir
+                Elija una opción:
+                """);
     }
 
-    // Método para ejecutar la opción seleccionada por el usuario
-    public static void ejecutarOpcion(int opcion) {
-        Conversion c = new Conversion(); // Instancia de la clase Conversion para realizar conversiones
-        Scanner lectura = new Scanner(System.in); // Objeto Scanner para leer la entrada del usuario
-
-        switch (opcion) {
-            case 1:
-                convertirMoneda("USD", "ARS", c, lectura); // Convertir de USD a ARS
-                break;
- // Resto del código omitido...
-
-// Método para ejecutar la opción seleccionada por el usuario
-    public static void ejecutarOpcion(int opcion) {
-        Conversion c = new Conversion(); // Instancia de la clase Conversion para realizar conversiones
-        Scanner lectura = new Scanner(System.in); // Objeto Scanner para leer la entrada del usuario
-
+   // Método para ejecutar la opción seleccionada por el usuario
+    public static void ejecutarOpcion(int opcion, Conversion c, Scanner lectura) {
         switch (opcion) {
             case 1:
                 convertirMoneda("USD", "ARS", c, lectura); // Convertir de USD a ARS
                 break;
             case 2:
-                convertirMoneda("ARS", "USD", c, lectura); // Convertir de ARS a USD
-                break;
-            case 3:
-                convertirMoneda("USD", "BOB", c, lectura); // Convertir de USD a BOB
-                break;
-            case 4:
-                convertirMoneda("BOB", "USD", c, lectura); // Convertir de BOB a USD
-                break;
-
-             // Resto del código omitido...
-
+ // Resto del código omitido...
             case 8:
                 System.out.println("Gracias por utilizar el convertidor de monedas"); // Mensaje de despedida
                 System.exit(0); // Finaliza el programa
             default:
-                System.out.println("Opción digitada inválida. Por favor, seleccione una opción válida del menú."); // Mensaje de opción inválida
+                System.out.println("Opción digitada inválida. Por favor, seleccione una opción válida del menú."); 
         }
     }
 
+// Método privado para realizar la conversión de moneda
+    private static void convertirMoneda(String monedaBase, String monedaDestino, Conversion c, Scanner lectura) {
+        System.out.println("Ingrese el monto a convertir:"); // Solicita al usuario ingresar el monto a convertir
+        int monto = lectura.nextInt(); // Lee el monto ingresado por el usuario
+        RegistroConversion registro = c.convertir(monedaBase, monedaDestino, monto); // Realiza la conversión
+        mostrarResultado(registro, monedaBase, monedaDestino);
+    }
         // Resto del código omitido...
 ```
 
@@ -354,7 +313,6 @@ En resumen, separar la lógica del menú en la clase MenuHandler ayuda a mantene
 [![Static Badge](https://img.shields.io/badge/Consumo_de_la_API-%23009929?style=flat)](#)
 [![Static Badge](https://img.shields.io/badge/Java_Library-Gson_%2F_Json-blue?style=flat&logo=json)](https://mvnrepository.com/artifact/com.google.code.gson/gson)
 [![Static Badge](https://img.shields.io/badge/API-Exchange_Rate_API-%23e90000?style=flat)](https://www.exchangerate-api.com/docs/java-currency-api)
-
 
 En esta novena fase, se nos pidio  las conversiones entre las monedas. Se crearon tres clases en el package Conversion:
 
