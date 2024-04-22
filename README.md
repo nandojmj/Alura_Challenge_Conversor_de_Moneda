@@ -533,7 +533,7 @@ La clase `RegistroConversion` se utiliza para representar un registro de convers
                la moneda de origen, la moneda de destino, el monto, la tasa de conversión, el resultado y la marca 
                de tiempo en un formato legible.
 
-#### Ejemplo de uso:
+Ejemplo de uso:
 
 ```java
 // Crear una instancia de Conversion
@@ -559,7 +559,7 @@ Registro de Conversión: {
 
 &nbsp;
 
-***Fragmento de codigo utilizado en la `Class RegistroConversion.java`:***
+*Fragmento de codigo utilizado en la `Class RegistroConversion.java`:*
 ```java
  package conversion;
 
@@ -606,13 +606,42 @@ import java.time.format.DateTimeFormatter;
 [![Static Badge](https://img.shields.io/badge/Language-Java-%23ff0000?style=flat)](#)
 [![Static Badge](https://img.shields.io/badge/Pruebas_finales-%2340a5ff?style=flat)](#)
 
-
 En esta etapa del desafío, se solicito  la interacción con el usuario, implementando una interfaz textual a través de la consola que presenta opciones de conversión de monedas. La estructura incluirá un menú dentro de un bucle de repetición, permitiendo al usuario seleccionar opciones numéricas y proporcionar datos para la conversión, utilizando la  `clase Scanner` para capturar la entrada del usuario.
 
-Al final, el programa mostrará el valor convertido según la elección del usuario. Además, es fundamental realizar pruebas exhaustivas para garantizar el correcto funcionamiento del programa, simulando diversas situaciones y recorridos para identificar y corregir posibles errores.
+Se creo la clase `MenuHandler` que  proporciona métodos para mostrar un menú de opciones de conversión de moneda y ejecutar la opción seleccionada por el usuario.
+Función:
+La clase MenuHandler realiza las siguientes funciones:
+- Muestra un menú con varias opciones de conversión de moneda.
+- Ejecuta la opción seleccionada por el usuario, realizando la conversión correspondiente.
+- Gestiona la entrada del usuario para elegir otras monedas a convertir.
 
 
-***Fragmento de codigo utilizado en la Class MenuHandler.java:***
+  &nbsp;
+  
+Ejemplo:
+
+```java
+// Crear una instancia de Conversion
+Conversion conversion = new Conversion();
+Scanner lectura = new Scanner(System.in);
+
+// Mostrar el menú de opciones
+MenuHandler.mostrarMenu();
+
+// Leer la opción seleccionada por el usuario
+int opcion = lectura.nextInt();
+
+// Ejecutar la opción seleccionada
+MenuHandler.ejecutarOpcion(opcion, conversion, lectura);
+
+// Cerrar el scanner después de su uso
+lectura.close();
+```
+En resumen facilita la interacción del usuario con el programa de conversión de moneda. Proporciona métodos para mostrar un menú de opciones, ejecutar la opción seleccionada y realizar la conversión correspondiente.
+
+&nbsp;
+
+*Fragmento de codigo utilizado en la Class MenuHandler.java:*
 ```java
  // Resto del código omitido...
 
@@ -657,29 +686,60 @@ public class MenuHandler {
     }
             // Resto del código omitido...
 ```
+&nbsp;
+&nbsp;
+
+### 11. **Hacer un README:**
+Uno de los pasos más importantes al participar en una selección de trabajo es resolver un desafío propuesto por la empresa con la información de la resolución, y generalmente esto debe estar en el README. ¿Y qué es el README? Es un archivo con extensión .md y es un documento con la descripción del proyecto. 
+Este mismo archivo que se esta leyendo fue el resultado del README para el Challenge.
 
 
+### 12.	**Extra (Opcional)**
+
+Se nos propueso nn caso que quiecieramos desafiarnos aún más y proporcionar a los usuarios una experiencia más rica y personalizada, hay diversas funcionalidades interesantes que puedes explorar:
+
+#### 12.1  Historial de Conversiones: 
+Agregar la capacidad de rastrear y mostrar el historial de las últimas conversiones realizadas, brindando a los usuarios una visión completa de sus actividades.
+
+####  Registro de Historial en Archivo JSON
+
+En la clase `Conversion`, se mantiene un registro de todas las conversiones realizadas en un archivo JSON llamado "registros_data_time.json". Aquí está cómo se realiza:
+
+1. **Lectura del Historial desde un Archivo JSON**:
+   Se lee el historial de conversiones desde el archivo JSON utilizando Gson. Si el archivo no existe, se crea un historial vacío.
+
+    ```java
+    RegistroConversion[] historial;
+    try (Reader fileReader = new FileReader("registros_data_time.json")) {
+        historial = gson.fromJson(fileReader, RegistroConversion[].class);
+    } catch (FileNotFoundException e) {
+        historial = new RegistroConversion[0];
+    }
+    ```
+
+2. **Actualización del Historial**:
+   Se agrega el nuevo registro de conversión al final del historial existente.
+
+    ```java
+    RegistroConversion[] nuevoHistorial = new RegistroConversion[historial.length + 1];
+    System.arraycopy(historial, 0, nuevoHistorial, 0, historial.length);
+    nuevoHistorial[historial.length] = registroConversion;
+    ```
+
+3. **Escritura del Historial Actualizado en el Archivo JSON**:
+   Se escribe el historial actualizado en el archivo JSON para mantener un registro de todas las conversiones realizadas.
+
+    ```java
+    try (Writer fileWriter = new FileWriter("registros_data_time.json")) {
+        gson.toJson(nuevoHistorial, fileWriter);
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+    ```
+
+De esta manera, cada vez que se realiza una conversión de moneda, se agrega un nuevo registro al historial y se actualiza el archivo JSON con el nuevo historial. Así, se mantiene un registro completo y actualizado de todas las conversiones realizadas.
 
 
-### 11. **ADICIONALES:**
-
-A.	Hacer un README
-Uno de los pasos más importantes al participar en una selección de trabajo es resolver un desafío propuesto por la empresa con la información de la resolución, y generalmente esto debe estar en el README. ¿Y qué es el README? Es un archivo con extensión .md y es un documento con la descripción del proyecto. Este mismo archivo que se esta leyendo fue el resultado.
-
-B.	Extra (Opcional)
-
-•	Historial de Conversiones: Agregar la capacidad de rastrear y mostrar el historial de las últimas conversiones realizadas, brindando a los usuarios una visión completa de sus actividades.
-
-Se crea la clase `HistorialConversion.java`, que proporciona una estructura para almacenar registros de conversiones. Aquí está un resumen de lo que hace:
-
-   - Importa las clases RegistroConversion del paquete conversion, ArrayList y List del paquete java.util.
-   - Tiene un campo privado llamado historial que es una lista de objetos de tipo RegistroConversion. Esta lista almacena los registros de conversiones.
-   - Tiene un constructor por defecto que inicializa el campo historial como una nueva instancia de ArrayList, lo que garantiza que esté lista para almacenar los registros.
-   - Proporciona un getter (getHistorial) para obtener el historial de conversiones.
-   - Proporciona un setter (setHistorial) para establecer el historial de conversiones con una lista proporcionada.
-   - Proporciona un método (addRegistro) para agregar un nuevo registro al historial de conversiones. Este método añade el registro proporcionado a la lista historial.
-   
-   En resumen, esta clase encapsula la funcionalidad relacionada con el historial de conversiones, proporcionando métodos para acceder, modificar y agregar registros de conversiones a una lista interna.
 
 
 ***Captura de pantalla de la ejecucion del proyecto mostrando resultados de conversion y se observa el contenido en el archivo `registros_data_time.json` en formato json, donde se registran y actualizan las consultas realizadas, incluyendo información sobre qué monedas se convirtieron y en qué fecha para cumplir con la parte adicional de este challenge:***
