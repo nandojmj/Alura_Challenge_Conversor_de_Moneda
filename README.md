@@ -286,12 +286,10 @@ En este proyecto se utilizaron 4 codigos iniciales:
 3.	BRL - Real brasileño
 4.	ARS - Peso argentino
 
-
-  
-
-*(https://v6.exchangerate-api.com/v6/YOUR-API-KEY/pair//USD/COP/100000):*
+*Ej: USD -> COP*
 ```
 {
+(https://v6.exchangerate-api.com/v6/YOUR-API-KEY/pair//USD/COP/100000)
     "result": "success",
     "documentation": "https://www.exchangerate-api.com/docs",
     "terms_of_use": "https://www.exchangerate-api.com/terms",
@@ -306,8 +304,9 @@ En este proyecto se utilizaron 4 codigos iniciales:
 }
 ```
 
-*(https://v6.exchangerate-api.com/v6/YOUR-API-KEY/pair//BRL/COP/100000):*
+*Ej: BRL -> COP*
 ```
+(https://v6.exchangerate-api.com/v6/YOUR-API-KEY/pair//BRL/COP/100000):
 {
     "result": "success",
     "documentation": "https://www.exchangerate-api.com/docs",
@@ -323,8 +322,10 @@ En este proyecto se utilizaron 4 codigos iniciales:
 }
 ```
 
-*https://v6.exchangerate-api.com/v6/YOUR-API-KEY/pair//ARS/COP/100000*
+*Ej: ARS -> COP*
+```
 {
+(https://v6.exchangerate-api.com/v6/YOUR-API-KEY/pair//ARS/COP/100000)
     "result": "success",
     "documentation": "https://www.exchangerate-api.com/docs",
     "terms_of_use": "https://www.exchangerate-api.com/terms",
@@ -353,131 +354,212 @@ En esta novena fase, se nos pidio  las conversiones entre las monedas. Se crearo
 
 ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/packageconversion.JPG) 
 
-1. **Class Conversion:** La clase `Conversion` se utiliza para realizar conversiones de moneda utilizando una API externa y gestionar el historial de conversiones. Aquí está un resumen de su propósito y uso:
+### Clase Conversion
+
+La clase `Conversion` se utiliza para realizar conversiones de moneda utilizando una API externa y gestionar el historial de conversiones.
+Realiza solicitudes HTTP a la API de ExchangeRate-API para obtener las tasas de conversión, alcula el resultado de la conversión y la tasa de conversión y guarda un registro de cada conversión realizada junto con la marca de tiempo en un archivo JSON.
 
       a. Atributos: La clase tiene atributos que representan los datos necesarios para realizar una conversión de moneda:
          - `monedaOrigen`: Representa la moneda de origen de la conversión.
          - `monedaDestino`: Representa la moneda de destino de la conversión.
          - `monto`: Representa el monto a convertir.
          - `resultado`: Representa el resultado de la conversión.
+         - `conversionRate`: La tasa de conversión.
       
-      b. Método `convertir`: Este método realiza la conversión de moneda utilizando una API externa. Utiliza un cliente HTTP para enviar una solicitud a la API, recibe la           respuesta en formato JSON, la parsea y extrae los datos necesarios utilizando la biblioteca Gson. Luego, crea un objeto `Conversion` con los datos obtenidos y              lo guarda en el historial de conversiones.
+      b. Método `convertir`: Este método realiza la conversión de moneda utilizando una API externa. Utiliza un cliente 
+      HTTP para enviar una solicitud a la API, recibe la respuesta en formato JSON, la parsea y extrae los datos necesarios 
+      utilizando la biblioteca Gson. Luego, crea un objeto `Conversion` con los datos obtenidos y lo guarda en el historial de 
+      conversiones.
       
-      c. Adaptador personalizado para `LocalDateTime`: La clase incluye un adaptador personalizado para serializar y deserializar objetos `LocalDateTime`. Esto se                  utiliza para formatear adecuadamente las fechas y horas al guardar y recuperar el historial de conversiones (`class HistorialConversion`).
+      c. Adaptador personalizado para `LocalDateTime`: La clase incluye un adaptador personalizado para serializar y deserializar 
+      objetos `LocalDateTime`. Esto se utiliza para formatear adecuadamente las fechas y horas al guardar y recuperar el historial 
+      de conversiones (`class HistorialConversion`).
 
 En resumen, la clase `Conversion` se utiliza como una interfaz para realizar conversiones de moneda utilizando una API externa, gestionando el historial de conversiones y proporcionando métodos para acceder y modificar los datos relacionados con la conversión.
 
-&nbsp;
-
-***Fragmento de codigo utilizado en la `Class Conversion.java`:***
 ```java
- // Resto del código omitido...
- public class Conversion {
-    // Atributos para la conversión
+// Crear una instancia de Conversion
+Conversion conversion = new Conversion();
+
+// Realizar una conversión de USD a EUR con un monto de 100
+RegistroConversion registro = conversion.convertir("USD", "EUR", 100);
+
+// Imprimir el resultado de la conversión
+System.out.println("La conversión se realizó con éxito. El resultado es: " + registro.getConversion().getResultado());
+
+```
+
+
+
+
+
+*Fragmento de codigo utilizado en la clase `Conversion`:*
+```java
+
+/**
+ * Clase que representa una conversión entre monedas.
+ */
+public class Conversion {
+
+    /** El código de la moneda de origen. */
     @SerializedName("Moneda_Origen")
     private String monedaOrigen;
+
+    /** El código de la moneda de destino. */
     @SerializedName("Moneda_Destino")
     private String monedaDestino;
-    private double monto; // Cambiar el tipo de dato a double
-    @SerializedName("Resultado_Conversion")
+
+    /** El monto o cantidad de moneda a convertir. */
+    @SerializedName("Monto_a_Convertir")
+    private double monto;
+
+    /** El resultado de la conversión. */
+    @SerializedName("Resultado")
     private double resultado;
 
-    // Constructor por defecto
-    public Conversion() {
-    }
+    /** La tasa de conversión. */
+    @SerializedName("Tasa_Conversion")
+    private double conversionRate;
 
-    // Constructor con parámetros
+    /** Constructor vacío. */
+    public Conversion() {}
+
+    /**
+     * Constructor con parámetros.
+     * @param monedaOrigen El código de la moneda de origen.
+     * @param monedaDestino El código de la moneda de destino.
+     * @param monto El monto a convertir.
+     */
     public Conversion(String monedaOrigen, String monedaDestino, double monto) {
         this.monedaOrigen = monedaOrigen;
         this.monedaDestino = monedaDestino;
         this.monto = monto;
     }
-
-    // Getters y setters
+ 
  // Resto del código omitido...
 
- 
 ```
 &nbsp;
 
- 
-2. **Class ConversionResponse**: se utiliza para representar los datos de respuesta de una conversión de moneda obtenida de la API externa. Aquí está un resumen de su propósito y uso:
+
+### Clase ConversionResponse
+
+La clase se utiliza para representar los datos de respuesta de una conversión de moneda obtenida de la API externa. Aquí está un resumen de su propósito y uso:
 
       a. Atributos: La clase tiene tres atributos que representan los datos de la conversión:
        - `monedaOrigen`: Representa la moneda de origen de la conversión.
        - `monedaDestino`: Representa la moneda de destino de la conversión.
+       - `conversionRate`: La tasa de conversión entre la moneda base y la moneda destino.
        - `resultado`: Representa el resultado de la conversión.
       
-      b. Anotaciones de SerializedName: Las anotaciones `@SerializedName` se utilizan para especificar el nombre de los campos en el JSON que se utilizarán para mapear los          datos a los atributos de la clase. Esto es útil cuando los nombres de los campos en el JSON no coinciden con los nombres de los atributos en la clase.
+      b. Anotaciones de SerializedName: Las anotaciones `@SerializedName` se utilizan para especificar el nombre de los campos en el 
+      JSON que se utilizarán para mapear los datos a los atributos de la clase. Esto es útil cuando los nombres de los campos en el 
+      JSON no coinciden con los nombres de los atributos en la clase.
       
       c. Getters y setters: Se proporcionan métodos para acceder y modificar los atributos de la clase.
       
-      d. Método toString: Se sobrescribe el método `toString` para proporcionar una representación de cadena de la clase. Esto es útil para imprimir fácilmente los objetos             de tipo  `ConversionResponse` en forma legible para los humanos.
+      d. Método toString: Se sobrescribe el método `toString` para proporcionar una representación de cadena de la clase. Esto es útil 
+      para imprimir fácilmente los objetos de tipo  `ConversionResponse` en forma legible para los humanos.
 
 En resumen, la clase `ConversionResponse` se utiliza como un contenedor de datos para representar la respuesta de una conversión de moneda, facilitando el procesamiento y manipulación de estos datos en el código del programa.
 
-&nbsp;
+ &nbsp;
 
-
-***Fragmento de codigo utilizado en la `Class ConversionResponse.java`:***
+*Fragmento de codigo utilizado en la clase `ConversionResponse.java`:*
 ```java
  // Resto del código omitido...
-     // Getters y setters
+     /**
+ * Clase que representa la respuesta de la API de ExchangeRate-API.
+ * Proporciona métodos para acceder a los datos de la conversión.
+ */
+public class ConversionResponse {
+
+    /** El código de la moneda base en la conversión. Índices de la API de ExchangeRate-API:
+     * "base_code"."target_code" "conversion_rate" "conversion_result"*/
+
+    /** El código de la moneda origen en la conversión. */
+    @SerializedName("base_code")
+    private String monedaOrigen;
+
+    /** El código de la moneda destino en la conversión. */
+    @SerializedName("target_code")
+    private String monedaDestino;
+
+    /** La tasa de conversión entre la moneda base y la moneda destino. */
+    @SerializedName("conversion_rate")
+    private double conversionRate;
+
+    /** El resultado de la conversión. */
+    @SerializedName("conversion_result")
+    private double resultado;
+
+    /** Obtiene el código de la moneda base. */
     public String getMonedaOrigen() {
-        return monedaOrigen; // Retorna la moneda de origen
+        return monedaOrigen;
     }
 
+    /** Establece el código de la moneda base. */
     public void setMonedaOrigen(String monedaOrigen) {
-        this.monedaOrigen = monedaOrigen; // Establece la moneda de origen
+        this.monedaOrigen = monedaOrigen;
     }
-
-    public String getMonedaDestino() {
-        return monedaDestino; // Retorna la moneda de destino
-    }
-
-    public void setMonedaDestino(String monedaDestino) {
-        this.monedaDestino = monedaDestino; // Establece la moneda de destino
-    }
-
-    public double getResultado() {
-        return resultado; // Retorna el resultado de la conversión
-    }
-
-    public void setResultado(double resultado) {
-        this.resultado = resultado; // Establece el resultado de la conversión
-    }
-
-    // Método toString para representación de cadena
-    @Override
-    public String toString() {
-        // Retorna una cadena que representa este objeto ConversionResponse
-        return "conversion.ConversionResponse{" +
-                "origen='" + monedaOrigen + '\'' + // Moneda de origen
-                ", destino='" + monedaDestino + '\'' + // Moneda de destino
-                ", resultado=" + resultado + // Resultado de la conversión
-                '}';
-    }
-}
+// Resto del código omitido...
  
 ```
 &nbsp;
 
+### RegistroConversion
 
-3. **Class RegistroConversion**: La clase `RegistroConversion` se utiliza para representar un registro de conversión, que incluye los detalles de la conversión realizada y la marca de tiempo en la que se realizó. Aquí está un resumen de su propósito y uso:
+La clase `RegistroConversion` se utiliza para representar un registro de conversión, que incluye los detalles de la conversión realizada y la marca de tiempo en la que se realizó. Aquí está un resumen de su propósito y uso:
 
       a. Atributos: La clase tiene dos atributos:
        - `conversion`: Representa el objeto de conversión asociado a este registro.
        - `timestamp`: Representa la marca de tiempo del registro, indicando cuándo se realizó la conversión.
 
-      b. Anotaciones de SerializedName: Las anotaciones `@SerializedName` se utilizan para especificar el nombre de los campos en el JSON que se utilizarán para mapear los          datos a los atributos de la clase. Esto es útil cuando los nombres de los campos en el JSON no coinciden con los nombres de los atributos en la clase.
-      
-      c. Getters y setters: Se proporcionan métodos para acceder y modificar los atributos de la clase.
-      
-      d. Método toString: Se sobrescribe el método `toString` para proporcionar una representación de cadena de la clase. Esto es útil para imprimir fácilmente los objetos             de tipo  `ConversionResponse` en forma legible para los humanos.
+      b. Constructor
+      - `RegistroConversion(Conversion conversion)`: Constructor que inicializa un registro de conversión con 
+         la conversión 
+         y la marca de tiempo actual.
+          - Parámetros:
+             - `conversion`: La conversión de moneda que se está registrando.
 
-En resumen, la clase `ConversionResponse` se utiliza como un contenedor de datos para representar la respuesta de una conversión de moneda, facilitando el procesamiento y manipulación de estos datos en el código del programa.
+      c. Métodos de acceso
+         - `getConversion()`: Devuelve la conversión asociada con este registro.
+         - `setConversion(Conversion conversion)`: Establece la conversión asociada con este registro.
+             - Parámetros:
+                 - `conversion`: La conversión a establecer.
+         - `getTimestamp()`: Devuelve la marca de tiempo de este registro.
+         - `setTimestamp(LocalDateTime timestamp)`: Establece la marca de tiempo de este registro.
+             - Parámetros:
+                 - `timestamp`: La marca de tiempo a establecer.
 
+         d. Método `toString()`
+            - `toString()`: Genera una representación en forma de cadena de este registro de conversión, incluyendo 
+               la moneda de origen, la moneda de destino, el monto, la tasa de conversión, el resultado y la marca 
+               de tiempo en un formato legible.
+
+#### Ejemplo de uso:
+
+```java
+// Crear una instancia de Conversion
+Conversion conversion = new Conversion("USD", "EUR", 100.0);
+
+// Crear un registro de conversión
+RegistroConversion registro = new RegistroConversion(conversion);
+
+// Imprimir el registro
+System.out.println(registro);
+```
 &nbsp;
+```
+Registro de Conversión: {
+  Moneda de Origen: USD
+  Moneda de Destino: EUR
+  Monto: 100.0
+  Tasa de Conversión: 0.8325
+  Resultado: 83.25
+  Marca de Tiempo: 2024-04-23 09:30:15
+}
+```
 
 &nbsp;
 
