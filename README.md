@@ -123,8 +123,8 @@ Para importar la biblioteca Gson en IntelliJ, sigue estos pasos:
 > Para descargar la biblioteca Gson, debemos ir a Maven Repository en Google. Buscamos Gson y seleccionamos la primera opción. La version descargada para este challenge es la 2.10.1.  [MVN Repository Gson](https://mvnrepository.com/artifact/com.google.code.gson/gson)
 
 &nbsp;
-*En esta captura de pantalla se muestra la interacción con el software Postman.*
-![ ![Screenshot interactuando y probando los key con la aplicacion Postman]](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/ExchangePostman.png)
+*En esta captura de pantalla se muestra la importacion de la biblioteca Gson.*
+![ ![Screenshot interactuando y probando los key con la aplicacion Postman]](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/json.JPG)
 
 &nbsp;
 
