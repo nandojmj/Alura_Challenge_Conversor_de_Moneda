@@ -11,6 +11,7 @@ public class ConversionResponse {
     /** El código de la moneda base en la conversión. Índices de la API de ExchangeRate-API:
      * "base_code"."target_code" "conversion_rate" "conversion_result"*/
 
+    /** El código de la moneda origen en la conversión. */
     @SerializedName("base_code")
     private String monedaOrigen;
 
