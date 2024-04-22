@@ -10,12 +10,12 @@ public class MenuHandler {
     public static void mostrarMenu() {
         System.out.println("************************************************************");
         System.out.println("""
-                1- Convertir de USD (dólar) a ARS (peso argentino).
-                2- Convertir de ARS (peso argentino) a USD (dólar).
-                3- Convertir de USD (dólar) a BOB (peso boliviano).
-                4- Convertir de BOB (peso boliviano) a USD (dólar).
-                5- Convertir de USD (dólar) a COP (peso colombiano).
-                6- Convertir de COP (peso colombiano) a USD (dólar).
+                1- Convertir de COP (peso colombiano) a USD (dólar).
+                2- Convertir de USD (dólar) a COP (peso colombiano).
+                3- Convertir de BRL (real brasileño) a USD (dólar).
+                4- Convertir de USD (dólar) a BRL (real brasileño).
+                5- Convertir de ARS (peso argentino) a USD (dólar).
+                6- Convertir de USD (dólar) a ARS (peso argentino).
                 7- Elegir otras monedas para convertir.
                 8- Salir
                 Elija una opción:
@@ -26,22 +26,22 @@ public class MenuHandler {
     public static void ejecutarOpcion(int opcion, Conversion conversion, Scanner lectura) {
         switch (opcion) {
             case 1:
-                convertirMoneda("USD", "ARS", conversion, lectura); // Convertir de USD a ARS
+                convertirMoneda("COP", "USD", conversion, lectura); // Convertir de COP a USD
                 break;
             case 2:
-                convertirMoneda("ARS", "USD", conversion, lectura); // Convertir de ARS a USD
-                break;
-            case 3:
-                convertirMoneda("USD", "BOB", conversion, lectura); // Convertir de USD a BOB
-                break;
-            case 4:
-                convertirMoneda("BOB", "USD", conversion, lectura); // Convertir de BOB a USD
-                break;
-            case 5:
                 convertirMoneda("USD", "COP", conversion, lectura); // Convertir de USD a COP
                 break;
+            case 3:
+                convertirMoneda("BRL", "USD", conversion, lectura); // Convertir de BRL a USD
+                break;
+            case 4:
+                convertirMoneda("USD", "BRL", conversion, lectura); // Convertir de USD a BRL
+                break;
+            case 5:
+                convertirMoneda("ARS", "USD", conversion, lectura); // Convertir de ARS a USD
+                break;
             case 6:
-                convertirMoneda("COP", "USD", conversion, lectura); // Convertir de COP a USD
+                convertirMoneda("USD", "ARS", conversion, lectura); // Convertir de USD a ARS
                 break;
             case 7:
                 elegirOtrasMonedas(conversion, lectura); // Llama al método para elegir otras monedas a convertir
@@ -129,7 +129,6 @@ public class MenuHandler {
             System.out.println("Error: Ingrese un código de moneda válido.");
         }
     }
-
 
     // Método privado para mostrar el resultado de la conversión
     private static void mostrarResultado(RegistroConversion registro, String monedaBase, String monedaDestino) {
