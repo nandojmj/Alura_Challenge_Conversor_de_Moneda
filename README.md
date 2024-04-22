@@ -739,212 +739,169 @@ En la clase `Conversion`, se mantiene un registro de todas las conversiones real
 
 De esta manera, cada vez que se realiza una conversión de moneda, se agrega un nuevo registro al historial y se actualiza el archivo JSON con el nuevo historial. Así, se mantiene un registro completo y actualizado de todas las conversiones realizadas.
 
+*Captura de pantalla de la ejecucion del proyecto mostrando resultados de conversion y se observa el contenido en el archivo `registros_data_time.json` en formato json, donde se registran y actualizan las consultas realizadas, incluyendo información sobre qué monedas se convirtieron *
 
+![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/json2.png) 
 
-
-***Captura de pantalla de la ejecucion del proyecto mostrando resultados de conversion y se observa el contenido en el archivo `registros_data_time.json` en formato json, donde se registran y actualizan las consultas realizadas, incluyendo información sobre qué monedas se convirtieron y en qué fecha para cumplir con la parte adicional de este challenge:***
-
-![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/registro_pruebaejecucion.JPG) 
-
-
-***Fragmento de codigo utilizado en la Class `HistorialConversion.java`:***
-
-```java
- // Resto del código omitido...
-
-public class HistorialConversion {
-    private List<RegistroConversion> historial; // Lista para almacenar registros de conversión
-
-    // Constructor por defecto
-    public HistorialConversion() {
-        this.historial = new ArrayList<>(); // Inicializa la lista como un nuevo ArrayList
-    }
-
-    // Getter para obtener el historial de conversiones
-    public List<RegistroConversion> getHistorial() {
-        return historial; // Retorna la lista de historial de conversiones
-    }
-
-    // Setter para establecer el historial de conversiones
-    public void setHistorial(List<RegistroConversion> historial) {
-        this.historial = historial; // Establece el historial de conversiones con la lista proporcionada
-    }
-
-    // Método para agregar un nuevo registro al historial de conversiones
-    public void addRegistro(RegistroConversion registro) {
-        this.historial.add(registro); // Agrega el registro proporcionado a la lista de historial
-    }
-}
-        // Resto del código omitido...
+Registro en el archivo `registros_data_time.json`:
+```
+ {
+    "conversion": {
+      "Moneda_Origen": "ARS",
+      "Moneda_Destino": "USD",
+      "Monto_a_Convertir": 100500.0,
+      "Resultado": 116.178,
+      "Tasa_Conversion": 0.001156
+    },
+    "timestamp": "2024-04-22 14:15:58"
+  },
+  {
+    "conversion": {
+      "Moneda_Origen": "USD",
+      "Moneda_Destino": "COP",
+      "Monto_a_Convertir": 500.0,
+      "Resultado": 1956948.2,
+      "Tasa_Conversion": 3913.8964
+    },
+    "timestamp": "2024-04-22 14:17:03"
+  }
 ```
 
 
-C.	Soporte para Más Monedas: Se amplía la lista de monedas disponibles para la elección, permitiendo a los usuarios convertir entre una variedad aún mayor de opciones monetarias.
+#### 12.2  Soporte para Más Monedas: 
+Se amplía la lista de monedas disponibles para la elección, permitiendo a los usuarios convertir entre una variedad aún mayor de opciones monetarias.La API admite las 161 monedas mundiales que circulan habitualmente. Estos cubren el 99% de todos los estados y territorios reconocidos por la ONU.
 
-***Fragmento de codigo utilizado en la Class `MenuHandler.java` para seleccionar otras monedas que se desea convertir. En el menu principal la opcion 7 nos lleva a `7-Elegir otro tipo de monedas a convertir.:` cumpliendo con la opcion adicional del challenge de Soporte para Más Monedas ***
+***Fragmento de codigo utilizado en la Class `MenuHandler.java` para seleccionar otras monedas que se desea convertir. En el menu principal la opcion 7 nos lleva a `7-Elegir otro tipo de monedas a convertir: donde nos mostra 100 codigos currency con sus respectivos paises` cumpliendo con la opcion adicional del challenge de Soporte para Más Monedas ***
+
 ```java
 // Resto del código omitido...
- public class MenuHandler {
-    // Método para mostrar el menú de opciones
-    public static void mostrarMenu() {
-        System.out.println("\n***********************************");
+  public static void mostrarMenu() {
+        System.out.println("************************************************************");
         System.out.println("""
-
-       // Resto del código omitido...
-                5-Convertir de USD (dólar) a COP (peso Colombiano).
-                6-Convertir de COP (peso Colombiano) a USD (dólar).
-                7-Elegir otro tipo de monedas a convertir.
-                8-Salir
-                Elija una opción: """);
-    }
-
-    // Método para ejecutar la opción seleccionada por el usuario
-    public static void ejecutarOpcion(int opcion) {
-        Conversion c = new Conversion(); // Instancia de la clase Conversion para realizar conversiones
-        Scanner lectura = new Scanner(System.in); // Objeto Scanner para leer la entrada del usuario
-
-        switch (opcion) {
-            case 1:
-                convertirMoneda("USD", "ARS", c, lectura); // Convertir de USD a ARS
-                break;
+                1- Convertir de COP (peso colombiano) a USD (dólar).
+                2- Convertir de USD (dólar) a COP (peso colombiano).
+                3- Convertir de BRL (real brasileño) a USD (dólar).
+                4- Convertir de USD (dólar) a BRL (real brasileño).
+                5- Convertir de ARS (peso argentino) a USD (dólar).
+                6- Convertir de USD (dólar) a ARS (peso argentino).
+                7- Elegir otras monedas para convertir.
+                8- Salir
 
  // Resto del código omitido...
 
-           case 6:
-                System.out.println("Ingrese el monto a convertir");
-                monto = lectura.nextInt();
-                base = "COP";
-                fin = "USD";
-                System.out.println(monto + " " + base + c.convertir(base, fin, monto));
+            case 6:
+                convertirMoneda("USD", "ARS", conversion, lectura); // Convertir de USD a ARS
                 break;
             case 7:
-                String monedaBase = """
-                        Lista de códigos de moneda junto con los países correspondientes para su opcion de convertir:
-                        1. **AFN**: Afganistán
-                        2. **ALL**: Albania
-                        3. **DZD**: Argelia
-                        4. **USD**: Samoa Americana
-                        5. **EUR**: Andorra
-                        6. **AOA**: Angola
-                        7. **XCD**: Anguila
-                        8. **XCD**: Antigua y Barbuda
-                        9. **ARS**: Argentina
-                        10. **AMD**: Armenia
-                        11. **AWG**: Aruba
+                elegirOtrasMonedas(conversion, lectura); // Llama al método para elegir otras monedas a convertir
+                break;
+            case 8:
+                System.out.println("¡Gracias por usar el convertidor! ¡Hasta luego!"); // Mensaje de despedida
+                System.exit(0); // Finaliza el programa
+
 // Resto del código omitido...
 
-                        71. **ETB**: Etiopía
-                        72. **EUR**: Unión Europea
-                        73. **FKP**: Islas Malvinas (Falkland)
-                        74. **DKK**: Islas Feroe
-                        75. **FJD**: Fiyi
-                        76. **EUR**: Finlandia
-                         Elija un codigo de la moneda que quiera converir.
-                        """;
-                System.out.println(monedaBase);
-                base = lectura.next();
+           private static void elegirOtrasMonedas(Conversion conversion, Scanner lectura) {
+        try {
+            System.out.println("""
+            Esta lista contiene 100 códigos de moneda y sus respectivos países para facilitar la conversión de moneda:
+        
+            | 1.  **AED**: United Arab Emirates      | 2.  **AFN**: Afghanistan          | 3.  **ALL**: Albania
+            | 4.  **AMD**: Armenia                   | 5.  **ANG**: Netherlands Antilles | 6.  **AOA**: Angola
+            | 7.  **ARS**: Argentina                 | 8.  **AUD**: Australia            | 9.  **AWG**: Aruba
+            | 10. **AZN**: Azerbaijan                | 11. **BBD**: Barbados             | 12. **BGN**: Bulgaria
+            | 13. **BHD**: Bahrain                   | 14. **BRL**: Brazil               | 15. **BSD**: Bahamas
+            | 16. **BTN**: Bhutan                    | 17. **BWP**: Botswana             | 18. **BZD**: Belize
 
-                System.out.println("Ingrese el monto que desea convertir");
-                monto = lectura.nextInt();
+// Resto del código omitido...
 
+      | 100. **PLN**: Poland
+            Ingrese el código de moneda base:""");
+
+            String monedaBase = lectura.next().toUpperCase(); // Lee el código de moneda base ingresado por el usuario
+            System.out.println("Ingrese el código de moneda destino:");
+            String monedaDestino = lectura.next().toUpperCase(); // Lee el código de moneda destino ingresado por el usuario
+            convertirMoneda(monedaBase, monedaDestino, conversion, lectura); // Realiza la conversión
+        } catch (Exception e) {
+// Resto del código omitido...
 ```
 
 &nbsp;
 
-•	Registros con Marca de Tiempo: Utiliza las funciones de la biblioteca java.time para crear registros que registren las conversiones realizadas, incluyendo información sobre qué monedas se convirtieron y en qué momento.
+#### 12.3  Registros con Marca de Tiempo: 
 
-En esta clase se declara una matriz de objetos de tipo RegistroConversion llamada historial. Este array almacenará los registros de conversiones leídos desde el archivo JSON. Se intenta abrir el archivo "registros_data_time.json" para lectura utilizando un FileReader dentro de un bloque try-with-resources. Si el archivo existe, se utiliza el objeto gson para deserializar el contenido del archivo en la matriz historial. Si el archivo no existe, se captura la excepción FileNotFoundException y se inicializa historial como un array vacío.
+Se creo la clase `LocalDateTimeAdapter`, para cumplir con este adicional del desafio.
 
-Si ocurre algún error de lectura durante la apertura del archivo, se imprimirá la traza de la pila y se devolverá null.
+La clase `LocalDateTimeAdapter` es una clase utilizada para adaptar la serialización y deserialización de objetos `LocalDateTime` al formato JSON utilizando la biblioteca Gson de Google. Su objetivo es proporcionar la capacidad de convertir objetos `LocalDateTime` a formato JSON y viceversa de manera que puedan ser almacenados y recuperados adecuadamente.
 
-Se crea una nueva matriz llamada nuevoHistorial con una longitud un elemento mayor que la longitud de la matriz historial. Se copian todos los elementos de historial a nuevoHistorial utilizando System.arraycopy, y luego se agrega el nuevo registro de conversión (registroConversion) al final de nuevoHistorial.
+- **Implementación**:
+  - La clase implementa las interfaces `JsonSerializer` y `JsonDeserializer` de Gson para personalizar la serialización y deserialización de objetos `LocalDateTime`.
+  - Utiliza un objeto `DateTimeFormatter` para definir el formato de fecha y hora deseado ("yyyy-MM-dd HH:mm:ss").
+  - Sobrescribe los métodos `serialize` y `deserialize` para convertir entre `LocalDateTime` y JSON.
 
-Se intenta abrir el archivo "registros_data_time.json" para escritura utilizando un FileWriter dentro de un bloque try-with-resources. Se utiliza el objeto gson para serializar el contenido de nuevoHistorial y escribirlo en el archivo JSON.
+- **Método `serialize`**:
+  - Este método toma un objeto `LocalDateTime` como entrada y devuelve un `JsonElement`, que en este caso es un `JsonPrimitive` que contiene la fecha y hora formateadas según el patrón definido por `DateTimeFormatter`.
 
-Si ocurre algún error durante la escritura en el archivo, se imprimirá la traza de la pila.
+- **Método `deserialize`**:
+  - Este método toma un `JsonElement` (que se espera que sea un `JsonPrimitive` con una cadena representando una fecha y hora) y lo convierte de nuevo a un objeto `LocalDateTime` utilizando el formato definido por `DateTimeFormatter`.
+
+En resumen, `LocalDateTimeAdapter` es una clase útil para adaptar la serialización y deserialización de objetos `LocalDateTime` al formato JSON, lo que facilita su almacenamiento y recuperación en aplicaciones que utilizan Gson para el manejo de JSON.
 
 
-***Fragmento de codigo utilizado en la Class `RegistroConversion.java` donde se crea  `registros_data_time.json` en formato json, donde se registran y actualizan las consultas realizadas, incluyendo información sobre qué monedas se convirtieron y en qué fecha para cumplir con la parte adicional de este challenge:***
+*Fragmento de codigo utilizado en la Class `RegistroConversion.java` donde se crea  `registros_data_time.json` en formato json, donde se registran y actualizan las consultas realizadas, incluyendo información sobre qué monedas se convirtieron y en qué fecha para cumplir con la parte adicional de este challenge:*
 ```java
  // Resto del código omitido...
 
- // Agregar el nuevo registro de conversión al historial
-            RegistroConversion[] nuevoHistorial = new RegistroConversion[historial.length + 1];
-            System.arraycopy(historial, 0, nuevoHistorial, 0, historial.length);
-            nuevoHistorial[historial.length] = registroConversion;
+package adapters;
 
-            // Escribir el historial completo en el archivo JSON
-            try (FileWriter fileWriter = new FileWriter("registros_data_time.json")) {
-                gson.toJson(nuevoHistorial, fileWriter);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+  // Resto del código omitido...
+/** Clase interna para adaptar la serialización y deserialización de LocalDateTime. */
+public class LocalDateTimeAdapter implements JsonSerializer<LocalDateTime>, JsonDeserializer<LocalDateTime> {
+    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
-            return registroConversion;
-        } finally {
-            try {
-                reader.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+    @Override
+    public JsonElement serialize(LocalDateTime src, java.lang.reflect.Type typeOfSrc, JsonSerializationContext context) {
+        return new JsonPrimitive(formatter.format(src));
     }
 
-    // Adaptador personalizado para LocalDateTime
-    static class LocalDateTimeAdapter implements JsonSerializer<LocalDateTime>, JsonDeserializer<LocalDateTime> {
-        private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-
-        @Override
-        public JsonElement serialize(LocalDateTime src, java.lang.reflect.Type typeOfSrc, JsonSerializationContext context) {
-            return new JsonPrimitive(formatter.format(src));
-        }
-
-        @Override
-        public LocalDateTime deserialize(JsonElement json, java.lang.reflect.Type typeOfT, JsonDeserializationContext context)
-                throws JsonParseException {
-            return LocalDateTime.parse(json.getAsString(), formatter);
-        }
+    @Override
+    public LocalDateTime deserialize(JsonElement json, java.lang.reflect.Type typeOfT, JsonDeserializationContext context)
+            throws JsonParseException {
+        return LocalDateTime.parse(json.getAsString(), formatter);
     }
-             // Resto del código omitido...
+}
 
+  // Resto del código omitido...
+    
 ```
 
 
-***Fragmento del registro del archivo `registros_data_time.json` en formato json, donde se registran y actualizan las consultas realizadas, incluyendo información sobre qué monedas se convirtieron y en qué fecha para cumplir con la parte adicional de este challenge:***
-```java
- // Resto del código omitido...
+*Fragmento del registro del archivo `registros_data_time.json` en formato json, donde se registran y actualizan las consultas realizadas, incluyendo información sobre qué monedas se convirtieron y en qué fecha para cumplir con la parte adicional de este challenge:*
 
-{
-    "conversion": {
-      "Moneda_Origen": "USD",
-      "Moneda_Destino": "COP",
-      "monto": 7690.0,
-      "Resultado_Conversion": 3.0014249946E7
-    },
-    "timestamp": "2024-04-19 18:19:49"
-  },
-  {
+```
+ {
     "conversion": {
       "Moneda_Origen": "ARS",
       "Moneda_Destino": "USD",
-      "monto": 1200.0,
-      "Resultado_Conversion": 1.3872
+      "Monto_a_Convertir": 100500.0,
+      "Resultado": 116.178,
+      "Tasa_Conversion": 0.001156
     },
-    "timestamp": "2024-04-19 18:19:57"
+    "timestamp": "2024-04-22 14:15:58"
   },
   {
     "conversion": {
       "Moneda_Origen": "USD",
       "Moneda_Destino": "COP",
-      "monto": 1000.0,
-      "Resultado_Conversion": 3903023.4
+      "Monto_a_Convertir": 500.0,
+      "Resultado": 1956948.2,
+      "Tasa_Conversion": 3913.8964
     },
-    "timestamp": "2024-04-19 18:40:24"
+    "timestamp": "2024-04-22 14:17:03"
   }
-             // Resto del código omitido...
-
 ```
-# Ejecución del Proyecto
+            
+### Ejecución del Proyecto
 Para ejecutar el proyecto, sigue estos pasos:
 
 * Clona o descarga desde Github el repositorio en tu disco local.
