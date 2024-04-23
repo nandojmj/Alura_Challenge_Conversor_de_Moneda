@@ -915,8 +915,11 @@ Para ejecutar el proyecto, sigue estos pasos:
 ### 15. Capturas y Video
 [![Static Badge](https://img.shields.io/badge/status-under%20construction-%2393a8ac)](#)
 
-![ ![Screenshot interactuando y probando los key con la aplicacion Postman]](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/captura.gif) 
+[![Screenshot interactuando y probando los key con la aplicacion Postman](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/captura.gif)](#)
 
+[![Screenshot interactuando y probando los key con la aplicacion Postman](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/Captura2.JPG)](#)
+
+[![Screenshot interactuando y probando los key con la aplicacion Postman](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/Captura3.JPG)](#) 
 
 
 
