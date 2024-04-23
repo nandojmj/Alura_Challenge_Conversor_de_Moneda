@@ -377,41 +377,54 @@ objetos `LocalDateTime`. Esto se utiliza para formatear adecuadamente las fechas
 de conversiones (`class LocalDateTimeAdapter`).
 
 En resumen, la clase `Conversion` se utiliza como una interfaz para realizar conversiones de moneda utilizando una API externa, gestionando el historial de conversiones y proporcionando métodos para acceder y modificar los datos relacionados con la conversión.
-```
-+-------------------+      +---------------------+      +---------------------+
-|    Conversion     |      |  ConversionResponse |      |  RegistroConversion |
-+-------------------+      +---------------------+      +---------------------+
-| - monedaOrigen    |      | - monedaOrigen      |      | - conversion        |
-| - monedaDestino   |      | - monedaDestino     |      | - timestamp         |
-| - monto           |      | - conversionRate    |      +---------------------+
-| - resultado       |      | - resultado         |
-| - conversionRate  |      +---------------------+
-|                   |      |Índices API Exchange |
-|                   |      | - base_code         |
-|                   |      | - target_code       |
-|                   |      | - conversion_rate   |
-+-------------------+      | - conversion_result |
-         |                 +---------------------+
-         | utiliza
-         | 
-         V
-+---------------------+
-| LocalDateTimeAdapter|
-+---------------------+
+
+&nbsp;
 
 ```
-
-```java
-// Crear una instancia de Conversion
-Conversion conversion = new Conversion();
-
-// Realizar una conversión de USD a EUR con un monto de 100
-RegistroConversion registro = conversion.convertir("USD", "EUR", 100);
-
-// Imprimir el resultado de la conversión
-System.out.println("La conversión se realizó con éxito. El resultado es: " + registro.getConversion().getResultado());
+                        +-------------------+        +---------------------+
+                        |    Principal      | ---->  |     MenuHandler     |
+                        +-------------------+        +---------------------+
+                        |                   |utiliza | mostrarMenu()       |
+                        |                   |----- ->| ejecutarOpcion()    |
+                        |                   |        | convertirMoneda()   |
+                        |                   |        | elegirOtrasMonedas()|
+                        |                   |        | mostrarResultado()  |
+                        |                   |        +---------------------+
+                        +-------------------+ 
+                                  | utiliza
+                                  |
+                                  V
+                        +-------------------+       +---------------------+      +---------------------+
+                        |    Conversion     | <---> |  ConversionResponse | <--> |  RegistroConversion |
+                        +-------------------+       +---------------------+      +---------------------+
+                        | - monedaOrigen    |       | - monedaOrigen      |      | - conversion        |
+                        | - monedaDestino   |       | - monedaDestino     |      | - timestamp         |
+                        | - monto           |       | - conversionRate    |      +---------------------+
+                        | - resultado       |       | - resultado         |
+                        | - conversionRate  |       +---------------------+
+                        |                   |       |Índices API Exchange |
+                        |                   |       | - base_code         |
+                        |                   |       | - target_code       |
+                        |                   |       | - conversion_rate   |
+                        +-------------------+       | - conversion_result |
+                                   |                +---------------------+
+                                   | utiliza
+                                   | 
+                                   V
+                        +---------------------+
+                        | LocalDateTimeAdapter|
+                        +---------------------+
 
 ```
+*En este diagrama:*
+
+- `Principal` utiliza `MenuHandler` para manejar las opciones del menú y realizar las conversiones.
+- `MenuHandler` interactúa con `Conversion` para realizar las conversiones de moneda.
+- `Conversio`n utiliza `ConversionResponse` para obtener los datos de la API de tasas de cambio.
+- `Conversion` también interactúa con `RegistroConversion` para mantener un registro de las conversiones realizadas.
+- Conversion utiliza `LocalDateTimeAdapter` para serializar y deserializar objetos `LocalDateTime`.
+
+&nbsp;
 
 *Fragmento de codigo utilizado en la clase `Conversion`:*
 ```java
