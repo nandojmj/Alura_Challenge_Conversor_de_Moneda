@@ -119,7 +119,7 @@ Para importar la biblioteca Gson en IntelliJ, sigue estos pasos:
 
 &nbsp;
 *En esta captura de pantalla se muestra la importacion de la biblioteca Gson.*
-![ ![Screenshot interactuando y probando los key con la aplicacion Postman]](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/json.png)
+[![Screenshot interactuando y probando los key con la aplicacion Postman](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/json.png)](#)
 
 &nbsp;
 
@@ -246,7 +246,7 @@ Como ya habiamos identificado los campos de la API,  __`base_code`, `target_code
 
 &nbsp;
 *En esta captura de pantalla se muestra la interacción con el software Postman.*
-![ ![Screenshot interactuando y probando los key con la aplicacion Postman]](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/ExchangePostman.png) 
+[![Screenshot interactuando y probando los key con la aplicacion Postman](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/ExchangePostman.png)](#)
 
 &nbsp;
 
@@ -352,7 +352,7 @@ En este proyecto se utilizaron 4 codigos iniciales:
 
 En esta novena fase, se nos pidio  las conversiones entre las monedas. Se crearon tres clases en el package Conversion:
 
-![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/packageconversion.JPG) 
+![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/packageconversion.JPG)(#)
 
 ### Clase Conversion
 
@@ -384,13 +384,13 @@ En resumen, la clase `Conversion` se utiliza como una interfaz para realizar con
 | - monedaDestino   |      | - monedaDestino     |      | - timestamp         |
 | - monto           |      | - conversionRate    |      +---------------------+
 | - resultado       |      | - resultado         |
-| - conversionRate |      +---------------------+
-|                   |      |     Índices API      |
-|                   |      | - base_code          |
-|                   |      | - target_code        |
-|                   |      | - conversion_rate    |
-+-------------------+      | - conversion_result  |
-         |                  +---------------------+
+| - conversionRate  |      +---------------------+
+|                   |      |Índices API Exchange |
+|                   |      | - base_code         |
+|                   |      | - target_code       |
+|                   |      | - conversion_rate   |
++-------------------+      | - conversion_result |
+         |                 +---------------------+
          | utiliza
          | 
          V
@@ -399,7 +399,6 @@ En resumen, la clase `Conversion` se utiliza como una interfaz para realizar con
 +---------------------+
 
 ```
-
 
 ```java
 // Crear una instancia de Conversion
