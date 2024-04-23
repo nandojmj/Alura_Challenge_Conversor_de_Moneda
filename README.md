@@ -376,6 +376,30 @@ Realiza solicitudes HTTP a la API de ExchangeRate-API para obtener las tasas de 
       de conversiones (`class HistorialConversion`).
 
 En resumen, la clase `Conversion` se utiliza como una interfaz para realizar conversiones de moneda utilizando una API externa, gestionando el historial de conversiones y proporcionando métodos para acceder y modificar los datos relacionados con la conversión.
+```
++-------------------+      +---------------------+      +---------------------+
+|    Conversion     |      |  ConversionResponse |      |  RegistroConversion |
++-------------------+      +---------------------+      +---------------------+
+| - monedaOrigen    |      | - monedaOrigen      |      | - conversion        |
+| - monedaDestino   |      | - monedaDestino     |      | - timestamp         |
+| - monto           |      | - conversionRate    |      +---------------------+
+| - resultado       |      | - resultado         |
+| - conversionRate |      +---------------------+
+|                   |      |     Índices API      |
+|                   |      | - base_code          |
+|                   |      | - target_code        |
+|                   |      | - conversion_rate    |
++-------------------+      | - conversion_result  |
+         |                  +---------------------+
+         | utiliza
+         | 
+         V
++---------------------+
+| LocalDateTimeAdapter|
++---------------------+
+
+```
+
 
 ```java
 // Crear una instancia de Conversion
