@@ -21,8 +21,9 @@ Los pasos solicitados para completar este desafío:
 7.	Analizando la respuesta en formato JSON
 8.	Filtrando las monedas
 9.	Convirtiendo Valores
-10. Interactuando con el usuario
-11. Adicionales
+11. Interactuando con el usuario
+12. Hacer un Readme.md
+13. Adicionales
    
 &nbsp;
 
