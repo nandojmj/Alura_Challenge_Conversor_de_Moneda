@@ -67,14 +67,14 @@ public class ConversionResponse {
         this.resultado = resultado;
     }
 
-    /** Devuelve una representación de cadena de la respuesta de conversión. */
-    @Override
-    public String toString() {
-        return "ConversionResponse{" +
-                "monedaOrigen='" + monedaOrigen + '\'' +
-                ", monedaDestino='" + monedaDestino + '\'' +
-                ", conversionRate=" + conversionRate +
-                ", resultado=" + resultado +
-                '}';
-    }
+//    /** Devuelve una representación de cadena de la respuesta de conversión. */
+//    @Override
+//    public String toString() {
+//        return "ConversionResponse{" +
+//                "monedaOrigen='" + monedaOrigen + '\'' +
+//                ", monedaDestino='" + monedaDestino + '\'' +
+//                ", conversionRate=" + conversionRate +
+//                ", resultado=" + resultado +
+//                '}';
+//    }
 }
