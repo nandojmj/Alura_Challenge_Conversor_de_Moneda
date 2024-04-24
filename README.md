@@ -963,8 +963,9 @@ Para utilizar el conversor de moneda, ejecuta la clase `Principal`. Se mostrará
 ### 14. Capturas y Video
 
 
-[![Screenshot interactuando y probando los key con la aplicacion Postman](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/captura.gif)](#)
+[![Screenshot](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/captura.gif)](#)
 
+[![Screenshot](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/captura.gif)](#)
 
 ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/Captura.png)  
 ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/Captura2.png) 
