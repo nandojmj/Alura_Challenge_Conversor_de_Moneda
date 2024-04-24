@@ -949,8 +949,11 @@ Para ejecutar el proyecto, sigue estos pasos:
 * Configura las dependencias y ajusta la configuración según sea necesario.
 * Corre la aplicación para interactuar con consola.
 
+Para utilizar el conversor de moneda, ejecuta la clase `Principal`. Se mostrará un menú donde puedes seleccionar las opciones de conversión. Selecciona la opción deseada e ingresa el monto a convertir. El resultado se mostrará en la pantalla.
+* Asegúrate de revisar la documentación de la API de Exchange Rate-API para obtener la clave de API necesaria para realizar solicitudes y obtener tasas de cambio actualizadas.
+
 ### 15. Capturas y Video
-[![Static Badge](https://img.shields.io/badge/status-under%20construction-%2393a8ac)](#)
+
 
 [![Screenshot interactuando y probando los key con la aplicacion Postman](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/captura.gif)](#)
 
@@ -960,10 +963,41 @@ Para ejecutar el proyecto, sigue estos pasos:
 
 
 
+## Glossary [![Static Badge](https://img.shields.io/badge/status-under%20construction-%2393a8ac)](#)
 
-## Documentation
-[![Static Badge](https://img.shields.io/badge/status-under%20construction-%2393a8ac)](#)
+1. **API (Interfaz de Programación de Aplicaciones):**
+   - Un conjunto de métodos y funciones que permite la comunicación entre diferentes componentes de software. En este contexto, se refiere a la API de Exchange Rate-API utilizada para obtener tasas de cambio.
 
-## Glossary
+2. **URI (Identificador Uniforme de Recursos):**
+   - Una cadena de caracteres que identifica un recurso en la web de manera única. Se utiliza para construir la dirección de la API a la que se enviarán las solicitudes HTTP.
 
-[![Static Badge](https://img.shields.io/badge/status-under%20construction-%2393a8ac)](#)
+3. **HTTP (Protocolo de Transferencia de Hipertexto):**
+   - El protocolo de comunicación utilizado para transferir datos en la web. En este proyecto, se utiliza para enviar solicitudes y recibir respuestas de la API.
+
+4. **JSON (Notación de Objetos JavaScript):**
+   - Un formato ligero de intercambio de datos que es fácil de leer y escribir para los humanos, y fácil de parsear y generar para las máquinas. Se utiliza para representar los datos recibidos de la API y realizar la serialización y deserialización de objetos en Java.
+
+5. **Gson:**
+   - Una biblioteca de Java que se utiliza para serializar y deserializar objetos Java en formato JSON y viceversa. En este proyecto, se utiliza Gson para manejar la comunicación con la API y convertir los datos recibidos en objetos Java.
+
+6. **HttpClient:**
+   - Una clase en Java que proporciona una interfaz para enviar solicitudes HTTP y recibir respuestas. Se utiliza para realizar solicitudes a la API de Exchange Rate-API y obtener tasas de cambio.
+
+7. **InputMismatchException:**
+   - Una excepción en Java que se lanza cuando se espera un tipo específico de entrada, pero se recibe un tipo diferente. Se maneja en este proyecto para manejar entradas no válidas del usuario en el menú de opciones.
+
+8. **LocalDateTime:**
+   - Una clase en Java que representa una fecha y hora específica sin referencia a una zona horaria. Se utiliza para marcar la fecha y hora en que se realiza una conversión de moneda y para leer y escribir el historial de conversiones.
+
+9. **DateTimeFormatter:**
+   - Una clase en Java que permite formatear y analizar fechas y horas en diferentes formatos. Se utiliza para formatear la fecha y hora en el historial de conversiones.
+
+10. **JsonReader:**
+    - Una clase en Gson que se utiliza para leer datos JSON de una secuencia de entrada. En este proyecto, se utiliza para leer la respuesta JSON de la API de Exchange Rate-API.
+
+11. **JsonDeserializer y JsonSerializer:**
+    - Interfaces en Gson que permiten personalizar la serialización y deserialización de objetos Java a JSON y viceversa. Se utilizan para adaptar la serialización y deserialización de LocalDateTime en este proyecto.
+
+12. **FileNotFoundException:**
+    - Una excepción en Java que se lanza cuando se intenta acceder a un archivo que no existe. Se maneja en este proyecto al leer el historial de conversiones desde un archivo JSON.
+
