@@ -44,7 +44,7 @@ Los pasos solicitados para completar este desafío:
 [![Static Badge](https://img.shields.io/badge/Postman-gray?style=flat&logo=Postman&logoColor=orange)](https://www.postman.com/)
 [![Static Badge](https://img.shields.io/badge/app-Trello-%231466c3?style=flat&logo=trello)](https://trello.com/)
 
-En esta primera fase, nos piden que se lleve acabo la instalación y configuración del entorno de desarrollo Java para nuestro desafío de construcción del Conversor de Monedas. Asegúrate de contar con los siguientes programas, archivos, versiones y app necesarias:
+En esta primera fase, nos piden que se lleve a cabo la instalación y configuración del entorno de desarrollo Java para nuestro desafío de construcción del Conversor de Monedas. Asegúrate de contar con los siguientes programas, archivos, versiones y app necesarias:
 - IntelliJ IDEA Community Edition
 - JDK 
 - JSON en Java y la librería Gson
@@ -65,7 +65,7 @@ En este paso crucial, es fundamental comprender mejor la API de tasas de cambio 
 > [Exchange Rate-API](https://www.exchangerate-api.com/), debe registrarse para obtener su clave API (YOUR-API-KEY).
 
 Interactuando con la API, encontramos como se realizan las consultas, 
-Ejemplo: USD a COP, Dolares EEUU a Pesos Colombianos y un monto a convertir de 1000USD
+Ejemplo: USD a COP, Dólares EEUU a Pesos Colombianos y un monto a convertir de 1000USD
 
 ```java
 // Setting URL
@@ -221,10 +221,10 @@ En esta parte se solicito el uso de la interfaz HttpResponse para gestionar las 
 [![Static Badge](https://img.shields.io/badge/Postman-gray?style=flat&logo=Postman&logoColor=orange)](https://www.postman.com/)
 
 
-En esta parte de  nuestro Challenge se nos solicito el análisis de la respuesta JSON utilizando la biblioteca Gson en Java. La manipulación de datos JSON es esencial, ya que la mayoría de las respuestas de las API se presentan en este formato.  Se nos recomendo el uso de herramientas como Postman, para facilitar el análisis de los datos que se obtendrán de la API. Con la biblioteca Gson, puedes realizar el mapeo eficiente de los datos JSON a objetos Java, facilitando así la extracción y manipulación de la información necesaria.
+En esta parte de  nuestro Challenge se nos solicito el análisis de la respuesta JSON utilizando la biblioteca Gson en Java. La manipulación de datos JSON es esencial, ya que la mayoría de las respuestas de las API se presentan en este formato.  Se nos recomendó el uso de herramientas como Postman, para facilitar el análisis de los datos que se obtendrán de la API. Con la biblioteca Gson, puedes realizar el mapeo eficiente de los datos JSON a objetos Java, facilitando así la extracción y manipulación de la información necesaria.
 
 > [!IMPORTANT]
-> Recordar utilizar la biblioteca Gson. Para descargar la biblioteca Gson, debemos ir a Maven Repository en Google. Buscamos Gson y seleccionamos la primera opción. La version descargada para este challenge es la 2.10.1.  [MVN Repository Gson](https://mvnrepository.com/artifact/com.google.code.gson/gson)
+> Recordar utilizar la biblioteca Gson. Para descargar la biblioteca Gson, debemos ir a Maven Repository en Google. Buscamos Gson y seleccionamos la primera opción. La versión descargada para este challenge es la 2.10.1.  [MVN Repository Gson](https://mvnrepository.com/artifact/com.google.code.gson/gson)
 
 *Fragmento de codigo utilizado en la Class Conversion.java, se  crea un JsonReader y se configura para aceptar JSON no valido:*
 ```java
@@ -947,7 +947,7 @@ Para ejecutar el proyecto, sigue estos pasos:
 * Clona o descarga desde Github el repositorio en tu disco local.
 * Importa el proyecto en tu IDE de Java (este proyecto se realizo en IntelliJ IDEA).
 * Configura las dependencias y ajusta la configuración según sea necesario.
-* Corre la aplicacion para interactuar con consola.
+* Corre la aplicación para interactuar con consola.
 
 ### 15. Capturas y Video
 [![Static Badge](https://img.shields.io/badge/status-under%20construction-%2393a8ac)](#)
