@@ -6,7 +6,11 @@
 [![Static Badge](https://img.shields.io/badge/Java_Library-Gson_%2F_Json-blue?style=flat&logo=json)](https://mvnrepository.com/artifact/com.google.code.gson/gson)
 [![Static Badge](https://img.shields.io/badge/API-Exchange_Rate_API-%23e90000?style=flat)](https://www.exchangerate-api.com/docs/java-currency-api)
 [![Static Badge](https://img.shields.io/badge/test-status-%23009929?logo=github)](#)
-[![Static Badge](https://img.shields.io/badge/license-MIT-blue)](*)
+[![Static Badge](https://img.shields.io/badge/license-MIT-blue)](#)
+
+
+
+
 
 Este es un desafío de la Especialización __Back-End G6 Alura - Oracle Next Education.__ Consiste en desarrollar un Conversor de Monedas en lenguaje Java, donde se realizarán solicitudes a una API de tasas de cambio para manipular datos JSON. Finalmente, se debe filtrar y mostrar las monedas de interés para realizar la conversión de monedas o divisas de diferentes países.
 
@@ -21,9 +25,13 @@ Los pasos solicitados para completar este desafío:
 7.	Analizando la respuesta en formato JSON
 8.	Filtrando las monedas
 9.	Convirtiendo Valores
-11. Interactuando con el usuario
-12. Hacer un Readme.md
-13. Adicionales
+10. Interactuando con el usuario
+11. Hacer un Readme.md
+12. Extra (Opcional)
+    12.1 Historial de Conversiones
+    12.2 Soporte para Más Monedas
+    12.3 Registros con Marca de Tiempo
+    
    
 &nbsp;
 
@@ -381,39 +389,39 @@ En resumen, la clase `Conversion` se utiliza como una interfaz para realizar con
 &nbsp;
 
 ```
-                        +-------------------+        +---------------------+
-                        |    Principal      | ---->  |     MenuHandler     |
-                        +-------------------+        +---------------------+
-                        |                   |utiliza | mostrarMenu()       |
-                        |                   |----- ->| ejecutarOpcion()    |
-                        |                   |        | convertirMoneda()   |
-                        |                   |        | elegirOtrasMonedas()|
-                        |                   |        | mostrarResultado()  |
-                        |                   |        +---------------------+
-                        +-------------------+ 
-                                  | utiliza
-                                  |
-                                  V
-                        +-------------------+       +---------------------+      +---------------------+
-                        |    Conversion     | <---> |  ConversionResponse | <--> |  RegistroConversion |
-                        +-------------------+       +---------------------+      +---------------------+
-                        | - monedaOrigen    |       | - monedaOrigen      |      | - conversion        |
-                        | - monedaDestino   |       | - monedaDestino     |      | - timestamp         |
-                        | - monto           |       | - conversionRate    |      +---------------------+
-                        | - resultado       |       | - resultado         |
-                        | - conversionRate  |       +---------------------+
-                        |                   |       |Índices API Exchange |
-                        |                   |       | - base_code         |
-                        |                   |       | - target_code       |
-                        |                   |       | - conversion_rate   |
-                        +-------------------+       | - conversion_result |
-                                   |                +---------------------+
-                                   | utiliza
-                                   | 
-                                   V
-                        +---------------------+
-                        | LocalDateTimeAdapter|
-                        +---------------------+
+            +-------------------+        +---------------------+
+            |    Principal      | ---->  |     MenuHandler     |
+            +-------------------+        +---------------------+
+            |                   |utiliza | mostrarMenu()       |
+            |                   |----- ->| ejecutarOpcion()    |
+            |                   |        | convertirMoneda()   |
+            |                   |        | elegirOtrasMonedas()|
+            |                   |        | mostrarResultado()  |
+            |                   |        +---------------------+
+            +-------------------+ 
+                      | utiliza
+                      |
+                      V
+            +-------------------+       +---------------------+      +---------------------+
+            |    Conversion     | <---> |  ConversionResponse | <--> |  RegistroConversion |
+            +-------------------+       +---------------------+      +---------------------+
+            | - monedaOrigen    |       | - monedaOrigen      |      | - conversion        |
+            | - monedaDestino   |       | - monedaDestino     |      | - timestamp         |
+            | - monto           |       | - conversionRate    |      +---------------------+
+            | - resultado       |       | - resultado         |
+            | - conversionRate  |       +---------------------+
+            |                   |       |Índices API Exchange |
+            |                   |       | - base_code         |
+            |                   |       | - target_code       |
+            |                   |       | - conversion_rate   |
+            +-------------------+       | - conversion_result |
+                       |                +---------------------+
+                       | utiliza
+                       | 
+                       V
+            +---------------------+
+            | LocalDateTimeAdapter|
+            +---------------------+
 
 ```
 *En este diagrama:*
@@ -941,7 +949,7 @@ public class LocalDateTimeAdapter implements JsonSerializer<LocalDateTime>, Json
   }
 ```
             
-### 14. Ejecución del Proyecto
+### 13. Ejecución del Proyecto
 Para ejecutar el proyecto, sigue estos pasos:
 
 * Clona o descarga desde Github el repositorio en tu disco local.
@@ -952,7 +960,7 @@ Para ejecutar el proyecto, sigue estos pasos:
 Para utilizar el conversor de moneda, ejecuta la clase `Principal`. Se mostrará un menú donde puedes seleccionar las opciones de conversión. Selecciona la opción deseada e ingresa el monto a convertir. El resultado se mostrará en la pantalla.
 * Asegúrate de revisar la documentación de la API de Exchange Rate-API para obtener la clave de API necesaria para realizar solicitudes y obtener tasas de cambio actualizadas.
 
-### 15. Capturas y Video
+### 14. Capturas y Video
 
 
 [![Screenshot interactuando y probando los key con la aplicacion Postman](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/captura.gif)](#)
@@ -963,7 +971,7 @@ Para utilizar el conversor de moneda, ejecuta la clase `Principal`. Se mostrará
 
 
 
-## Glossary [![Static Badge](https://img.shields.io/badge/status-under%20construction-%2393a8ac)](#)
+### Glossary [![Static Badge](https://img.shields.io/badge/status-under%20construction-%2393a8ac)](#)
 
 1. **API (Interfaz de Programación de Aplicaciones):**
    - Un conjunto de métodos y funciones que permite la comunicación entre diferentes componentes de software. En este contexto, se refiere a la API de Exchange Rate-API utilizada para obtener tasas de cambio.
@@ -1000,8 +1008,9 @@ Para utilizar el conversor de moneda, ejecuta la clase `Principal`. Se mostrará
 
 12. **FileNotFoundException:**
     - Una excepción en Java que se lanza cuando se intenta acceder a un archivo que no existe. Se maneja en este proyecto al leer el historial de conversiones desde un archivo JSON.
-   
-##MIT License
+    - 
+
+### MIT License
 
 ```sql
 
