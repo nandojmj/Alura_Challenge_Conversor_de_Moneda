@@ -968,7 +968,7 @@ Para utilizar el conversor de moneda, ejecuta la clase `Principal`. Se mostrará
 [![Screenshot interactuando y probando los key con la aplicacion Postman](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/Captura2.JPG)](#)
 
 ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/Captura2.JPG)  
-![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/Captura3.JPG.png) 
+![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/Captura3.JPG) 
 
 
 
