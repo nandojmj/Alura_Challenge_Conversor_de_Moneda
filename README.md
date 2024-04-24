@@ -960,16 +960,26 @@ Para ejecutar el proyecto, sigue estos pasos:
 Para utilizar el conversor de moneda, ejecuta la clase `Principal`. Se mostrará un menú donde puedes seleccionar las opciones de conversión. Selecciona la opción deseada e ingresa el monto a convertir. El resultado se mostrará en la pantalla.
 * Asegúrate de revisar la documentación de la API de Exchange Rate-API para obtener la clave de API necesaria para realizar solicitudes y obtener tasas de cambio actualizadas.
 
-### 14. Capturas y Video
+### 14. Video (Gif) Y Capturas de pantalla
 
+&nbsp;
 
 [![Screenshot](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/captura.gif)](#)
 
-[![Screenshot](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/captura.gif)](#)
+&nbsp;
 
 ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/Captura.png)  
+
+&nbsp;
+
 ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/Captura2.png) 
+
+&nbsp;
+
 ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/Captura3.png)  
+
+&nbsp;
+
 ![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/Captura5.png) 
 
 
