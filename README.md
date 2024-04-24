@@ -962,9 +962,6 @@ Para utilizar el conversor de moneda, ejecuta la clase `Principal`. Se mostrará
 
 ### 14. Video (Gif) Y Capturas de pantalla
 
-
-![ ](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/Video.mp4)  
-
 &nbsp;
 
 [![Screenshot](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/captura.gif)](#)
