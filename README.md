@@ -964,7 +964,7 @@ Para utilizar el conversor de moneda, ejecuta la clase `Principal`. Se mostrará
 
 &nbsp;
 
-[![Screenshot](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/captura.gif)](#)
+![Screenshot](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/captura.gif)
 
 &nbsp;
 
