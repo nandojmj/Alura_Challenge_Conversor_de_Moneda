@@ -9,12 +9,6 @@
 [![Static Badge](https://img.shields.io/badge/license-MIT-blue)](#)
 ![Endpoint Badge](https://img.shields.io/endpoint?url=https%3A%2F%2Fhits.dwyl.com%2Fnandojmj%2FAlura_Challenge_Conversor_de_Moneda.json&style=flat&logo=github&color=brightgreen)
 
-
-
-
-
-
-
 Este es un desafío de la Especialización __Back-End G6 Alura - Oracle Next Education.__ Consiste en desarrollar un Conversor de Monedas en lenguaje Java, donde se realizarán solicitudes a una API de tasas de cambio para manipular datos JSON. Finalmente, se debe filtrar y mostrar las monedas de interés para realizar la conversión de monedas o divisas de diferentes países.
 
 Los pasos solicitados para completar este desafío:
@@ -963,11 +957,11 @@ Para ejecutar el proyecto, sigue estos pasos:
 Para utilizar el conversor de moneda, ejecuta la clase `Principal`. Se mostrará un menú donde puedes seleccionar las opciones de conversión. Selecciona la opción deseada e ingresa el monto a convertir. El resultado se mostrará en la pantalla.
 * Asegúrate de revisar la documentación de la API de Exchange Rate-API para obtener la clave de API necesaria para realizar solicitudes y obtener tasas de cambio actualizadas.
 
-### 14. Video (Gif) Y Capturas de pantalla
+### 14. Video Y Capturas de pantalla
 
 &nbsp;
 
-![Screenshot](https://github.com/nandojmj/conversor_prueba/blob/main/recursos/images/captura.gif)
+https://github.com/nandojmj/Alura_Challenge_Conversor_de_Moneda/assets/156966097/5644642c-1cd9-4e2e-b7d3-4719e0f3a117
 
 &nbsp;
 
