@@ -33,7 +33,7 @@ Los pasos solicitados para completar este desafío:
 &nbsp;
 
 > [!NOTE]
-> En este Challenge solicitan primero crear el repositorio del proyecto en GitHub.  
+> En este Challenge se solicita primero crear el repositorio del proyecto en GitHub.  
 > El siguiente material te ayudará con esta actividad: [Git - Configurando Git por primera vez](https://git-scm.com/book/es/v2/Inicio---Sobre-el-Control-de-Versiones-Configurando-Git-por-primera-vez) y [Como subir mi proyecto en GitHub](https://www.youtube.com/watch?v=bhKkeOMysuw)  
 
 &nbsp;
