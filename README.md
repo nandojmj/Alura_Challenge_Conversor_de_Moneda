@@ -1069,3 +1069,8 @@ FUERA O EN RELACIÓN CON EL SOFTWARE O EL USO U OTROS TRATOS EN EL
 SOFTWARE.
 
 ```
+### Insignia Exclusiva para este Challenge despues de entregado
+
+![Badge-Conversor](https://github.com/nandojmj/Alura_Challenge_Conversor_de_Moneda/assets/156966097/8986525b-15c2-4ba0-b5dc-112ebfd52a4c)
+
+
