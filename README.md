@@ -138,7 +138,7 @@ Para importar la biblioteca Gson en IntelliJ, sigue estos pasos:
 [![Static Badge](https://img.shields.io/badge/Consumo_de_la_API-%23009929?style=flat)](#)
 [![Static Badge](https://img.shields.io/badge/Http-Client-%23ff1a00?style=flat)](#)
 
-Se utilizo la instancia HttpClient para realizar solicitudes a la API de tasas de cambio y obtener datos esenciales. El uso de`HttpClient` en Java facilita la conexión y la obtención de respuestas de manera eficiente. Se utiliza para enviar solicitudes HTTP y recibir respuestas HTTP sin la necesidad de bibliotecas externas.
+Se utilizo la instancia ´HttpClient´ para realizar solicitudes a la API de tasas de cambio y obtener datos esenciales. El uso de`HttpClient` en Java facilita la conexión y la obtención de respuestas de manera eficiente. Se utiliza para enviar solicitudes HTTP y recibir respuestas HTTP sin la necesidad de bibliotecas externas.
 
 > [!NOTE]
 >  Es necesario obtener su clave API para agregarla al codigo:  
